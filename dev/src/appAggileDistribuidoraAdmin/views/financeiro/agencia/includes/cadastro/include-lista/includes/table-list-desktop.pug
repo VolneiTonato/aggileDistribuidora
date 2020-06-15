@@ -1,0 +1,18 @@
+<% if(typeof(agencias) !== 'undefined'){ %>
+<% _.each(agencias, function(item) { %>
+
+    tr.row-item-list(data-item!="<%- JSON.stringify(item) %>")
+        td <%= item.agencia.nome %>
+        td <%= item.agencia.numero %> / <%= item.agencia.dv %>
+        td <%= item.agencia.cnpjCpf %>
+        td <%= _.get(item, 'agencia.banco.descricao') %>
+        td <%= _.get(item, 'endereco.bairro') %>
+        td <%= _.get(item, 'endereco.logradouro') %>
+        td <%= item.telefones.map((item) => { return item.numero }) %>
+        td <%= App_vendorAdmin.StringUtil.booleanToString(item.status) %>
+        td
+            div.btn-toolbar
+                button.btn.btn-success.btn-editar-cadastro(type="button"): i.fa.fa-pencil
+                button.btn.btn-info.google-maps(type="button" data-position!="<%= _.get(item, 'endereco.latitudeLongitude') %>"): i.fa.fa-map-marker
+<% }) %>
+<% } %>

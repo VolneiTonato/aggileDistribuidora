@@ -1,0 +1,36 @@
+<% if(typeof(produtos) !== 'undefined'){ %>
+<% _.each(produtos, function(item) { %>
+    tr(class!="hidden-xs hidden-sm row-item-list row-item-<%= item.id %>" data-item!="<%- JSON.stringify(item) %>")
+        td <%= item.descricao %>
+        td
+            div.col-xs-12.col-lg-12
+                div.form-group.form-group-lg
+                    select.produto-ecommerce-is-ecommerce.form-control.input-lg(name="produtoEcommerce_isEcommerce")
+                    +overlay()
+        td                             
+            div.col-xs-12.col-lg-12
+                div.form-group
+                    select.produto-ecommerce-is-destaque.form-control.input-lg(name="produtoEcommerce_isDestaque")
+                    +overlay()
+
+        td                             
+            div.col-xs-12.col-lg-12
+                div.form-group
+                    input.produto-ecommerce-preco-venda.form-control.input-lg.currency(name="produtoEcommerce_precoVenda" value!="<%= _.get(item, 'produtoEcommerce.precoVenda') %>")
+
+        td                             
+            div.col-xs-12.col-lg-12
+                div.form-group
+                    input.produto-ecommerce-promocao.form-control.input-lg.currency(name="produtoEcommerce_promocao" value!="<%= _.get(item, 'produtoEcommerce.promocao') %>")
+
+        td                             
+            div.col-xs-12.col-lg-12
+                div.form-group
+                    input.produto-commerce-estoque.form-control.input-lg.integer(name="produtoEcommerce_estoque" value!="<%= _.get(item, 'produtoEcommerce.estoque') %>")
+            
+
+        td
+            div.btn-toolbar
+                a.btn.btn-link.btn-mais-opcoes(type="button") Mais Campos
+<% }) %>
+<% } %>

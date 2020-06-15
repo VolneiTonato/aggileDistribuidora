@@ -1,0 +1,26 @@
+<script></script>
+
+script(type="template" id="template-report-receitas-contas-a-receber")
+    +tipoPessoaRadioButtom(['cliente','fabrica','vendedor','cedente'])
+    +autoCompletePessoa()
+    +radioButtonInline('Data Lançamento / Data Pagamento', 
+        [
+            {checked: true, value : "dataLancamento", text: "Data de Lançamento", name:"report_dataFiltro"}, 
+            { value : "dataPagamento", text: "Data de Pagamento", name:'report_dataFiltro'}
+        ])
+    +dataInicialFinal()
+    .clearfix
+    +autoCompleteCliente()
+    +statusReceitas
+    +municipio()
+    .clearfix
+    +id()
+    +inputText({label: 'Nº Pedido', id:'pedido-cliente-id', name:'pedidoClienteId', placeholder: 'Nº Pedido', class:'integer', classBlock:'col-md-6'})
+    .clearfix
+    +cheboxInline('Mostrar produtos do pedido', [{value : "true", text: "Sim", name:"report_mostrarProdutosPedido"}])
+    +radioButtonResumidoDetalhado()
+    +radioButtonInline('Visualização Fatura', [{value : "detalharFatura", text: "Detalhar", name:"report_visualizacaoFaturaReport"}, { value : "resumirFatura", text: "Resumir", name:'report_visualizacaoFaturaReport'}])
+    .clearfix
+    +filtroObrigatorioReport()
+    .clearfix
+    +submit()

@@ -1,0 +1,36 @@
+div#form-itens-hidden-to-editable
+    div.col-xs-12.col-md-4
+        div.form-group
+            label(for="data") Data
+            input(type="text" required value!="<%= App_vendorAdmin.DateUtil.formatToPtBR(_.get(form,'data')) %>" class="datapicker form-control input-lg text-uppercase" name="data" id="data" placeholder="Data")
+
+    div.col-xs-12.col-md-4
+        div.form-group
+            label(for="numero") Número
+            input(type="text" required value!="<%= _.get(form,'numero') %>" class="form-control input-lg text-uppercase" name="numero" id="numero" placeholder="Número Nota Fiscal")
+
+    div.col-xs-12.col-md-4
+        div.form-group.form-group-lg
+            label(for="selecao_fornecedor") Fabrica
+            select#selecao-fornecedor.form-control.input-lg.select2.select2-container(name="selecao_fornecedor")
+            +overlay()
+
+    div.col-xs-12.col-md-2
+        div.form-group
+            label.text-center NF
+            select#is-nf.text-center.form-control.input-lg.text-uppercase(name="isNF")
+                option(value="false") NÃO
+                option(value="true") SIM
+
+    div.clear-fix
+
+    div.col-xs-12.col-md-12
+        div.form-group
+            label(for="numero") Chave Acesso NF
+            input(type="text" required value!="<%= _.get(form,'chaveAcessoNF') %>" class="form-control input-lg text-uppercase" name="chaveAcessoNF" id="chave_acesso_nf" placeholder="Chave de Acesso NF")
+
+
+input(type="hidden" value!="<%- _.get(form,'itemNotaEntrada') %>" disabled readonly name="itemNotaEntrada" id="itens-nota-entrada")
+input(type="hidden" value!="<%= _.get(form,'status') %>" disabled readonly name="status")
+input(type="hidden" value!="<%= _.get(form,'id') %>" disabled readonly name="id")
+input(type="hidden" value!="<%= _.get(form,'fabricaId') %>" disabled readonly name="fabricaId")

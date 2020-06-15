@@ -1,0 +1,8 @@
+script(type="template" id="template-autocomplete-cliente")
+	p
+		strong Razão Social: <%= razaoSocial %> | Fantasia: <%= nomeFantasia %>
+		<br/>
+		|Código: <%= id %> | CNPJ/CPF: <%= cnpjCpf %>
+		|Telefone: <%= telefones.map((item) => { return item.numero }) %>
+		|Endereço: <%= endereco.bairro %> | <%= endereco.logradouro %>
+		|Municipio: <%= endereco.municipio.descricao %> | UF: <%= endereco.municipio.estado.uf %>

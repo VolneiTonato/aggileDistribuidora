@@ -1,0 +1,25 @@
+table.table.table-striped.produtos-lancados-table
+    tbody
+        tr
+            th Cód. Ref.
+            th Descrição
+            th Custo Entrada
+            th Custo Atual
+            th QTD.
+            th Fábrica
+            th SubTotal
+            th Opções
+        <% if(typeof(lancamentos) !== 'undefined'){ %>
+        <% _.each(lancamentos, function(item) { %>
+        tr.row-item-list(data-item!="<%- JSON.stringify(item) %>")
+            td <%= item.produto.referencia %>
+            td <%= item.produto.descricao %>
+            td <%= item.custo %>
+            td <%= item.produto.custo %>
+            td <%= item.quantidade %>
+            td <%=  _.get(item.produto, 'pessoa.fabrica.razaoSocial') %>
+            td <%=  App_vendorAdmin.NumberUtil.numberFormat(item.total, 2) %>
+            td
+                button.btn.btn-danger.remover-produto-lancado(type="button") Remover
+        <% }) %>
+        <% } %>

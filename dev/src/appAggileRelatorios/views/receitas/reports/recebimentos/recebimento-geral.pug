@@ -1,0 +1,98 @@
+extends ../../../layout-report.pug
+
+
+
+block content
+
+    div.block-report
+
+        each receita in result
+
+            .row
+                .col-12
+                    table.table
+                        tbody
+                            tr
+                                td(colspan="6")
+
+            .row
+                .col-12
+                    table.table
+                        tbody
+                            tr
+                                th.text-center.text-default(scope="col" colspan="6"): h3 Fatura nº #{receita.id}
+                            tr.text-left
+                                th(scope='col')= FN._.get(receita, 'pessoa.tipoPessoa')
+                                td.text-info.text-left= FN._.get(receita, `pessoa.nome`)
+                                th(scope='col') Contato:
+                                td.text-info.text-left= FN._.get(receita, `pessoa[${FN._.get(receita, 'pessoa.tipoPessoa')}].contato`)
+                                th(scope='col') Municipio:
+                                td.text-info.text-left= FN._.get(receita, 'pessoa.endereco.municipio.descricao')
+
+                            tr.text-left
+                                th(scope='col') Status:
+                                td.text-info.text-left(colspan="5")= FN.StringUtil.toUpperCase(receita.status)
+
+                            if receita.pedidoClienteId
+                                tr.text-left
+                                    th(scope='col') Nº Pedido:
+                                    td.text-info.text-left(colspan="") #{receita.pedidoClienteId}
+                                    th(scope='col') Data Pedido:
+                                    td.text-info.text-left(colspan="")= FN.DateUtil.momentToPug(receita.pedidoCliente.createdAt,'DD/MM/YYYY')
+                                    th(scope='col') Data Entrega:
+                                    td.text-info.text-left(colspan="")= FN.DateUtil.momentToPug(receita.pedidoCliente.dataEntrega,'DD/MM/YYYY')
+
+
+                            tr.text-left
+                                th(scope='col') Observação:
+                                td.text-info.text-left.text-danger(colspan="5") #{receita.observacao}
+
+                            tr
+                                td(colspan="6")
+                            
+            
+            .row
+                .col-12
+                    table.table.table-bordered
+                        thead
+                            tr.text-center
+                                th(scope='col') DATA
+                                th(scope='col') VENCIMENTO
+                                th(scope='col') DATA PGTO.
+                                th(scope='col') FORMA PGTO.
+                                th(scope='col') STATUS
+                                th(scope='col') VALOR
+                                th(scope='col') VALOR PGTO.
+
+                        tbody
+                            if receita.historicos
+                                each item in receita.historicos
+
+                                    tr
+                                        td.text-center= FN.DateUtil.momentToPug(item.createdAt,'DD/MM/YYYY')
+                                        td.text-center #{item.vencimento}
+                                        td.text-center #{item.dataPagamento}
+                                        td.text-center #{item.formaPagamento}
+                                        td.text-center #{item.status}
+                                        td.text-center= FN.NumberUtil.numberFormat(item.valor,2)
+                                        td.text-center= FN.NumberUtil.numberFormat(item.valorPago,2)
+
+                                tr
+                                    td(colspan="7")
+                                tr
+                                    th.text-left(colspan="6") VALOR TOTAL RECEITA
+                                    th.text-center= `R$ ${FN.NumberUtil.numberFormat(receita.valor,2)}`
+
+                                tr
+                                    th.text-left(colspan="6") VALOR TOTAL PAGO
+                                    th.text-center.text-success= `R$ ${FN.NumberUtil.numberFormat(receita.valorPago,2)}`
+
+                                tr
+                                    th.text-left(colspan="6") SALDO DEVEDOR
+                                    th.text-center.text-danger= `R$ ${FN.NumberUtil.numberFormat(receita.saldo,2)}`
+
+            if filtro.mostrarProdutosPedido == 'true'
+                include ./include/inner-pedido.pug
+
+
+            div(style="page-break-before:always;")

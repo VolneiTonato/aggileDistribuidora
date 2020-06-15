@@ -1,0 +1,40 @@
+div.row
+    div.col-xs-12
+        div.box.box-primary
+        
+            div.box-header.with-border
+                h3.box-title Inventário
+
+            div.box-body
+
+                div.row
+                    div.col-xs-12
+                        a.btn.btn-app(href="#home")
+                            i.fa.fa-home
+                            |Início
+
+                        a.btn.btn-app(href="#cadastro-de-produtos")
+                            i.fa.fa-arrow-left
+                            |Voltar
+
+
+div.row
+    div.col-xs-12
+        div.box.box-primary
+
+            div.box-header.with-border
+                h3.box-title Cadastro de Produtos
+
+            form(role="form" method="POST" id="form-cadastro" autocomplete="off")
+                div.box-body
+
+                    div.col-xs-12.col-md-4
+                        div.form-group
+                            label(for="referencia") Código Referência
+                            input(type="text" required value!="<%= _.get(form,'referencia') %>" class="form-control input-lg text-uppercase" name="referencia" id="referencia" placeholder="Código Referência")
+
+                    
+                div.box-footer
+
+                    div.col-xs-12.col-md-12
+                        button(type="button" class="btn btn-primary btn-lg input-lg" id="save") Salvar

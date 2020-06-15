@@ -1,0 +1,15 @@
+script(type="template" id="template-content-header")
+    section(class="content-header")
+        h1 <%= breadCrumb.title %>
+        
+        <% if(breadCrumb.itens){ %>
+        ol(class="breadcrumb")
+            <% _.each(breadCrumb.itens, function(item){ %>
+            li(class!="<%= item.class %>")
+                a(href!="<%= item.url %>")
+                    <% if(item.iconFirst == true){ %>
+                        i(class="fa fa-dashboard")
+                    <% } %>
+                    <%= item.label %>
+            <% }) %>
+        <% } %>

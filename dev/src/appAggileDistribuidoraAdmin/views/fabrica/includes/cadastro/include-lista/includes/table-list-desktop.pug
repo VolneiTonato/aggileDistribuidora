@@ -1,0 +1,16 @@
+<% if(typeof(fabricas) !== 'undefined'){ %>
+<% _.each(fabricas, function(item) { %>
+
+    tr.row-item-list(data-item!="<%- JSON.stringify(item) %>")
+        td <%= item.fabrica.razaoSocial %>
+        td <%= item.fabrica.nomeFantasia %>
+        td <%= item.fabrica.cnpj %>
+        td <%= item.endereco.bairro %>
+        td <%= item.endereco.logradouro %>
+        td <%= item.telefones.map((item) => { return item.numero }) %>
+        td
+            div.btn-toolbar
+                button.btn.btn-success.btn-editar-cadastro(type="button"): i.fa.fa-pencil
+                button.btn.btn-info.google-maps(type="button" data-position!="<%= _.get(item, 'endereco.latitudeLongitude') %>"): i.fa.fa-map-marker
+<% }) %>
+<% } %>

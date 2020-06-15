@@ -1,0 +1,78 @@
+doctype html
+html
+    head
+        title= title
+        meta(charset="utf-8")
+        meta(name="viewport", content="width=device-width, initial-scale=1")
+        meta(http-equiv="X-UA-Compatible" content="IE=edge")
+
+        block styleTemplate
+            link(rel="stylesheet" href="/public/libraries/bower/bootstrapv3.3.7/dist/css/bootstrap.min.css")
+            link(href="/public/libraries/bower/font-awesome/css/font-awesome.min.css" rel="stylesheet")
+            link(href="/public/libraries/bower/Ionicons/css/ionicons.min.css" rel="stylesheet")
+            block styleTemplateBeforeInit
+            link(href="/public/libraries/bower/admin-lte/dist/css/AdminLTE.min.css", rel="stylesheet")
+            link(href="/public/libraries/bower/admin-lte/dist/css/skins/_all-skins.min.css" rel="stylesheet")
+            link(href="/public/styles/admin-lte/template.css" rel="stylesheet")
+            
+            
+        block styleLocal
+    body(class="sidebar-mini skin-blue")
+        include extras/mixin.pug
+
+        div#loader(style={'display':'none'})
+            div.row
+                div(class="col-md-12" align="center")
+                    div(style={'height':'400px', 'width': '400px'})
+                        img(class="img-responsive text-center" src="/public/imagens/loader.svg")
+
+
+        div(class="wrapper " id="conteudo-principal" style={'display': 'block'})
+        
+            block header
+                include extras/header.pug
+
+            block menuLeft
+                include extras/menu-left.pug
+
+            div(class="content-wrapper")
+            
+                block contentHeader
+                    include extras/content-header.pug
+                    
+                section(class="content")
+                    block content
+            
+            footer(class="main-footer")
+                block footer
+
+
+        div(id="overlay-dialog" style={"display":"none"})
+
+
+        block scriptPrivate
+            script.
+                
+                window.onload = function() {
+                    document.getElementById("loader").style.display = "none";
+                    document.getElementById("conteudo-principal").style.display = "block";
+                };
+
+        block scriptTemplate
+            script(src="/public/libraries/bower/jquery/dist/jquery.min.js")
+            script(src="/public/libraries/bower/jquery-migrate/jquery-migrate.min.js")
+            script(src="/public/libraries/bower/bootstrapv3.3.7/dist/js/bootstrap.min.js")
+            script(src="/public/libraries/bower/jquery-ui/jquery-ui.min.js")
+            script(src="/public/libraries/bower/fastclick/lib/fastclick.js")
+            script(src="/public/libraries/bower/ckeditor/ckeditor.js")
+            block scriptTemplateBeforeInit
+            script(src="/public/libraries/bower/admin-lte/dist/js/adminlte.min.js")
+            script(src="/public/libraries/bower/admin-lte/dist/js/demo.js")
+            script(src="https://cdn.jsdelivr.net/npm/lodash@4.17.15/lodash.min.js")
+            script(src="/public/libraries/bower/backbone/backbone-min.js")
+            
+          
+        block scriptLocal
+            include ./extras/template-underscore.pug
+
+        block scriptAfter

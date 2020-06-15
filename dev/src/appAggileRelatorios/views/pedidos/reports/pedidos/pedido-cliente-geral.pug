@@ -1,0 +1,136 @@
+extends ../../../layout-report.pug
+
+
+
+block content
+
+    div.block-report
+
+        each pedido in result
+
+            if pedido.itens && (pedido.itens.length > 0)
+
+                .row
+                    table.table
+                        tbody
+                            tr
+                                td(colspan="6")
+
+                .row
+                    table.table
+                        tbody
+                            tr
+                                th.text-center.text-default(scope="col" colspan="6"): h3 Pedido nº #{pedido.id}
+                            tr.text-left
+                                th(scope='col') Cliente:
+                                td.text-info.text-left #{pedido.clienteRef.cliente.nomeFantasia}
+                                th(scope='col') Contato:
+                                td.text-info.text-left #{pedido.clienteRef.cliente.contato}
+                                th(scope='col') Municipio:
+                                td.text-info.text-left #{pedido.clienteRef.endereco.municipio.descricao}
+                                
+
+                            tr.text-left
+                                th(scope='col') Data Pedido:
+                                td.text-info.text-left(colspan="2")= FN.DateUtil.momentToPug(pedido.createdAt,'DD/MM/YYYY')
+                                th(scope='col') Data Entrega:
+                                td.text-info.text-left(colspan="2")= FN.DateUtil.momentToPug(pedido.dataEntrega, 'DD/MM/YYYY')
+
+                            tr.text-left
+                                th(scope='col') Status:
+                                td.text-info.text-left(colspan="2")= FN.StringUtil.toUpperCase(pedido.status)
+                                th(scope='col') Consignado:
+                                td.text-info.text-left(colspan="2")= FN.StringUtil.boolToString(pedido.consignado)
+
+                            tr.text-left
+                                th(scope='col') Observação:
+                                td.text-info.text-left.text-danger(colspan="5")= FN.StringUtil.toUpperCase(pedido.observacao)
+
+                            tr
+                                td(colspan="6")
+                            
+                
+                .row
+                    table.table.table-bordered
+                        thead
+                            tr.text-center
+                                th(scope='col') REF.
+                                th.text-left(scope='col') PRODUTO
+                                th(scope='col') UN.
+                                th(scope='col') BON.
+                                th(scope='col') CUSTO UN.
+                                th(scope='col') CUSTO
+                                th(scope='col') QTD
+                                th(scope='col') TOTAL
+
+                        tbody
+                            
+                            each item in pedido.itens
+                                - let valorUnitario = FN.NumberUtil.numberFormat(FN.NumberUtil.divisao(item.precoVenda, item.produto.fracao), 2)
+                                tr
+                                    td.text-center #{item.produto.referencia}
+                                    td.text-left #{item.produto.descricao}
+                                    td.text-center #{item.tipoUnidade}
+
+                                    if item.isBonificado
+                                        td.text-center <span class="badge badge-info">SIM</span>
+                                    else
+                                        td.text-center NÃO
+
+                                    td.text-center= valorUnitario
+
+                                    if item.tipoUnidade == 'UNITARIO'
+                                        td.text-center= valorUnitario
+                                    else
+                                        td.text-center= FN.NumberUtil.numberFormat(item.precoVenda, 2)
+
+                                    td.text-center #{item.quantidade}
+                                    td.text-center= FN.NumberUtil.numberFormat(item.total,2)
+
+                            tr
+                                td(colspan="8")
+                            tr
+                                tr
+                                    th.text-center.text-success(colspan="8")
+                                        h3 TOTAL PEDIDO
+                                tr
+
+                                    th.text-center(colspan="4")
+                                        h4 TOTAL ITENS
+
+                                    th.text-center(colspan="4")
+                                        h4 VALOR TOTAL
+
+                                tr
+                                    th.text-center(colspan="4")
+                                        h4
+                                            span= `${pedido.totalItens}`
+                                    th.text-center(colspan="4")
+                                        h4
+                                            span= `R$ ${FN.NumberUtil.numberFormat(pedido.total,2)}`
+
+                            if pedido.recebimento
+                                tr
+                                    th.text-center.text-success(colspan="8")
+                                        h3 DADOS PAGAMENTO
+
+                                tr
+
+                                    th.text-center.text-info(colspan="4")
+                                        h5 VALOR PAGO
+
+                                    th.text-center.text-danger(colspan="4")
+                                        h5 VALOR EM ABERTO
+                                tr
+                                    th.text-center(colspan="4")
+                                        h5
+                                            span.text-info= `R$ ${FN.NumberUtil.numberFormat(pedido.recebimento.valorPago,2)}`
+                                    th.text-center(colspan="4")
+                                        h5
+                                            span.text-danger= `R$ ${FN.NumberUtil.numberFormat(pedido.recebimento.saldo,2)}`
+
+
+
+                            
+
+                div(style="page-break-before:always;")

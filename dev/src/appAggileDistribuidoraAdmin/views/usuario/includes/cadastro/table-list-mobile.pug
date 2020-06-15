@@ -1,0 +1,9 @@
+<% if(typeof(usuarios) !== 'undefined'){ %>
+<% _.each(usuarios, function(item) { %>
+dl.row-item-list(data-item!="<%- JSON.stringify(item) %>")
+    dt Descrição
+    dd <%= item.nome %>
+    dt Opções
+    button.btn.btn-success.btn-editar-cadastro(type="button") Editar
+<% }) %>
+<% } %>    

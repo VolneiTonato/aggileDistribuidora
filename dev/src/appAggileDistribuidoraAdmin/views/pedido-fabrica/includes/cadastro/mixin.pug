@@ -1,0 +1,23 @@
+mixin totalizadoPedido()
+    <% var totalItens = 0; %>
+    <% var totalPedido = 0; %>
+    <% var totalPeso = 0; %>
+    <% _.each(pedidos, function(item) { %>
+        <% totalItens += item.totalItens; %>
+        <% totalPedido += item.total; %>
+        <% totalPeso += item.pesoTotal; %>
+    <% }) %>
+        .list-group-item.list-group-item-action.flex-column.align-items-start.active
+            .d-flex.w-100.justify-content-between
+                h2.mb-1.text-center
+                    strong Total de Itens
+                    <br /><br />
+                    strong <%= totalItens %>
+                h2.mb-1.text-center
+                    strong Peso Total
+                    <br /><br />
+                    strong <%= totalPeso %>
+                h2.mb-1.text-center
+                    strong Total do Pedido
+                    <br /><br />
+                    strong <%= totalPedido %>

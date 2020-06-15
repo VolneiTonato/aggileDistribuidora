@@ -1,0 +1,77 @@
+div.box.box-primary.box-solid
+    div.box-body.bg-gray-active.color-palette#form-financeiro-despesa-lancamento-historico(data-item!="<%- JSON.stringify(historico) %>")
+
+        div.col-xs-12.col-md-12
+            div.form-group
+                div.list-group
+                    div.list-group-item.list-group-item-action.flex-column.align-items-start
+                        div.d-flex.w-100.justify-content-between
+                            h2.mb-1
+                                strong Vencimento:
+                                |&nbsp;
+                                strong.text-center <%= historico.vencimento %>
+                            h2.mb-1
+                                strong Valor Total:
+                                |&nbsp;
+                                strong.text-center <%= App_vendorAdmin.NumberUtil.numberFormat(historico.valor,2) %>
+        
+        form(autocomplete="off")
+            div.col-xs-12.col-md-2
+                div.form-group
+                    label(for="data") Data Vencimento
+                    input(type="text" required value!="<%= _.get(historico,'vencimento') %>" class="datapicker form-control input-lg text-uppercase" name="lancamento_vencimento" id="lancamento_vencimento" placeholder="Data de Entrega")
+
+            div.clearfix
+
+            div.col-xs-12.col-md-6
+                div.form-group
+                    label.text-center(for="formaPagamento") Forma Pagamento
+                    .input-group.input-group-lg
+                        select#lancamento-forma-pagamento.text-center.form-control.input-lg.text-uppercase(name="lancamento_formaPagamento")
+                        span.input-group-btn
+                            button.btn.btn-danger.limpar-forma-pgto-selecionada(type="button") Limpar
+
+
+            div.col-xs-12.col-md-4#bloco-data-bom-para(style={"display":"none"})
+                div.form-group
+                    label(for="lancamento_data_bom_para") Bom para
+                    input(type="text" required value!="<%= _.get(historico,'dataBomPara') %>" class="datapicker form-control input-lg text-uppercase" name="lancamento_dataBomPara" id="lancamento_data_bom_para" placeholder="Data Bom Para")
+
+            div.clearfix
+
+            #inner-valor-usado-cheque
+
+            div.clearfix
+
+            #inner-bloco-dados-cheque-selecionado
+
+            div.clearfix
+
+            div.col-xs-12.col-md-12
+                div.form-group
+                    label(for="observacao") Observação
+                    textarea#observacao(class="form-control input-lg text-uppercase" name="lancamento_observacao", cols="5", rows="5") <%= _.get(historico,'observacao') %>
+
+            div.clear-fix
+            
+            input(type="hidden" required value!="<%= _.get(historico,'id') %>" class="form-control input-lg text-uppercase" id="lancamento-id" name="lancamento_id")
+            input(type="hidden" required value!="<%= _.get(historico,'despesaId') %>" class="form-control input-lg text-uppercase" id="lancamento-despesa-id" name="lancamento_despesaId")
+            input(type="hidden" required value!="<%= _.get(historico,'status') %>" class="form-control input-lg text-uppercase" id="lancamento-status" name="lancamento_status")
+            input(type="hidden" value!="<%= _.get(historico,'chequeId') %>" id="lancamento-cheque-id" disabled readonly name="lancamento_chequeId")
+
+
+
+    div.box-footer.bg-gray-active.color-palette
+
+        div.col-xs-12
+            div.form-group
+                div.hidden-xs.hidden-sm
+                    div.btn-toolbar
+                        button.btn.btn-lg.input-lg.btn-success.adicionar-historico(type="button") Atualizar
+                        button.btn.btn-lg.input-lg.btn-warning.parcelar-lancamento-historico(type="button") Parcelar
+                        button.btn.btn-lg.input-lg.btn-danger.cancelar-lancamento-historico(type="button") Cancelar
+
+                div.visible-xs.visible-sm
+                    button.btn.btn-success.adicionar-historico.btn-block.input-lg(type="button") Atualizar
+                    button.btn.btn-warning.parcelar-lancamento-historico.btn-block.input-lg(type="button") Parcelar
+                    button.btn.btn-danger.cancelar-lancamento-historico.btn-block.input-lg(type="button") Cancelar

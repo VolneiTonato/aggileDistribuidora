@@ -1,0 +1,39 @@
+main
+    //div(class="container")
+        div(class="row")
+            div(class="col-md-12 col-lg-4 wow fadeIn mb-3")
+                div(class="widget-wrapper")
+                    h4(class="indigo-text font-weight-bold")  Categorias
+                    <br>
+                    div(class="d-none d-md-none d-sm-none d-lg-block")
+                        div(class="list-group ")
+                            <% _.each(retorno.menus, function(item){ %>
+                            a(data-classificacao!="<%= item %>" data-tipo!="<%= tipoProduto %>" href!="#produtos/<%= tipoProduto %>/<%= encodeURI(item).toLowerCase() %>" class!="menu-produto list-group-item <%= menuSelecionado == item ? 'active' : '' %>") <%= item %>
+                            <% }) %>
+
+                    div(class="d-md-block d-sm-block d-block d-lg-none")
+                        select(class="col-12 form-control menu-produto")
+                            option(value="") Selecione uma categoria
+                            <% _.each(retorno.menus, function(item){ %>
+                            option(value!="<%= item %>" link!="#produtos/<%= tipoProduto %>/<%= encodeURI(item).toLowerCase() %>") <%= item %>
+                            <% }) %>
+
+
+                    
+
+            div(class="col-lg-8 col-md-12")
+                div(class="row")
+                    div(class="col-12")
+                        div(class="light-font")
+                            ol(class="breadcrumb")
+                                li(class="breadcrumb-item m3-3"): a(class="white-blue" href="#home") Voltar ao início
+                
+                div(class="row" id="inner-card-list-produtos")
+
+
+
+
+            
+
+            
+            

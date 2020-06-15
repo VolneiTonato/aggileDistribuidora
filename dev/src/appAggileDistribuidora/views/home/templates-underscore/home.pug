@@ -1,0 +1,16 @@
+main
+    .limiter
+        .container-login100(style="background-image: url('/public/imagens/aggile-distribuidora/bg-01.jpg');")
+            .wrap-login100.p-t-30.p-b-50
+                span.login100-form-title.p-b-41
+                    | AGGILE DISTRIBUIDORA
+                form.login100-form.validate-form.p-b-33.p-t-5(autocomplete='off' method="post" action="/admin/auth/proccess-login")
+                    .wrap-input100.validate-input(data-validate='Informe seu usuário.')
+                        input.input100(type='text', name='login', placeholder='Usuário')
+                        span.focus-input100(data-placeholder!="&#xe82a;")
+                    .wrap-input100.validate-input(data-validate='Informe sua senha.')
+                        input.input100(type='password', name='password', placeholder='Senha')
+                        span.focus-input100(data-placeholder!="&#xe80f;")
+                    .container-login100-form-btn.m-t-32
+                        button.login100-form-btn#btn-submit
+                            | Login

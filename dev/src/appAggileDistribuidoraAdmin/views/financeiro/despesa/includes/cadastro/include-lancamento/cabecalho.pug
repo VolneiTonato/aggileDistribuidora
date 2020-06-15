@@ -1,0 +1,27 @@
+
+div.col-xs-12.col-md-12
+    div.form-group
+        label(for="") Descrição
+        input(type="text" required value!="<%= _.get(form,'descricao') %>" class="form-control input-lg text-uppercase" name="descricao" id="descricao" placeholder="Descrição")
+
+div.col-xs-12.col-md-4
+    div.form-group
+        label.text-center Valor
+        input(type="text" required value!="<%= _.get(form,'valor') %>" class="form-control input-lg text-uppercase currency" name="valor" id="valor" placeholder="Valor")
+
+div.col-xs-12.col-md-4
+    div.form-group
+        label.text-center Número NF
+        input(type="text" required value!="<%= _.get(form,'nf') %>" class="form-control input-lg text-uppercase" name="nf" id="nf" placeholder="Número NF")
+
+
+div.clearfix
+
+div.col-xs-12.col-md-12
+    div.form-group
+        label(for="observacao") Observação
+        textarea#observacao(class="form-control input-lg text-uppercase" name="observacao", cols="5", rows="5") <%= _.get(form,'observacao') %>
+            
+input(type="hidden" value!="<%= _.get(form,'id') %>" disabled readonly name="id")
+input(type="hidden" value!="<%= _.get(form,'pessoaId') %>" disabled readonly name="pessoaId")
+

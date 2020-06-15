@@ -1,0 +1,100 @@
+div#block-form-fabrica
+    div.row
+        div.col-xs-12
+            div.box.box-primary
+            
+                div.box-header.with-border
+                    h3.box-title Fábricas
+
+                div.box-body
+
+                    div.row
+                        div.col-xs-12
+                            a.btn.btn-app(href="#home")
+                                i.fa.fa-home
+                                |Início
+
+                            a.btn.btn-app(href="#cadastro-de-fabricas/pesquisa")
+                                i.fa.fa-arrow-left
+                                |Voltar
+                            a.btn.btn-app#btn-novo-cadastro
+                                i.fa.fa-plus
+                                |Novo Cadastro
+
+
+    div.row
+        div.col-xs-12
+            div.box.box-primary
+
+                div.box-header.with-border
+                    h3.box-title Cadastro de Fábricas
+
+                form(role="form" method="POST" id="form-cadastro" autocomplete="off")
+                    div.box-body
+
+                        div.col-xs-12.col-md-6
+
+                            div.form-group
+                                label(for="razaoSocial") Razão Social
+                                input(type="text" required value!="<%= _.get(form,'fabrica.razaoSocial') %>" class="form-control input-lg" name="fabrica_razaoSocial" id="fabrica_razao_social" placeholder="Razão Social")
+
+                        div.col-xs-12.col-md-6
+                            div.form-group
+                                label(for="nomeFantasia") Nome Fantasia
+                                input(type="text" required value!="<%= _.get(form,'fabrica.nomeFantasia') %>" class="form-control input-lg" name="fabrica_nomeFantasia" id="fabrica_nome_fantasia" placeholder="Nome Fantasia")
+                        
+
+                        div.col-xs-12.col-md-3
+                            div.form-group
+                                label(for="cnpj") CNPJ
+                                input(type="text" required value!="<%= _.get(form, 'fabrica.cnpj') %>" class="form-control input-lg cnpj-mask" name="fabrica_cnpj" id="fabrica_cnpj" placeholder="CNPJ")
+
+                        div.clearfix
+
+                        div.col-xs-12.col-md-4
+                            div.form-group
+                                label(for="markup") Markup
+                                input(type="text" required value!="<%= _.get(form, 'fabrica.markup') %>" class="form-control input-lg percent" name="fabrica_markup" id="fabrica_markup" placeholder="Markup")
+
+                        div.col-xs-12.col-md-4
+                            div.form-group
+                                label(for="comissao") Comissão
+                                input(type="text" required value!="<%= _.get(form, 'fabrica.comissao') %>" class="form-control input-lg percent" name="fabrica_comissao" id="fabrica_comissao" placeholder="Comissão")
+
+                        div.col-xs-12.col-md-4
+                            div.form-group
+                                label(for="comisaoVendedor") Comissão Vendedor
+                                input(type="text" required value!="<%= _.get(form, 'fabrica.comissaoVendedor') %>" class="form-control input-lg percent" name="fabrica_comissaoVendedor" id="fabrica_comisaoVendedor" placeholder="Comissão Vendedor")
+
+                        div.clearfix
+
+                        div.col-xs-12.col-md-6
+                            #inner-telefone-fabrica
+
+                        div.clearfix
+
+
+                        .col-xs-12
+                            .box.box-solid.box-warning
+                                .box-header.with-border
+                                    h3.box-title Endereço Principal
+
+                        include ../../../../extras/endereco-form.pug
+
+                        div.clearfix
+                        
+                        .col-xs-12
+                            div#inner-content-children-endereco
+
+
+                        
+
+                        div.col-xs-12
+                            input(type="hidden" value!="<%= _.get(form,'id') %>" class="form-control input-sm hidden" name="id" id="id")
+                            input(type="hidden" value!="<%= _.get(form,'endereco.id') %>" class="form-control input-sm hidden" name="endereco_id" id="endereco_id")
+                            input(type="hidden" value!="<%= _.get(form,'fabrica.id') %>" class="form-control input-sm hidden" name="fabrica_id" id="fabrica_id")
+
+                    div.box-footer
+
+                        div.col-xs-12.col-md-12
+                            button(type="button" class="btn btn-primary btn-lg input-lg" id="save") Salvar

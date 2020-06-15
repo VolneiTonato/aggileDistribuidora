@@ -1,0 +1,26 @@
+script(type="template" id="template-telefone-header")
+    .form-group
+        label(for="telefone") Telefones
+        #inner-template-telefone-body
+    .form-group
+        .visible-xs.visible-sm
+            button.btn.btn-success.btn-add-telefone.btn-block.input-lg(type="button"): i.fa.fa-plus add Telefone
+        .hidden-xs.hidden-sm
+            .btn-toolbar
+                button.btn.btn-success.btn-add-telefone(type="button"): i.fa.fa-plus add Telefone
+
+
+
+
+script(type="template" id="template-telefone-body")
+    .block-telefone-adicional
+        input(type="text" required value!="<%= _.get(telefone, 'numero') %>" class="form-control input-lg" name="telefones[]" id="telefones[]" placeholder="Telefone")
+        .visible-xs.visible-sm
+            button.btn.btn-danger.btn-remove-telefone.btn-block.input-lg(type="button"): i.fa.fa-remove
+        .hidden-xs.hidden-sm
+            .btn-toolbar
+                button.btn.btn-danger.btn-remove-telefone(type="button"): i.fa.fa-remove
+        <br />
+
+
+        

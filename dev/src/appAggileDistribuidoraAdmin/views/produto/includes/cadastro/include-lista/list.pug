@@ -1,0 +1,89 @@
+div#block-list-produto
+    div.row
+        div.col-xs-12
+            div.box.box-primary
+            
+                div.box-header.with-border
+                    h3.box-title Produtos
+
+                div.box-body
+
+                    div.row
+                        div.col-xs-12
+                            a.btn.btn-app(href="#home")
+                                i.fa.fa-home
+                                |Início
+
+                            a.btn.btn-app#btn-novo-cadastro(href="#cadastro-de-produtos/novo-cadastro")
+                                i.fa.fa-plus
+                                |Novo Cadastro
+
+    div.row
+        div.col-xs-12
+            div.box.box-solid.box-success
+                div.box-header.with-border
+                    h3.col-md-6.col-xs-12.box-title Pesquisa
+
+                    div.box-tools.pull-right
+                        button.btn.btn-box-tool(type='button', data-widget='collapse'): i.fa.fa-minus(style={'font-size':'24px'})
+
+                
+                div.box-body#inner-form-pesquisa-produto
+
+
+    div.row
+        div.col-xs-12
+            div.box.box-primary#overlay-painel-list-cadastro
+
+                div.box-header.with-border
+                    h3.col-md-6.col-xs-12.box-title Lista de Produtos
+
+                div.box-body
+                
+                    div.hidden-xs.hidden-sm
+
+                        table.table.table-striped
+                            thead
+                                tr
+                                    th Cód.
+                                    th Cód. Ref.
+                                    th Descrição
+                                    th Custo
+                                    th Preço Venda
+                                    th Margem Lucro
+                                    th Estoque
+                                    th Fábrica
+                                    th Ativo
+                                    th Opções
+                            tbody#inner-produtos-cadastrados-desktop
+
+                            tfooter
+                                tr
+                                    td(colspan="10")
+                                        div.btn-toolbar
+                                            button.btn.btn-lg.input-lg.bg-purple.btn-block.carregar-mais(disabled="disabled") Carregar Mais
+
+
+
+                    div.visible-xs.visible-sm
+
+                        div.list-group
+                            div#inner-produtos-cadastrados-mobile
+
+                        div.btn-toolbar
+                            button.btn.btn-lg.input-lg.bg-purple.btn-block.carregar-mais(disabled="disabled") Carregar Mais
+                
+                +overlay()
+
+
+<script></script>
+script(type="template" id="template-form-pesquisa-produtos")
+    include includes/form-pesquisa.pug                      
+
+<script></script>
+script(type="template" id="template-list-table-produtos-cadastrados-desktop")
+    include includes/table-list-desktop.pug
+
+<script></script>
+script(type="template" id="template-list-table-produtos-cadastrados-mobile")
+    include includes/table-list-mobile.pug

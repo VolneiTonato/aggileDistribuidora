@@ -1,0 +1,133 @@
+mixin dataInicialFinal()
+
+    div.col-xs-12.col-md-6
+        div.form-group
+            label Data Inicial
+            input(type="text" required  class="datapicker form-control input-lg text-uppercase" name="report_dataInicial" id="report-dataInicial" placeholder="Data de Inicial")
+
+    div.col-xs-12.col-md-6
+        div.form-group
+            label Data Final
+            input(type="text" required class="datapicker form-control input-lg text-uppercase" name="report_dataFinal" id="report-dataFinal" placeholder="Data de Final")
+
+
+
+mixin inputText(data)
+    div(class!="col-xs-12 " + data.classBlock)
+        div.form-group
+            label #{data.label}
+            input(type="text" style="text-transform:none;" class!="form-control input-lg " + data.class name!="report_" + data.name id!="report-" + data.id  placeholder!=data.placeholder)
+
+mixin submit()
+    .col-xs-12
+        .box-footer
+            .btn-toolbar
+                button.btn.btn-info.btn-block.input-lg#gerar-relatorio(type="button") Gerar Relatório
+
+
+
+mixin radioButtonResumidoDetalhado()
+    +radioButtonInline("Tipo Relatório", [{checked: true,  value : "detalhado", text: "Detalhado", name:"report_typeReport"}, { value : "resumido", text: "Resumido", name:'report_typeReport'}])
+
+mixin radioButtonInline(title, data)
+    .col-xs-12
+        .form-group
+            label
+                h4.text-green #{title}
+            .row
+                .col-xs-12
+                    each item in data
+                        label.radio-inline
+                            input(type='radio' checked!=item.checked value!=item.value name!=item.name)
+                            strong #{item.text}
+        hr
+
+mixin cheboxInline(data)
+    .col-xs-12
+        .form-group
+            each item in data
+                label.checkbox-inline
+                    input(type='checkbox' value!=item.value name!="report_" + item.value)
+                    h4 #{item.text}
+
+
+
+mixin statusCadastro()
+    .col-xs-12.col-md-6
+        .form-group.form-group-lg
+            label(for="status") Status
+            select#report-status.form-control.input-lg(name="report_status")
+            +overlay()
+
+
+mixin statusPedido()
+    .col-xs-12.col-md-6
+        .form-group.form-group-lg
+            label(for="status") Status Pedido
+            select#report-status-pedido.form-control.input-lg(name="report_statusPedido")
+            +overlay()
+
+mixin statusReceitas()
+    .col-xs-12.col-md-6
+        .form-group.form-group-lg
+            label(for="") Status
+            select#report-status-receita.form-control.input-lg(name="report_statusReceita")
+            +overlay()            
+
+mixin fabrica()
+    .col-xs-12.col-lg-6
+        .form-group.form-group-lg
+            label(for="") Fábrica
+            select#report-fabrica-id.form-control.input-lg(name="report_fabricaId")
+            +overlay()
+
+
+mixin municipio()
+    .col-xs-12.col-md-6
+        .form-group.form-group-lg
+            label(for="") Municipio
+            select#report-municipio-id.form-control.input-lg(name="report_municipioId")
+            +overlay()
+
+mixin municipioListAdd()
+    .col-xs-12
+        .form-group.form-group-lg.block-municipio-list-report
+            label(for="") Municipio
+            select#report-municipio-list-add.form-control.input-lg(name="generic_municipioListAdd")
+            +overlay()
+            .panel-list-municipios-selecionados-report(style='display:none')
+                .panel.panel-default
+                    .panel-heading
+                        h3.panel-title Municípios Selecionados
+                    .panel-body(style='max-height: 200px; overflow-y: scroll;')
+                        .col-xs-12
+                            table.table.loader-municipios-selecionados
+                    .panel-footer
+
+
+
+        
+
+
+mixin autoCompleteCliente()
+    .col-xs-12.col-md-12
+        .form-group
+            label(for="") Cliente
+            input(type="text" class="input-lg form-control autocomplete-vtt ui-autocomplete-input text-uppercase" id="autocomplete-report-cliente" placeholder="Cliente")
+            span(style="display:none" class="text-"): strong
+            input(type="hidden" value="" name="report_clienteId" id="report-cliente-id")
+
+
+mixin id()
+
+    div.col-xs-12.col-md-6
+        div.form-group
+            label Código
+            input(type="text" required  class="form-control input-lg text-uppercase integer" name="report_id" id="report-id" placeholder="Código")  
+
+
+mixin boolSimNao(data)
+    .col-xs-12.col-md-6
+        .form-group.form-group-lg
+            label #{data.label}
+            select.bool-sim-nao.text-center.form-control.input-lg.text-uppercase(name!="report_" + data.name id!="report-" + data.id placeholder!=data.placeholder)

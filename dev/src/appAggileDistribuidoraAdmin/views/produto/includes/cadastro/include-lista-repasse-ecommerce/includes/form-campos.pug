@@ -1,0 +1,28 @@
+div#block-list-produto-repasse-ecommerce-form-outros-campos
+    div.col-xs-12
+        div.form-group
+            label.text-left Descrição
+            input(type="text" required value!="<%= _.get(form,'produtoEcommerce.descricao') %>" class="form-control input-lg text-uppercase" name="produtoEcommerce_descricao" id="produtoEcommerce-descricao")
+
+    div.col-xs-12
+        div.form-group
+            label.text-left Descrição Detalhada
+            textarea(class="editor-ckeditor form-control input-lg text-uppercase" name="produtoEcommerce_descricaoDetalhada" id="produtoEcommerce-descricao-detalhada") <%= _.get(form,'produtoEcommerce.descricaoDetalhada') %>
+
+    div.col-xs-12
+        div.form-group
+            label.text-left Descrição Completa
+            textarea(class="editor-ckeditor form-control input-lg text-uppercase" name="produtoEcommerce_descricaoCompleta" id="produtoEcommerce-descricao-completa") <%= _.get(form,'produtoEcommerce.descricaoCompleta') %>
+
+    input(type="hidden" value!="<%= form.id %>" name="id" id="id")
+
+
+    div.clear-fix
+
+    div.col-xs-12
+        div.form-group
+            div.hidden-xs.hidden-sm
+                div.btn-toolbar
+                    button.btn.btn-lg.input-lg.btn-success.save Ok
+            div.visible-xs.visible-sm
+                button.btn.btn-success.btn-block.input-lg.save Ok

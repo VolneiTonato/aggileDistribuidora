@@ -1,0 +1,54 @@
+div.row
+    div.col-xs-12
+        div.box.box-primary
+        
+            div.box-header.with-border
+                h3.box-title Pedido Cliente
+
+            div.box-body
+
+                div.row
+                    div.col-xs-12
+                        a.btn.btn-app(href="#home")
+                            i.fa.fa-home
+                            |Início
+
+                        a.btn.btn-app(href="#pedidos/cliente/pesquisa")
+                            i.fa.fa-arrow-left
+                            |Pedidos Lançados
+
+
+
+<script></script>
+
+script(type="template" id="template-pedido-lancamento-form-principal")
+    include include-lancamento/form.pug
+
+<script></script>
+
+script(type="template" id="template-pedido-cliente-lancamento-produto-autocomplete")
+    include include-lancamento/produto-autocomplete.pug
+
+<script></script>
+
+script(type="template" id="template-pedido-cliente-lancamento-cliente-autocomplete")
+    include include-lancamento/cliente-autocomplete.pug
+
+<script></script>
+
+script(type="template" id="template-pedido-cliente-lancamento-cabecalho")
+    include include-lancamento/cabecalho.pug
+
+<script></script>
+
+script(type="template" id="template-pedido-cliente-lancamento-produto")
+    include include-lancamento/produto.pug
+
+<script></script>
+
+script(type="template" id="template-pedido-cliente-produtos-lancados")
+    include include-lancamento/produtos-lancados.pug
+
+<script></script>
+script(type="template" id="template-pedido-cliente-selecionado")
+    include include-lancamento/cliente.pug

@@ -1,0 +1,43 @@
+<script></script>
+
+script(type="template" id="template-financeiro-cheque-form-repasse")
+    div#form-repasse-cheque
+
+        div.col-xs-12
+            h6.alert.alert-success Repasse de Cheque
+
+
+        div.col-xs-12.col-md-12
+            div.form-group
+                +radioButtonInline('Tipo Emissor', [
+                    {value:'fabrica', name:'tipoEmissor',text:'Fábrica'},
+                    {value:'cliente', name:'tipoEmissor',text:'Cliente'},
+                    {value:'cedente', name:'tipoEmissor',text:'Cedente'},
+                    {value:'vendedor', name:'tipoEmissor',text:'Vendedor'},
+                    ], {class: 'tipo-pessoa-repasse'})
+
+        
+        #inner-pessoa-autocomplete
+
+
+        <hr />
+
+
+        div.col-xs-12.col-md-6
+            div.form-group
+
+                .box.box-solid.box-primary.box-dados-emissor(style={'display': 'none'})
+                    .box-header.with-border
+                        h3.box-title Emissor Selecionado
+                        
+                    .box-body
+                        #inner-dados-conta-emissor
+
+        div.col-xs-12
+            div.form-group
+                div.hidden-xs.hidden-sm
+                    div.btn-toolbar
+                        button.btn.btn-lg.input-lg.btn-success.btn-repassar-cheque(type="button") Repassar
+
+                div.visible-xs.visible-sm
+                    button.btn.btn-success.btn-repassar-cheque.btn-block.input-lg(type="button") Repassar

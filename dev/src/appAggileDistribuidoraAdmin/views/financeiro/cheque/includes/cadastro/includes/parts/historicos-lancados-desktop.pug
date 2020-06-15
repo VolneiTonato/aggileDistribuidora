@@ -1,0 +1,16 @@
+table.table.table-striped.historicos-lancados-table
+    tbody
+        tr.control-checkbox
+            th Data
+            th Status
+            th Pessoa
+            th Motivo Devolução
+        <% if(typeof(historicos) !== 'undefined'){ %>
+        <% _.each(historicos, function(item) { %>
+        tr.row-item-list(data-item!="<%- JSON.stringify(item) %>")
+            td <%= App_vendorAdmin.DateUtil.formatToPtBR(item.createdAt, true) %>
+            td <%= item.status %>
+            td <%= _.get(item, 'pessoaRepasse.nome') %>
+            td <%= _.get(item, 'motivoDevolucao.codigo') %> - <%= _.get(item, 'motivoDevolucao.descricao') %>
+        <% }) %>
+        <% } %>

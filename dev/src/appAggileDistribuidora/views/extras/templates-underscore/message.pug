@@ -1,0 +1,25 @@
+script(type="template" id="template-message")
+    #centralModalSuccess.modal.fade(tabindex='-1', role='dialog', aria-labelledby='myModalLabel', aria-hidden='true')
+        .modal-dialog.modal-notify.modal-success(role='document')
+            // Content
+            .modal-content
+                // Header
+                .modal-header
+                    p.heading.lead Modal Success
+                    button.close(type='button', data-dismiss='modal', aria-label='Close')
+                        span.white-text(aria-hidden='true') ×
+                // Body
+                .modal-body
+                    .text-center
+                        i.fas.fa-check.fa-4x.mb-3.animated.rotateIn
+                        p
+                            | Lorem ipsum dolor sit amet, consectetur adipisicing elit. Impedit iusto nulla aperiam
+                            | blanditiis ad consequatur in dolores culpa, dignissimos, eius non possimus fugiat.
+                            | Esse ratione fuga, enim, ab officiis totam.
+                // Footer
+                .modal-footer.justify-content-center
+                    a.btn.btn-success(type='button')
+                        | Get it now 
+                        i.far.fa-gem.ml-1.white-text
+                    a.btn.btn-outline-success.waves-effect(type='button', data-dismiss='modal') No, thanks
+            // /.Content

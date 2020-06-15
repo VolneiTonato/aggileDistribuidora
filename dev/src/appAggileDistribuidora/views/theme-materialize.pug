@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+html(lang="en")
+    head
+        meta(charset="UTF-8")
+        meta(name="viewport", content="width=device-width, initial-scale=1.0")
+        meta(http-equiv="X-UA-Compatible", content="ie=edge")
+        title AGGILE Distribuidora
+
+        block style
+            link(href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet")
+            link(rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/css/materialize.min.css")
+
+
+        block styleAfter
+
+    body
+
+        block navPrincipal
+            include extras/nav-principal.pug
+
+        block conteudo
+
+
+        block footer
+            include extras/footer.pug
+        
+        block script
+            script(type="text/javascript" src="https://code.jquery.com/jquery-3.2.1.min.js")
+            script(src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/js/materialize.min.js")
+            script(src="/public/libraries/node_modules/underscore/underscore.js")
+            script(src="/public/libraries/node_modules/backbone/backbone-min.js")
+            script(src="/public/dist/vendor.bundle.js")
+
+        block scriptTemplate
+
+            script(type="template" id="template-loader")
+                include extras/templates-underscore/loader.pug
+
+        block scriptAfter
+            script.
+                $(function(){
+                    $('.button-collapse').sideNav();
+                })
+            script(src="/public/dist/aggileDistribuidora.bundle.js")

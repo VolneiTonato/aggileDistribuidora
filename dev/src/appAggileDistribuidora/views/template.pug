@@ -1,0 +1,31 @@
+doctype html
+html(lang='en')
+    head
+        title Aggile Distribuidora
+        meta(charset='UTF-8')
+        meta(name='viewport', content='width=device-width, initial-scale=1')
+        block style
+            link(rel='icon', type='image/png', href='/public/imagens/aggile-distribuidora/favicon.ico')
+            link(rel='stylesheet', type='text/css', href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/all.min.css')
+            link(rel='stylesheet', type='text/css', href='https://cdn.linearicons.com/free/1.0.0/icon-font.min.css')
+
+        block styleAfter
+            link(rel="stylesheet" href="/public/styles/aggile-distribuidora/template.css")
+
+    body          
+        block conteudo
+
+
+    block script
+        script(src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js" type="text/javascript")
+        script(type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/lodash.js/4.17.15/lodash.min.js")
+        script(type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/backbone.js/1.3.3/backbone-min.js")
+        script(src="https://cdnjs.cloudflare.com/ajax/libs/notify/0.4.2/notify.min.js")
+        script(src="/public/dist/vendorSite.bundle.js")
+
+    block scriptTemplate
+
+    block scriptAfter
+        script(src="/public/dist/aggileDistribuidora.bundle.js")
+
+        

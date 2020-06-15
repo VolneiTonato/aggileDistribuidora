@@ -1,0 +1,236 @@
+div#block-form-financeiro-cheque
+    div.row
+        div.col-xs-12
+            div.box.box-primary
+            
+                div.box-header.with-border
+                    h3.box-title Lançamento de Cheques
+
+                div.box-body
+
+                    div.row
+                        div.col-xs-12
+                            a.btn.btn-app(href="#home")
+                                i.fa.fa-home
+                                |Início
+
+                            a.btn.btn-app(href="#financeiro/cadastro-de-cheques/pesquisa")
+                                i.fa.fa-arrow-left
+                                |Cheques Lançados
+
+                            a.btn.btn-app.link-navegacao(href="#financeiro/cadastro-de-cheques/novo-cadastro")
+                                    i.fa.fa-plus
+                                    |Novo Lançamento de Cheque
+
+    div.row
+        div.col-xs-12
+            div.box.box-primary
+
+                div.box-header.with-border
+                    h3.box-title Lançamento de Cheques
+
+                form(role="form" method="POST" id="form-cadastro" autocomplete="off")
+                    div.box-body
+
+                        div#row-item(data-item!="<%- JSON.stringify(form) %>" style={'display':'none'})
+
+
+                        +autoComplete('conta-bancaria')
+
+                        div.clearfix
+
+
+                        div.col-xs-12.col-md-12
+                            div.form-group
+                                +radioButtonInline('Tipo Emissor', [
+                                    {value:'', checked: true, name:'tipoEmissor',text:'Sem Relação'},
+                                    {value:'fabrica', name:'tipoEmissor',text:'Fábrica'},
+                                    {value:'cliente', name:'tipoEmissor',text:'Cliente'},
+                                    {value:'cedente', name:'tipoEmissor',text:'Cedente'},
+                                    {value:'vendedor', name:'tipoEmissor',text:'Vendedor'},
+                                    ], {class: 'tipo-emissor-form'})
+
+                        
+                        #inner-pessoa-autocomplete
+
+
+                        div.clearfix
+
+                        div.col-xs-12.col-md-6
+                            div.form-group
+                                label(for="origem-lancamento-cheque") Origem Lançamento Cheque
+                                select.form-control.input-lg(name="origemLancamento" id="origem-lancamento")
+
+                        .clearfix
+
+                        
+                        div.col-xs-12.col-md-3
+
+                            div.form-group
+                                label(for="comp") Comp.
+                                input(type="number" required value!="<%= _.get(form,'comp') %>" class="form-control input-lg" name="comp" id="comp" placeholder="Comp")
+
+                        div.col-xs-12.col-md-3
+                            div.form-group
+                                label(for="banco") Banco
+                                input(type="text" readonly required value!="<%= _.get(form,'pessoaAgencia.agencia.banco.descricao') %>" class="form-control input-lg readonly" name="banco" id="banco" placeholder="Banco")
+
+                        div.col-xs-12.col-md-3
+                            div.form-group
+                                label(for="agencia") Agência
+                                input(type="text" readonly required value!="<%= _.get(form,'pessoaAgencia.agencia.numero') %>" class="form-control input-lg readonly" name="agencia" id="agencia" placeholder="Agencia")
+
+
+                        div.col-xs-12.col-md-3
+                            div.form-group
+                                label(for="c1") C1
+                                input(type="number" required value!="<%= _.get(form,'c1') %>" class="form-control input-lg" name="c1" id="c1" placeholder="C1")
+
+                        div.col-xs-12.col-md-3
+                            div.form-group
+                                label(for="conta") Conta
+                                input(type="text" readonly required value!="<%= _.get(form,'pessoaAgencia.agencia.numero')%>-<%= _.get(form, 'pessoaAgencia.agencia.dv') %>" class="form-control input-lg readonly" name="conta" id="conta" placeholder="Conta")
+
+
+                        div.col-xs-12.col-md-3
+                            div.form-group
+                                label(for="c2") C2
+                                input(type="number" required value!="<%= _.get(form,'c2') %>" class="form-control input-lg" name="c2" id="c2" placeholder="C2")
+
+
+                        div.col-xs-12.col-md-3
+                            div.form-group
+                                label(for="serie") Série
+                                input(type="text" required value!="<%= _.get(form,'serie') %>" class="form-control input-lg" name="serie" id="serie" placeholder="Série")
+
+                        div.col-xs-12.col-md-3
+                            div.form-group
+                                label(for="numero") Número
+                                input(type="number" required value!="<%= _.get(form,'numero') %>" class="form-control input-lg" name="numero" id="numero" placeholder="Número")
+
+
+                        div.col-xs-12.col-md-3
+                            div.form-group
+                                label(for="c3") C3
+                                input(type="number" required value!="<%= _.get(form,'c3') %>" class="form-control input-lg" name="c3" id="c3" placeholder="C3")
+
+
+                        div.col-xs-12.col-md-3
+
+                            div.form-group
+                                label(for="isTerceiro") Cheque de Terceiro
+                                select(name="isTerceiro" class="form-control input-lg" id="is-terceiro")
+
+
+                        div.clearfix
+
+
+                        div.col-xs-12
+                            div.form-group
+                                label(for="nominal") Nominal
+                                input(type="text" required value!="<%= _.get(form,'nominal') %>" class="form-control input-lg" name="nominal" id="nominal" placeholder="Nominal")
+
+                        div.clearfix
+
+                        div.col-xs-12.col-md-4
+                            div.form-group
+                                label(for="valor") Valor
+                                input(type="text" required value!="<%= _.get(form,'valor') %>" class="form-control input-lg currency" name="valor" id="valor" placeholder="Valor")
+
+
+                        div.col-xs-12.col-md-4
+                            div.form-group
+                                label(for="dataEmissao") Data Emissão
+                                input(type="text" required value!="<%= _.get(form,'dataEmissao') %>" class="form-control input-lg datapicker" name="dataEmissao" id="data-emissao" placeholder="Data Emissão")
+
+
+                        div.col-xs-12.col-md-4
+                            div.form-group
+                                label(for="dataPreDatado") Data Pré-Datado
+                                input(type="text" required value!="<%= _.get(form,'dataPreDatado') %>" class="form-control input-lg datapicker" name="dataPreDatado" id="data-pre-datado" placeholder="Data Pŕe Datado")
+
+
+                        div.col-xs-12
+                            div.form-group
+                                label(for="seq") Digito Cheque
+                                input(type="number" required value!="<%= _.get(form,'seq') %>" class="form-control input-lg" name="seq" id="seq" placeholder="Digito Cheque")
+
+
+                        div.clearfix
+
+
+                        div.col-xs-12
+                        
+                            <hr />
+
+                        div.col-xs-12
+                            div.form-group
+
+                                .box.box-solid.box-info
+                                    .box-header.with-border
+                                        h3.box-title Dados Cheque
+                                        
+                                    .box-body
+
+                                        div.col-xs-12
+                                            div.form-group
+
+                                                .box.box-solid.box-primary
+                                                    .box-header.with-border
+                                                        h3.box-title Agência
+                                                        
+                                                    .box-body
+                                                        #inner-dados-conta-bancaria-agencia
+
+                                        div.col-xs-12
+                                            div.form-group
+
+                                                .box.box-solid.box-primary
+                                                    .box-header.with-border
+                                                        h3.box-title Dono do Cheque
+                                                        
+                                                    .box-body
+                                                        #inner-dados-conta-pessoa
+
+                                                <hr />
+
+                                                .box.box-solid.box-primary
+                                                    .box-header.with-border
+                                                        h3.box-title Emissor
+                                                        
+                                                    .box-body
+                                                        #inner-dados-conta-emissor
+
+                        .clearfix
+
+                        #inner-historicos-cheque
+                        
+                        div.col-xs-12
+                            input(type="hidden" value!="<%= _.get(form,'id') %>" class="form-control input-sm hidden" name="id" id="id")
+                            input(type="hidden" value!="<%= _.get(form,'pessoaAgencia.id') %>" class="form-control input-sm hidden" name="pessoaAgencia_agencia_id" id="pessoa-agencia-id")
+                            input(type="hidden" value!="<%= _.get(form,'contaBancaria_pessoa_id') %>" class="form-control input-sm hidden" name="contaBancaria_pessoa_id" id="conta-bancaria-pessoa-id")
+                            input(type="hidden" value!="<%= _.get(form,'contaBancariaId') %>" class="form-control input-sm hidden" name="contaBancariaId" id="conta-bancaria-id")
+                            input(type="hidden" value!="<%= _.get(form,'emissorId') %>" class="form-control input-sm hidden" name="emissorId" id="emissor-id")
+                            input(type="hidden" value!="<%= _.get(form,'tipoEmissor') %>" class="form-control input-sm hidden" name="tipoEmissor" id="tipo-emissor")
+
+                    div.box-footer
+
+                        div.col-xs-12.col-md-12
+                            .box.box-solid.box-success
+                                .box-header.with-border
+                                .box-body
+                                    .btn-toolbar
+                                        button(type="button" class="btn btn-primary btn-lg input-lg disabled" class="consultar-movimentacao-cheque-detalhado") Visualizar Movimentação Detalhada Cheque
+
+                        div.col-xs-12.col-md-12
+                            .box.box-solid.box-primary
+                                .box-header.with-border
+                                .box-body
+                                    .btn-toolbar
+                                        button(type="button" class="btn btn-primary btn-lg input-lg" id="save") Salvar Dados do Cheque
+                                .box-footer
+                                    .btn-toolbar
+                                        //button(type="button" class="btn btn-info btn-lg input-lg" id="repassar-cheque") Repassar
+                                        button(type="button" class="btn btn-info btn-lg input-lg" id="devolver-cheque") Devolução
+                                        button(type="button" class="btn btn-info btn-lg input-lg" id="depositar-cheque") Depositar
+                                        button(type="button" class="btn btn-danger btn-lg input-lg" id="cancelar-cheque") Cancelar

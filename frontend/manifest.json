@@ -1,0 +1,34 @@
+{
+    "short_name": "Aggile",
+    "name": "Aggile Distribuidora de bebidas",
+    "icons": [
+      {
+        "src": "/public/imagens/mobile/android/mipmap-mdpi-48/ic_launcher.png",
+        "type": "image/png",
+        "sizes": "48x48"
+      },
+      {
+        "src": "/public/imagens/mobile/android/mipmap-xhdpi-96/ic_launcher.png",
+        "type": "image/png",
+        "sizes": "96x96"
+      },
+      {
+        "src": "/public/imagens/mobile/android/mipmap-xxhdpi-144/ic_launcher.png",
+        "type": "image/png",
+        "sizes": "144x144"
+      },
+      {
+        "src": "/public/imagens/mobile/android/mipmap-xxxhdpi-192/ic_launcher.png",
+        "type": "image/png",
+        "sizes": "192x192"
+      },
+      {
+        "src": "/public/imagens/mobile/android/playstore-icon-512.png",
+        "type": "image/png",
+        "sizes": "512x512"
+      }
+    ],
+    "start_url": "/#home",
+    "display": "standalone",
+    "background_color":"#1c2a48"
+  }

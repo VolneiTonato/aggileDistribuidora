@@ -1,0 +1,25 @@
+<% if(typeof(cedentes) !== 'undefined'){ %>
+<% _.each(cedentes, function(item) { %>
+
+    div.visible-xs.visible-sm.list-group-item.list-group-item-action.flex-column.align-items-start.row-item-list(data-item!="<%- JSON.stringify(item) %>")
+
+        div.d-flex.w-100.justify-content-between
+            h5.mb-1: <strong>Razão Social:</strong> <%= item.cedente.razaoSocial %>
+
+            h5.mb-1: <strong>Fantasia:</strong> <%= item.cedente.nomeFantasia %>
+
+            h5.mb-1: <strong>CNPJ:</strong> <%= item.cedente.cnpjCpf %>
+
+            h5.mb-1: <strong>Bairro:</strong> <%= _.get(item, 'endereco.bairro') %>
+
+            h5.mb-1: <strong>Endereço:</strong> <%= _.get(item, 'endereco.logradouro') %>
+
+            h5.mb-1: <strong>Telefone:</strong> <%= item.telefones.map((item) => { return item.numero  }) %>
+
+            h5.mb-1: <strong>Ativo:</strong> <%= App_vendorAdmin.StringUtil.booleanToString(item.status) %>
+
+            button.btn.btn-success.btn-editar-cadastro.btn-block.input-lg(type="button"): i.fa.fa-pencil
+            button.btn.btn-info.google-maps.btn-block.input-lg(type="button"  data-position!="<%= _.get(item, 'endereco.latitudeLongitude') %>"): i.fa.fa-map-marker
+
+<% }) %>
+<% } %>

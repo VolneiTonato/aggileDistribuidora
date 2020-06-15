@@ -1,0 +1,13 @@
+<% if(typeof(inventarios) !== 'undefined'){ %>
+<% _.each(inventarios, function(item) { %>
+    div.visible-xs.visible-sm.list-group-item.list-group-item-action.flex-column.align-items-start.row-item-list(data-item!="<%- JSON.stringify(item) %>")
+
+        div.d-flex.w-100.justify-content-between
+            h5.mb-1: <strong>Data:</strong> <%= App_vendorAdmin.DateUtil.formatToPtBR(item.createdAt) %>
+            h5.mb-1: <strong>Produto:</strong> <%= item.produto.descricao %>
+            h5.mb-1: <strong>Qtd:</strong> <%= item.quantidade %>
+            h5.mb-1: <strong>Operação:</strong> <%= item.operacao %>
+            h5.mb-1: <strong>Observação:</strong> <%= item.observacao %>
+
+<% }) %>
+<% } %>    

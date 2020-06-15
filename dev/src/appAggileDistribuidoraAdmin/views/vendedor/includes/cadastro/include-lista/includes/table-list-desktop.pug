@@ -1,0 +1,15 @@
+<% if(typeof(vendedores) !== 'undefined'){ %>
+<% _.each(vendedores, function(item) { %>
+
+    tr.row-item-list(data-item!="<%- JSON.stringify(item) %>")
+        td <%= item.vendedor.nomeCompleto %>
+        td <%= item.vendedor.cnpjCpf %>
+        td <%= _.get(item, 'endereco.bairro') %>
+        td <%= _.get(item, 'endereco.logradouro') %>
+        td <%= item.telefones.map((item) => { return item.numero }) %>
+        td
+            div.btn-toolbar
+                button.btn.btn-success.btn-editar-cadastro(type="button"): i.fa.fa-pencil
+                button.btn.btn-info.google-maps(type="button" data-position!="<%= _.get(item, 'endereco.latitudeLongitude') %>"): i.fa.fa-map-marker
+<% }) %>
+<% } %>

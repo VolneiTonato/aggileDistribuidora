@@ -1,0 +1,9 @@
+
+mixin municipioPesquisa(data)
+    - var options = {id : 'pesquisa-endereco-municipio-id', label : 'Município', name: 'pesquisa_endereco_municipio_id'}
+    - data = functionView._.defaultsDeep(data, options)
+    div.col-xs-12.col-md-6
+        div.form-group.form-group-lg
+            label(for="municipio") #{data.label}
+            select.form-control.input-lg.select2.select2-container(id!=data.id name!=data.name)
+            +overlay()

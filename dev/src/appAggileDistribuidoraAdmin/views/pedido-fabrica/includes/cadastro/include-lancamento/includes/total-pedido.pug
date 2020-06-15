@@ -1,0 +1,25 @@
+|<% if(typeof(lancamentos) !== 'undefined'){
+|   var total = 0;
+|   var quantidade = 0;
+|   var peso = 0;
+|
+|   _.each(lancamentos, function(item){
+|       total = App_vendorAdmin.NumberUtil.sum(total, item.total);
+|       quantidade = App_vendorAdmin.NumberUtil.sum(quantidade, item.quantidade);
+|       peso = App_vendorAdmin.NumberUtil.sum(peso, item.peso);
+|   });
+|}%>
+.box.box-primary.box-solid
+
+    .box-header.with-border
+        h3.box-title Totalizador
+
+    .box-body
+        .list-group
+            .list-group-item.list-group-item-action.flex-column.align-items-start
+                .d-flex.w-100.justify-content-between
+                    h3.mb-1: <strong class="text-info">Total de Itens: </strong><span class="total-itens-quantidade"><%= quantidade %></span>
+
+                    h3.mb-1: <strong class="text-info">Peso Total: </strong><span class="total-itens-peso"><%= peso %> Kg</span>
+
+                    h3.mb-1: <strong class="text-info">Total do Pedido: </strong><span class="total-itens-valor"> R$ <%= App_vendorAdmin.NumberUtil.numberFormat(total,2) %></span>

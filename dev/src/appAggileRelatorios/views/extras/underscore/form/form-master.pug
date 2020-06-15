@@ -1,0 +1,13 @@
+script(type="template" id="template-form-master-filter-report")
+    .row
+        .col-xs-12
+            .box.box-primary
+
+                .box-header.with-border
+                    h3.box-title <%= _.get(form, 'titulo') %>
+
+                
+                form(role="form" method="POST" action!="" id="form-report" autocomplete="off")
+                    input(type="hidden" name="report_action" id="report-action" value!="<%= _.get(form, 'href') %>" )
+                    .box-body
+                        #block-itens-form

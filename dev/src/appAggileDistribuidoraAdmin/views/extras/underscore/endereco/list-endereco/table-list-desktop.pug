@@ -1,0 +1,17 @@
+<% if(typeof(enderecos) !== 'undefined'){ %>
+<% _.each(enderecos, function(item) { %>
+
+    tr.row-item-list(data-item!="<%- JSON.stringify(item) %>")
+        td <%= item.bairro %>
+        td <%= item.logradouro %>
+        td <%= item.cep %>
+        td <%= item.latitudeLongitude %>
+        td <%= _.get(item, 'municipio.descricao') %>
+        td <%= _.get(item, 'municipio.estado.uf') %>
+
+        td
+            div.btn-toolbar
+                button.btn.btn-success.btn-editar-cadastro(type="button"): i.fa.fa-pencil
+                button.btn.btn-info.google-maps(type="button" data-position!="<%= _.get(item, 'latitudeLongitude') %>"): i.fa.fa-map-marker
+<% }) %>
+<% } %>

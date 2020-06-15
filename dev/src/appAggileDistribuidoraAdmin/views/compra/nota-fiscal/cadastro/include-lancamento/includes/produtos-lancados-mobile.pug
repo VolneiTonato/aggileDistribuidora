@@ -1,0 +1,23 @@
+<% if(typeof(lancamentos) !== 'undefined'){ %>
+div.list-group
+<% _.each(lancamentos, function(item) { %>
+    div.list-group-item.list-group-item-action.flex-column.align-items-start.row-item-list(data-item!="<%- JSON.stringify(item) %>")
+        div.d-flex.w-100.justify-content-between
+            h5.mb-1: <strong>Cód. Ref.:</strong> <%= item.produto.referencia %>
+            
+            h5.mb-1: <strong>Descrição:</strong> <%= item.produto.descricao %>
+
+            h5.mb-1: <strong>Custo Entrada:</strong> <%= item.custo %>
+
+            h5.mb-1: <strong>Custo Atual:</strong> <%= item.produto.custo %>
+
+            h5.mb-1: <strong>Quantidade:</strong> <%= item.quantidade %>
+
+            h5.mb-1: <strong>Fábrica:</strong> <%= _.get(item.produto, 'pessoa.fabrica.razaoSocial') %>
+
+            h5.mb-1: <strong>SubTotal:</strong> <%=  App_vendorAdmin.NumberUtil.numberFormat(item.total, 2) %>
+
+            h5.mb-1: strong Opções:
+                button.btn.btn-danger.remover-produto-lancado.btn-block.input-lg(type="button") Remover
+<% }) %>
+<% } %>    

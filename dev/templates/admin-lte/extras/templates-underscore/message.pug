@@ -1,0 +1,5 @@
+script(type="template" id="template-message")
+    div(id!="bloco-message-vtt-<%= hash %>" style={'display':'none'} title!="<%= title %>")
+        div(class="row")
+            div(class="col-xs-12")
+                h3(class!="alert alert-<%= type %>") <%= message %>

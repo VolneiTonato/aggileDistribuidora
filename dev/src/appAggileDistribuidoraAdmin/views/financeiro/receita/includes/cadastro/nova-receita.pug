@@ -1,0 +1,54 @@
+div.row
+    div.col-xs-12
+        div.box.box-primary
+        
+            div.box-header.with-border
+                h3.box-title Receitas
+
+            div.box-body
+
+                div.row
+                    div.col-xs-12
+                        a.btn.btn-app(href="#home")
+                            i.fa.fa-home
+                            |Início
+
+                        a.btn.btn-app(href="#financeiro/receita/pesquisa")
+                            i.fa.fa-arrow-left
+                            |Contas a receber
+
+
+
+<script></script>
+
+script(type="template" id="template-financeiro-receita-lancamento-form-principal")
+    include include-lancamento/form.pug
+
+<script></script>
+
+script(type="template" id="template-financeiro-receita-lancamento-cabecalho")
+    include include-lancamento/cabecalho.pug
+
+<script></script>
+
+script(type="template" id="template-financeiro-receita-lancamento-historico-form")
+    include include-lancamento/historico.pug
+
+<script></script>
+
+script(type="template" id="template-financeiro-receita-historicos-lancados")
+    include include-lancamento/historicos-lancados.pug    
+
+<script></script>
+
+script(type="template" id="template-financeiro-receita-historicos-pagamento-form")
+    include include-lancamento/historico-pagamento.pug    
+
+<script></script>
+script(type="template" id="template-financeiro-receita-lancamento-parcela-form")
+    include include-lancamento/includes/form-parcela.pug 
+
+
+<script></script>
+script(type="template" id="template-financeiro-receita-lancamento-troco-form")
+    include include-lancamento/includes/form-troco.pug 

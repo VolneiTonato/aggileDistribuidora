@@ -1,0 +1,25 @@
+extends ../layout.pug
+
+block content
+     
+
+    
+    #report-cliente
+        .row
+            .col-xs-12
+
+                each item in reports
+
+                    .col-lg-4.col-xs-12
+                        .small-box.bg-green
+                            .inner: h3 #{item.titulo}
+                            .icon: i.ion.ion-stats-bars
+                            a.link-report.small-box-footer
+                                span(style={'display':'none'}) #{JSON.stringify(item)}
+                                | Mais informações
+                                i.fa.fa-arrow-circle-right
+
+                    
+
+        include underscore-template.pug
+    

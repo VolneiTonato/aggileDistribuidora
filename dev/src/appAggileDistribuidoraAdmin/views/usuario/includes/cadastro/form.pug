@@ -1,0 +1,90 @@
+div#block-form-usuario
+    div.row
+        div.col-xs-12
+            div.box.box-primary
+            
+                div.box-header.with-border
+                    h3.box-title Usuários
+
+                div.box-body
+
+                    div.row
+                        div.col-xs-12
+                            a.btn.btn-app(href="#home")
+                                i.fa.fa-home
+                                |Início
+
+                            a.btn.btn-app(href="#cadastro-de-usuarios/pesquisa")
+                                i.fa.fa-arrow-left
+                                |Voltar
+
+                            a.btn.btn-app#btn-novo-cadastro
+                                i.fa.fa-plus
+                                |Novo Usuário
+
+
+    div.row
+        div.col-xs-12
+            div.box.box-primary
+
+                div.box-header.with-border
+                    h3.box-title Cadastro de Usuários
+
+                form(role="form" method="POST" id="form-cadastro" autocomplete="off")
+                    div.box-body
+
+                        div.col-xs-12.col-md-12
+
+                            div.form-group
+                                label(for="nome") Nome Completo
+                                input(type="text" required value!="<%= _.get(form,'nome') %>" class="form-control input-lg" name="nome" id="nome" placeholder="Nome Completo")
+
+                        div.col-xs-12.col-md-6
+                            div.form-group
+                                label(for="email") Email
+                                input(type="text" required value!="<%= _.get(form,'email') %>" class="form-control input-lg" name="email" id="email" placeholder="Email")
+
+                        div.col-xs-12.col-md-6
+                            div.form-group
+                                label(for="status") Status
+                                select.form-control.input-lg#status(name="status")
+
+                        div.clearfix
+
+                        
+                        <% if(_.get(form,'id') > 0){ %>
+                        div.col-xs-12.col-md-6
+                            div.form-group
+                                label(for="login") Login
+                                input(type="text" required value!="<%= _.get(form,'login') %>" class="form-control input-lg" name="login" id="login" placeholder="Login")
+
+                        <% }else{ %>
+                        div.col-xs-12.col-md-6
+                            div.form-group
+                                label(for="password") Senha
+                                input(type="password" required value!="<%= _.get(form,'password') %>" class="form-control input-lg" name="password" id="password" placeholder="Senha")
+
+                        div.col-xs-12.col-md-6
+                            div.form-group
+                                label(for="confirmarSenha") Confirmar Senha
+                                input(type="password" required class="form-control input-lg" name="confirmarSenha" id="confirmar-senha" placeholder="Confirmar Senha")
+
+                        <% } %>
+
+                        div.clearfix
+
+                        <br />
+
+                        div.col-xs-12
+                            div.form-group
+                                label(for="permissao") Permissões
+                                div#bloco-permissao
+
+
+                        div.col-xs-12
+                            input(type="hidden" value!="<%= _.get(form,'id') %>" class="form-control input-sm hidden" name="id" id="id")
+
+                    div.box-footer
+
+                        div.col-xs-12.col-md-12
+                            button(type="button" class="btn btn-primary btn-lg input-lg" id="save") Salvar

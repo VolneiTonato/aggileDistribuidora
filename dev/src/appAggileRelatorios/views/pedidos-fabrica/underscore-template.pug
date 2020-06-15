@@ -1,0 +1,23 @@
+<script></script>
+
+script(type="template" id="template-report-pedido-fabrica-geral")
+    +radioButtonInline('Data Entrega / Data Pedido', [{checked: true, value : "dataEntrega", text: "Data de Entrega", name:"report_dataFiltro"}, { value : "dataPedido", text: "Data do Pedido", name:'report_dataFiltro'}])
+    +dataInicialFinal()
+    .clearfix
+    +fabrica()
+    .clearfix
+    +id()
+    +boolSimNao({label:'Consignado', placeholder:'Consignado', id:'consignado', name:'consignado'})
+    +boolSimNao({label:'Conferência Transportadora', placeholder:'Conferência Transportadora', id:'conferencia-transportadora', name:'isConferenciaTransportadora'})
+    .clearfix
+    +statusPedido()
+    +municipio()
+    .clearfix
+    +autoCompleteProduto()
+    .clearfix
+    +radioButtonResumidoDetalhado()
+    +radioButtonInline('Visualização para Relatório Resumido', [{value : "detalharPedido", text: "Detalhar Por Fábrica", name:"report_visualizacaoPedidoReport"}, { value : "resumirPedido", text: "Resumir por Fábrica", name:'report_visualizacaoPedidoReport'}])
+    .clearfix
+    +filtroObrigatorioReport()
+    .clearfix
+    +submit()

@@ -1,0 +1,19 @@
+<% if(typeof(cheques) !== 'undefined'){ %>
+<% _.each(cheques, function(item) { %>
+
+    tr.row-item-list(data-item!="<%- JSON.stringify(item) %>")
+        td <%= _.get(item, 'emissor.nome') %>
+        td <%= _.get(item, 'emissor.tipoPessoa') %>
+        td <%= _.get(item, 'contaBancaria.titular') %>
+        td <%= _.get(item, 'contaBancaria.pessoaAgencia.agencia.banco.descricao') %>
+        td <%= App_vendorAdmin.StringUtil.booleanToString(item.isTerceiro) %>
+        td <%= App_vendorAdmin.NumberUtil.numberFormat(item.valor, 2) %>
+        td <%= item.dataEmissao %>
+        td <%= item.dataPreDatado %>
+        td <%= item.status %>
+        td
+            div.btn-toolbar
+                button.btn.btn-success.btn-editar-cadastro(type="button"): i.fa.fa-pencil
+                button(type="button" class="btn btn-primary disabled" class="consultar-movimentacao-cheque-detalhado"): i.fa.fa-file-text-o
+<% }) %>
+<% } %>

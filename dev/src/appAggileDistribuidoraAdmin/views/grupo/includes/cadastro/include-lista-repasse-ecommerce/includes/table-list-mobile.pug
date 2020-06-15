@@ -1,0 +1,30 @@
+<% if(typeof(grupos) !== 'undefined'){ %>
+<% _.each(grupos, function(item) { %>
+    div(data-item!="<%- JSON.stringify(item) %>" class!="visible-xs visible-sm list-group-item list-group-item-action flex-column align-items-start row-item-list row-item-<%= item.id %>")
+
+            div.d-flex.w-100.justify-content-between
+                h5.mb-1: <strong>Descrição:</strong> <%= item.descricao %>
+
+                h5.mb-1
+                    strong Ecommerce:
+                    div.col-xs-12
+                        div.form-group.form-group-lg
+                            select.is-ecommerce.form-control.input-lg(name="grupoEcommerce_isEcommerce")
+                            +overlay()
+
+                h5.mb-1
+                    strong Menu Principal:
+                    div.col-xs-12
+                        div.form-group.form-group-lg
+                            select.is-principal-menu-ecommerce.form-control.input-lg(name="grupoEcommerce_isPrincipalMenuEcommerce")
+                            +overlay()
+
+                h5.mb-1
+                    strong Ordem:
+                    div.col-xs-12
+                        div.form-group
+                            select.ordem-menu-ecommerce.form-control.input-lg(name="grupoEcommerce_ordemMenuEcommerce")
+
+                button.btn.btn-success.btn-mais-opcoes.btn-block.input-lg(type="button") Mais Campos
+<% }) %>
+<% } %>    

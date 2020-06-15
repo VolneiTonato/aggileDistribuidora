@@ -1,0 +1,25 @@
+include auto-complete/autocomplete.pug
+
+include auto-complete/autocomplete-indexdb.pug
+
+include paginator.pug
+
+include  telefone.pug
+
+
+
+<script></script>
+script(type="template" id="template-children-cadastro-list-enderecos")
+    include ./endereco/list-endereco/list.pug
+
+
+script(type="template" id="template-geral-autocomplete-pessoa")
+    <% var id = _.get(data, 'id', 'bloco-autocomplete-pessoa') %>
+    div.col-xs-12.col-md-12
+        div.form-group.parent-autocomplete-pessoa
+            label(for="Pessoa") <%= _.startCase(_.lowerCase(_.get(data, 'title'))) %>
+            input(type="text" value!="<%= _.get(data,'name') %>" class="input-lg form-control autocomplete-vtt ui-autocomplete-input text-uppercase" id!="<%= id %>" placeholder!="<%= _.get(data, 'title') %>")
+            span(style="display:none" class="span-message-autocomplete"): strong
+
+script(type="template" id="template-geral-autocomplete-cheque")
+    +autoComplete('cheque')

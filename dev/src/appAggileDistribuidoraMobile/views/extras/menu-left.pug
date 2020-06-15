@@ -1,0 +1,49 @@
+mixin menuLeft(titulo)
+    aside(class="main-sidebar")
+        section(class="sidebar" style={'height':'auto'})
+            ul(class="sidebar-menu" data-widget="tree")
+                li(class="header")= titulo
+                li
+                    a(href="/reports")
+                        i(class="fa fa-th")
+                        span Início
+
+                li
+                    a(href="/reports/produtos")
+                        i(class="fa fa-user")
+                        span Consulta
+
+                li
+                    a(href="/reports/clientes")
+                        i(class="fa fa-user")
+                        span Clientes
+                
+
+                li
+                    a(href="/reports/pedidos")
+                        i(class="fa fa-user")
+                        span Pedidos
+
+                li
+                    a(href="/reports/receitas")
+                        i(class="fa fa-user")
+                        span Receitas
+
+                li
+                    a(href="/reports/despesas")
+                        i(class="fa fa-user")
+                        span Despesas
+
+                li
+                    a(href="/admin")
+                        i(class="fa fa-user")
+                        span Admin
+
+
+                
+                li
+                    a(href="/admin/auth/logout")
+                        i(class="fa fa-circle-o-notch text-red")
+                        span Sair                          
+
++menuLeft('Navegação')

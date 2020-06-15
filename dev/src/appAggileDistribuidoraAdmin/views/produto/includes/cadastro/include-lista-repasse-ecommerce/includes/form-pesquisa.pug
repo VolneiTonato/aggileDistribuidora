@@ -1,0 +1,37 @@
+div#form-pesquisa
+
+    div.col-xs-12.col-md-6
+        div.form-group.form-group-lg
+            label(for="") Fábrica
+            select#pesquisa-fabricaId.form-control.input-lg.select2.select2-container(name="pesquisa_fabricaId")
+            +overlay()
+
+    div.col-xs-12.col-md-6
+        div.form-group.form-group-lg
+            label Grupo
+            div#grupos-tree-view
+            +overlay()
+
+    div.col-xs-12.col-md-6
+        div.form-group
+            label.text-left Referência
+            input(type="text" required value!="<%= _.get(form,'referencia') %>" class="form-control input-lg text-uppercase" name="pesquisa_referencia" id="pesquisa-referencia")
+
+    div.col-xs-12.col-md-6
+        div.form-group
+            label.text-left Código
+            input(type="text" required value!="<%= _.get(form,'id') %>" class="form-control input-lg text-uppercase" name="pesquisa_id" id="pesquisa-id")
+
+
+    input(type="hidden" value!="<%= _.get(form,'grupoId') %>" class="form-control input-sm hidden" name="pesquisa_grupoId" id="pesquisa-grupoId")
+
+    div.clear-fix
+
+    div.col-xs-12
+        div.hidden-xs.hidden-sm
+            div.btn-toolbar
+                button.btn.btn-lg.input-lg.btn-warning.pesquisar Pesquisar
+                button.btn.btn-lg.input-lg.btn-danger.limpar-pesquisa Limpar Pesquisa
+        div.visible-xs.visible-sm
+            button.btn.btn-danger.btn-block.input-lg.pesquisar Pesquisar
+            button.btn.btn-warning.btn-block.input-lg.limpar-pesquisa Limpar Pesquisa

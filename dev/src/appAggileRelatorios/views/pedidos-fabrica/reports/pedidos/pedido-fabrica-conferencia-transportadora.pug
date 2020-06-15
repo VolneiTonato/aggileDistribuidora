@@ -1,0 +1,72 @@
+extends ../../../layout-report.pug
+
+
+
+block content
+
+    div.block-report
+
+        each pedido in result
+
+            if pedido.itens && (pedido.itens.length > 0)
+
+                .row
+                    table.table
+                        tbody
+                            tr
+                                td(colspan="6")
+
+                .row
+                    table.table
+                        tbody
+                            tr
+                                th.text-center.text-default(scope="col" colspan="6"): h3 Pedido nº #{pedido.id}
+                            tr.text-left
+                                th(scope='col') Fábrica:
+                                td.text-info.text-left(colspan="2") #{pedido.pedidoFabrica.fabrica.nomeFantasia}
+                                th(scope='col') Municipio:
+                                td.text-info.text-left(colspan="2") #{pedido.pedidoFabrica.endereco.municipio.descricao}
+                                
+
+                            tr.text-left
+                                th(scope='col') Data Emissão:
+                                td.text-info.text-left(colspan="2")= FN.DateUtil.momentToPug(pedido.createdAt,'DD/MM/YYYY')
+                                
+                                th(scope='col') Status:
+                                td.text-info.text-left(colspan="5")= FN.StringUtil.toUpperCase(pedido.status)
+
+                            tr.text-left
+                                th(scope='col') Observação:
+                                td.text-info.text-left.text-danger(colspan="5")= FN.StringUtil.toUpperCase(pedido.observacao)
+
+                            tr
+                                td(colspan="6")
+                            
+                
+                .row
+                    table.table.table-bordered
+                        thead
+                            tr.text-center
+                                th(scope='col') REF.
+                                th.text-left(scope='col') PRODUTO.
+                                th(scope='col') UN.
+                                th(scope='col') VOL.
+                                th(scope='col') QTD
+
+                        tbody
+                            
+                            each item in pedido.itens
+                                tr
+                                    td.text-center #{item.produto.referencia}
+                                    td.text-left #{item.produto.descricao}
+                                    td.text-center #{item.tipoUnidade}
+                                    td.text-center #{item.produto.fracao}
+                                    td.text-center #{item.quantidade}
+
+                            tr
+                                td(colspan="5")
+                            tr
+                                th.text-left(colspan="4") TOTAL
+                                th.text-center #{pedido.totalItens}
+
+                div(style="page-break-before:always;")

@@ -1,0 +1,12 @@
+<% if(typeof(grupos) !== 'undefined'){ %>
+<% _.each(grupos, function(item) { %>
+
+tr.row-item-list(data-item!="<%- JSON.stringify(item) %>")
+    td <%= _.get(item, 'descricao') %>
+    td <%= _.get(item, 'breadCrumb') %>
+    td
+        div.btn-toolbar
+            button.btn.btn-success.btn-editar-cadastro(type="button") Editar
+            button.btn.btn-danger.btn-remover-cadastro(type="button") Remover
+<% }) %>
+<% } %>

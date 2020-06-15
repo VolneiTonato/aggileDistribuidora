@@ -1,0 +1,30 @@
+<% if(typeof(retorno.produtos) != 'undefined'){ %>
+<% _.each(retorno.produtos, function(item) { %>
+<% if( (menuSelecionado == null || menuSelecionado == item.classificacao) && (item && (item.mostrar == 'TRUE')) ){ %>
+    //div(class!="col-md-4 col-sm-12 view-card-item" categoria-portifolio-galery!="<%= item.classificacao %>")
+        div(class="card mb-3 text-center" style={'padding-top':'10px', 'min-width':'200px', 'height' : '300px'})
+            <% if(item.imagem && (item.imagem['200x200'] && (item.imagem['200x200']['isImage'] == true))){%>
+            |<% 
+            |var imagemGrande = typeof item.imagem['500x500'] == 'object' && (item.imagem['500x500']['isImage'] == true) ? item.imagem['500x500'].url : '#'
+            |var dataFancyBox = typeof item.imagem['500x500'] == 'object' && (item.imagem['500x500']['isImage'] == true) ? 'gallery-' + item.classificacao : 'no-image'
+            |%>
+            a(data-fancybox!="<%= dataFancyBox %>" href!="<%= imagemGrande %>")
+                img(class="img-fluid rounded mx-auto lazy" src="/public/imagens/loading.gif" data-src!="<%= item.imagem['200x200'].url %>" width="200px" height="200px" title!="<%= item.descricao %>" alt!="<%= item.descricao %>" style={'max-width':'100%', 'height':'100%'})
+            <% }else{ %>
+            img(class="img-fluid rounded mx-auto lazy" src="/public/imagens/loading.gif" width="200px" height="200px" data-src="data:image/jpeg;base64,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")
+            <% } %>
+            
+            div(class="card-body")
+                
+                p(class="card-text text-center") <%= item.descricao %>
+<% } %>    
+<% }) %>
+
+<% }else { %>
+    //div(class="col-12")
+        div(class="alert alert-danger" role="alert") 
+            |Para essa linha de produtos, ainda não possuímos as imagens :( 
+            <br />
+            |Clique aqui para voltar ao início
+            a(href="#home" class="btn btn-primary") aqui
+<% } %>

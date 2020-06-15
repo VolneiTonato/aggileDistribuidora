@@ -1,0 +1,17 @@
+<% if(typeof(clientes) !== 'undefined'){ %>
+<% _.each(clientes, function(item) { %>
+
+    tr.row-item-list(data-item!="<%- JSON.stringify(item) %>")
+        td <%= item.cliente.razaoSocial %>
+        td <%= item.cliente.nomeFantasia %>
+        td <%= item.cliente.cnpjCpf %>
+        td <%= _.get(item, 'endereco.bairro') %>
+        td <%= _.get(item, 'endereco.logradouro') %>
+        td <%= item.telefones.map((item) => { return item.numero }) %>
+        td <%= App_vendorAdmin.StringUtil.booleanToString(item.cliente.status) %>
+        td
+            div.btn-toolbar
+                button.btn.btn-success.btn-editar-cadastro(type="button"): i.fa.fa-pencil
+                button.btn.btn-info.google-maps(type="button" data-position!="<%= _.get(item, 'endereco.latitudeLongitude') %>"): i.fa.fa-map-marker
+<% }) %>
+<% } %>

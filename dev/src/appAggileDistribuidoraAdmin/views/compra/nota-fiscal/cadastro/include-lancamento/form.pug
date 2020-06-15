@@ -1,0 +1,60 @@
+div#block-form-compra
+
+    div.row
+        div.col-xs-12
+            div.box.box-primary
+            
+                div.box-header.with-border
+                    h3.box-title Lançamento de Nota Fiscal
+
+                div.box-body
+
+                    div.row
+                        div.col-xs-12
+                            a.btn.btn-app(href="#home")
+                                i.fa.fa-home
+                                |Início
+
+                            a.btn.btn-app(href="#compras/nota-fiscal/pesquisa")
+                                i.fa.fa-arrow-left
+                                |Compras Lançadas
+
+                            a.btn.btn-app#btn-novo-cadastro(href="#compras/nota-fiscal/entrada")
+                                    i.fa.fa-plus
+                                    |Nova Nota Fiscal
+
+
+
+    div.row
+        div.col-xs-12
+            div.box.box-primary
+
+                div.box-header.with-border
+                    h3.box-title Nota Fiscal
+
+                
+                form(role="form" method="POST" id="form-cadastro" autocomplete="off")
+                
+                    div.box-body
+
+                        div.col-xs-12.col-md-12
+                            div#inner-cabecalho-nota
+
+                        div.col-xs-12.col-md-12
+                            div#inner-produto-autocomplete
+
+                        div.col-xs-12.col-md-12
+                            div.form-group
+                                div#inner-lancamento-produto
+
+                    
+                        div.col-xs-12.col-md-12
+                            div#inner-produtos-lancados
+
+                    div.box-footer
+
+                        div.btn-toolbar#bloco-btn-lancamento
+                            button(type="button" class="btn btn-primary btn-lg input-lg" id="save" style={'display' : 'none'}) Salvar
+                            button(type="button" class="btn btn-success btn-lg input-lg" id="btn-lancar-nota" style={'display' : 'none'}) Lançar
+                            button(type="button" class="btn btn-info btn-lg input-lg" id="btn-finalizar-nota" style={'display' : 'none'}) Marcar como Finalizada
+                            button(type="button" class="btn btn-danger btn-lg input-lg" id="btn-cancelar-nota") Cancelar

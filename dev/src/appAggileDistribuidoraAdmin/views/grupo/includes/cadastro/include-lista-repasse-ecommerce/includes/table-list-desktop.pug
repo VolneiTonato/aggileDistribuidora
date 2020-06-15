@@ -1,0 +1,30 @@
+<% if(typeof(grupos) !== 'undefined'){ %>
+<% _.each(grupos, function(item) { %>
+
+tr(class!="row-item-list row-item-<%= item.id %>" data-item!="<%- JSON.stringify(item) %>")
+    td <%= _.get(item, 'descricao') %>
+    
+    td
+        div.col-xs-12
+            div.form-group.form-group-lg
+                select.is-ecommerce.form-control.input-lg(name="grupoEcommerce_isEcommerce")
+                +overlay()
+
+    td
+        div.col-xs-12
+            div.form-group.form-group-lg
+                select.is-principal-menu-ecommerce.form-control.input-lg(name="grupoEcommerce_isPrincipalMenuEcommerce")
+                +overlay()
+
+    td                             
+        div.col-xs-12
+            div.form-group
+                select.ordem-menu-ecommerce.form-control.input-lg(name="grupoEcommerce_ordemMenuEcommerce")
+
+    
+
+    td
+        div.btn-toolbar
+            a.btn.btn-link.btn-mais-opcoes(type="button") Mais Campos
+<% }) %>
+<% } %>

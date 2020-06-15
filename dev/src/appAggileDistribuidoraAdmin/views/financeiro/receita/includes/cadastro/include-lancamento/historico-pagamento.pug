@@ -1,0 +1,108 @@
+div.box.box-primary.box-solid
+    div.box-body.bg-gray-active.color-palette#form-financeiro-receita-lancamento-historico(data-item!="<%- JSON.stringify(historico) %>")
+        
+        div.col-xs-12.col-md-12
+            div.form-group
+                div.list-group
+                    div.list-group-item.list-group-item-action.flex-column.align-items-start
+                        div.d-flex.w-100.justify-content-between
+                            h2.mb-1
+                                strong Vencimento:
+                                |&nbsp;
+                                strong.text-center.text-success <%= historico.vencimento %>
+                            h2.mb-1
+                                strong Valor Total:
+                                |&nbsp;
+                                strong.text-center.text-success <%= App_vendorAdmin.NumberUtil.numberFormat(historico.valor,2) %>
+
+        div.clear-fix
+
+        div.col-xs-12.col-md-2
+            div.form-group
+                label(for="data") Data Pagamento
+                input(type="text" required value!="<%= App_vendorAdmin.DateUtil.format() %>" class="datapicker form-control input-lg text-uppercase" name="lancamento_dataPagamento" id="lancamento_data_pagamento" placeholder="Data de Pagamento")
+
+        div.col-xs-12.col-md-6
+            div.form-group
+                label.text-center(for="formaPagamento") Forma Pagamento
+                .input-group.input-group-lg
+                    select#lancamento-forma-pagamento.text-center.form-control.input-lg.text-uppercase(name="lancamento_formaPagamento")
+                    span.input-group-btn
+                        button.btn.btn-danger.limpar-forma-pgto-selecionada(type="button") Limpar
+
+        div.col-xs-12.col-md-4#bloco-data-bom-para(style={"visibility":"hidden"})
+            div.form-group
+                label(for="lancamento_data_bom_para") Bom para
+                input(type="text" required value!="<%= _.get(historico,'dataBomPara') %>" class="datapicker form-control input-lg text-uppercase" name="lancamento_dataBomPara" id="lancamento_data_bom_para" placeholder="Data Bom Para")
+
+
+        div.clear-fix
+
+        div.col-xs-12.col-md-2
+            div.form-group
+                label.text-center(for="desconto") Desconto R$
+                input(type="text" required value!="<%= _.get(historico, 'desconto') %>" data-attr="desconto" class="text-center form-control input-lg text-uppercase currency" id="lancamento-desconto" name="lancamento_desconto" placeholder="Desconto")
+
+        div.col-xs-12.col-md-2
+            div.form-group
+                label.text-center(for="descontoPercentual") Desconto %
+                input(type="text" required value!="<%= _.get(historico, 'descontoPercentual') %>" data-attr="desconto-percentual" class="text-center form-control input-lg text-uppercase currency-4" id="lancamento-desconto-percent" name="lancamento_descontoPercentual" placeholder="Desconto Percentual")
+
+
+        div.col-xs-12.col-md-2
+            div.form-group
+                label.text-center(for="juro") Juros R$
+                input(type="text" required value!="<%= _.get(historico, 'juro') %>" data-attr="juro" class="text-center form-control input-lg text-uppercase currency" id="lancamento-juro" name="lancamento_juro" placeholder="Juros")
+
+        div.col-xs-12.col-md-2
+            div.form-group
+                label.text-center(for="juro") Juros %
+                input(type="text" required value!="<%= _.get(historico, 'juroPercentual') %>" data-attr="juro-percentual" class="text-center form-control input-lg text-uppercase currency-4" id="lancamento-juro-percent" name="lancamento_juroPercentual" placeholder="Juro Percentual")
+
+
+        div.col-xs-12.col-md-2
+            div.form-group
+                label.text-center(for="valor") Valor Total
+                input(type="text" required value!="<%= _.get(historico, 'valorTotal') %>" data-attr="valor-total"  class="text-center form-control input-lg text-uppercase currency" id="lancamento-valor-total" name="lancamento_valorTotal" placeholder="Valor Total")
+
+        div.col-xs-12.col-md-2
+            div.form-group
+                label.text-center(for="valor") Valor Recebido
+                input(type="text" required value!="<%= _.get(historico, 'valorRecebido') %>" data-attr="valor-recebido" class="text-center form-control input-lg text-uppercase currency" id="lancamento-valor-recebido" name="lancamento_valorRecebido" placeholder="Valor Recebido")
+    
+        
+
+        div.clearfix
+
+        #inner-valor-usado-cheque
+
+        div.clearfix
+
+        #inner-bloco-dados-cheque-selecionado
+
+        div.clearfix
+
+        div.col-xs-12.col-md-12
+            div.form-group
+                label(for="observacao") Observação
+                textarea#observacao(class="form-control input-lg text-uppercase" name="lancamento_observacao", cols="5", rows="5") <%= _.get(historico,'observacao') %>
+
+        div.clear-fix
+        input(type="hidden" required value!="<%= _.get(historico,'id') %>" class="form-control input-lg text-uppercase" id="lancamento-id" name="lancamento_id")
+        input(type="hidden" required value!="<%= _.get(historico,'recebimentoId') %>" class="form-control input-lg text-uppercase" id="lancamento-recebimento-id" name="lancamento_recebimentoId")
+        input(type="hidden" required value!="<%= _.get(historico,'status') %>" class="form-control input-lg text-uppercase" id="lancamento-status" name="lancamento_status")
+        input(type="hidden" value!="<%= _.get(historico,'chequeId') %>" id="lancamento-cheque-id" disabled readonly name="lancamento_chequeId")
+
+        
+    div.box-footer.bg-gray-active.color-palette
+
+        div.col-xs-12
+            div.form-group
+                div.hidden-xs.hidden-sm
+                    div.btn-toolbar
+                        button.btn.btn-lg.input-lg.btn-success.pagar-historico(type="button") Pagar
+                        button.btn.btn-lg.input-lg.btn-danger.cancelar-lancamento-historico(type="button") Cancelar
+
+                div.visible-xs.visible-sm
+                    button.btn.btn-success.pagar-historico.btn-block.input-lg(type="button") Pagar
+                    button.btn.btn-info.cancelar-lancamento-historico.btn-block.input-lg(type="button") Cancelar

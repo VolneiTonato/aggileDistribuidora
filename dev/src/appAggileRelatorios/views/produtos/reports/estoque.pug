@@ -1,0 +1,72 @@
+extends ../../layout-report.pug
+
+block content
+    div.block-report
+
+        .row
+            .d-inline.p-3
+        
+        
+        div.row
+            table.table
+                thead
+                    tr
+                        th.text-let(scope='col') Cód.
+                        th.text-left(scope='col') Referência
+                        th.text-left(scope='col') Produto
+                        th.text-left(scope='col') Custo UN
+                        th.text-left(scope='col') Custo
+                        th.text-left(scope='col') Margem de Lucro
+                        th.text-left(scope='col') Preco Venda UN
+                        th.text-left(scope='col') Preco Venda
+                        th.text-center(scope='col') Grupo
+                        th.text-center(scope='col') Estoque Fardo
+                        th.text-center(scope='col') Estoque Unitário
+                tbody
+                    if produtos
+                        each item in produtos
+                            tr
+                                td.text-left #{item.id}
+                                td.text-left #{item.referencia}
+                                td.text-left= FN.StringUtil.toUpperCase(item.descricao)
+                                td.text-center= FN.NumberUtil.numberFormat(FN.NumberUtil.divisao(item.custo, item.fracao), 2)
+                                td.text-center #{item.custo}
+                                td.text-center #{item.margemLucro}
+                                td.text-center= FN.NumberUtil.numberFormat(FN.NumberUtil.divisao(item.precoVenda, item.fracao),2)
+                                td.text-center #{item.precoVenda}
+                                td.text-center #{item.grupo}
+                                td.text-center #{item.estoqueAtual}
+                                td.text-center #{item.estoqueUnitario}
+
+                        tr
+                            th(colspan="11")
+
+
+                        tr
+                            th.text-left.text-success(colspan="8" scope='col') .
+                            th.text-center.text-success(scope='col') FARDO
+                            th.text-center.text-success(scope='col') UNITÁRIO
+                            th.text-center.text-success(scope='col') TOTAL
+                        tr
+                            th.text-left.text-primary(colspan="8") TOTAL CUSTO
+                            th.text-center.text-default= `R$ ${FN.NumberUtil.numberFormat(data.totalCustoFD,2)}`
+                            th.text-center.text-default= `R$ ${FN.NumberUtil.numberFormat(data.totalCustoUN,2)}`
+                            th.text-center.text-default= `R$ ${FN.NumberUtil.numberFormat(data.totalCusto,2)}`
+
+                        tr
+                            th.text-left.text-primary(colspan="8") TOTAL PREÇO VENDA
+                            th.text-center.text-default= `R$ ${FN.NumberUtil.numberFormat(data.precoVendaFD,2)}`
+                            th.text-center.text-default= `R$ ${FN.NumberUtil.numberFormat(data.precoVendaUN,2)}`
+                            th.text-center.text-default= `R$ ${FN.NumberUtil.numberFormat(data.totalPrecoVenda,2)}`
+
+                        tr
+                            th.text-left.text-primary(colspan="8") PACOTES
+                            th.text-center.text-default #{data.totalPacotesFD}
+                            th.text-center.text-default #{data.totalPacotesUN}
+                            th(colspan="1")
+
+                        tr
+                            th.text-left.text-primary(colspan="8") PESO
+                            th.text-center.text-default #{data.totalPesoFD}
+                            th.text-center.text-default #{data.totalPesoUN}
+                            th.text-center.text-default #{data.totalPeso}

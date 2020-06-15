@@ -1,0 +1,36 @@
+div#form-itens-hidden-to-editable(style={display: "none"})
+    div.col-xs-12.col-md-4
+        div.form-group
+            label(for="data") Data Entrega
+            input(type="text" required value!="<%= App_vendorAdmin.DateUtil.formatToPtBR(_.get(form,'dataEntrega')) %>" class="datapicker form-control input-lg text-uppercase" name="dataEntrega" id="dataEntrega" placeholder="Data de Entrega")
+
+
+    
+
+    div.col-xs-12.col-md-2
+        div.form-group
+            label.text-center NF
+            select#is-nf.text-center.form-control.input-lg.text-uppercase(name="isNF")
+                option(value="false") NÃO
+                option(value="true") SIM
+
+    div.col-xs-12.col-md-2
+        div.form-group
+            label.text-center Consignado
+            select#consignado.text-center.form-control.input-lg.text-uppercase(name="consignado")
+                option(value="false") NÃO
+                option(value="true") SIM
+    
+    div.clearfix
+
+    div.col-xs-12.col-md-12
+        div.form-group
+            label(for="observacao") Observação
+            textarea#observacao(class="form-control input-lg text-uppercase" name="observacao", cols="5", rows="5")
+                <%= App_vendorAdmin.DateUtil.formatToPtBR(_.get(form,'observacao')) %>
+
+input(type="hidden" value!="<%= _.get(form,'status') %>" disabled readonly name="status")
+input(type="hidden" value!="<%= _.get(form,'id') %>" disabled readonly name="id")
+input(type="hidden" value!="<%= _.get(form,'uuid') %>" disabled readonly name="uuid")
+input(type="hidden" value!="<%= _.get(form,'fabricaId') %>" disabled readonly name="fabricaId")
+

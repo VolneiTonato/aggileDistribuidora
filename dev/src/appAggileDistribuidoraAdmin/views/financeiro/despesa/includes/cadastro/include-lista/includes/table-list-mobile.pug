@@ -1,0 +1,36 @@
+<% if(typeof(recebimentos) !== 'undefined'){ %>
+<% _.each(recebimentos, function(item) { %>
+
+    div.list-group-item.list-group-item-action.flex-column.align-items-start.row-item-list(data-item!="<%- JSON.stringify(item) %>")
+        div.d-flex.w-100.justify-content-between
+
+            h5.mb-1: <strong>Número:</strong> <%= item.id %>
+                
+            
+            h5.mb-1: <strong>Data Lançamento:</strong> <%= App_vendorAdmin.DateUtil.formatToPtBR(item.createdAt) %>
+
+            h5.mb-1: <strong>Descrição:</strong> <%= item.descricao %>
+
+
+            <% if(['cliente','fabrica','cedente'].indexOf(_.get(item, 'pessoa.tipoPessoa')) !== -1){ %>
+                h5.mb-1: <strong><%= _.startCase(item.pessoa.tipoPessoa) %>:</strong>  <%= item.pessoa[item.pessoa.tipoPessoa].nomeFantasia %>
+                h5.mb-1: <strong>Município:</strong> <%= _.get(item,'pessoa.endereco.municipio.descricao') %>
+            <% }else if(_.get(item, 'pessoa.tipoPessoa') == 'vendedor'){ %>
+                h5.mb-1: <strong>Vendedor:</strong>  <%= _.get(item, 'pessoa.vendedor.nomeCompleto') %>
+                h5.mb-1: <strong>Município:</strong> <%= _.get(item,'pessoa.endereco.municipio.descricao') %>
+            <% } %>
+      
+
+            h5.mb-1: <strong>Total a Pag.:</strong> R$ <%= App_vendorAdmin.NumberUtil.numberFormat(item.valor,2) %>
+
+            h5.mb-1: <strong>Saldo:</strong> R$ <%= App_vendorAdmin.NumberUtil.numberFormat(item.saldo,2) %>
+
+            h5.mb-1: <strong>Status:</strong> <span class="status-print"><%= item.status %></span>
+
+
+            button.btn.btn-info.btn-visualizar-despesa.btn-block.input-lg(type="button"): i.fa.fa-eye
+            button.btn.btn-danger.btn-cancelar-despesa.btn-block.input-lg(type="button"): i.fa.fa-remove
+            button.btn.btn-success.btn-pagar-total-despesa.btn-block.input-lg(type="button"  style={'display' : 'none'}): i.fa.fa-check-circle
+
+<% }) %>
+<% } %>    

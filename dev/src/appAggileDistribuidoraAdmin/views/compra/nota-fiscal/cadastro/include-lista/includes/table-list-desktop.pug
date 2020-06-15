@@ -1,0 +1,21 @@
+<% if(typeof(notas) !== 'undefined'){ %>
+<% _.each(notas, function(item) { %>
+
+tr.row-item-list(data-item!="<%- JSON.stringify(item) %>")
+    td <%= item.id %>
+    td <%= item.numero %>
+    td <%=  _.get(item, 'pessoaFabrica.fabrica.razaoSocial') %>
+    td <%= App_vendorAdmin.DateUtil.formatToPtBR(item.createdAt) %>
+    td <%= App_vendorAdmin.DateUtil.formatToPtBR(item.data) %>
+    td <%= item.total %>
+    td <%= item.totalItens %>
+    td.status-print <%= item.status %>
+    td
+        div.btn-toolbar
+            button.btn.btn-info.btn-visualizar-nota-info(type="button"): i.fa.fa-eye
+            button.btn.btn-success.btn-detalhar-nota(type="button"): i.fa.fa-pencil
+            button.btn.btn-danger.btn-cancelar-nota(type="button"): i.fa.fa-remove
+            button.btn.btn-warning.btn-estornar-nota(type="button"): i.fa.fa-reply
+            button.btn.btn-success.btn-marcar-como-finalizada(type="button"): i.fa.fa-check-circle
+<% }) %>
+<% } %>

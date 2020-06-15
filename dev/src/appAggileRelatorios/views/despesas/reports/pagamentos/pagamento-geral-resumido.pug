@@ -1,0 +1,108 @@
+extends ../../../layout-report.pug
+
+
+
+block content
+
+    div.block-report
+
+        each row in result
+
+            .row
+                .col-12
+                    table.table
+                        tbody
+                            tr
+                                td(colspan="6")
+
+            .row
+                .col-12
+                    table.table
+                        tbody
+                            tr.text-left
+                                th(scope='col')= FN._.get(despesa, 'pessoa.tipoPessoa')
+                                td.text-info.text-left= FN._.get(despesa, `pessoa.nome`)
+                                th(scope='col') Contato:
+                                td.text-info.text-left= FN._.get(despesa, `pessoa[${FN._.get(despesa, 'pessoa.tipoPessoa')}].contato`)
+                                th(scope='col') Municipio:
+                                td.text-info.text-left= FN._.get(despesa, 'pessoa.endereco.municipio.descricao')
+
+                            
+                            tr
+                                td(colspan="6")
+                        
+            
+            .row
+                .col-12
+                    table.table
+
+                        each despesa in row.despesas
+
+                            if despesa.historicos
+
+                                tr
+                                    td(scope='col' colspan="") FATURA Nº <strong>#{despesa.id}</strong>
+                                    td(scope='col' colspan="") TOTAL FATURA 
+                                        strong= `R$ ${FN.NumberUtil.numberFormat(despesa.valor,2)}`
+                                    td(scope='col' colspan="") TOTAL VALOR PAGO 
+                                        strong= `R$ ${FN.NumberUtil.numberFormat(despesa.valorPago,2)}`
+                                    td(scope='col' colspan="") SALDO DEVEDOR 
+                                        strong= `R$ ${FN.NumberUtil.numberFormat(despesa.saldo,2)}`
+
+                                tr:td(colspan="7")
+
+                                tr
+                                    td(colspan="7")
+                                        table.table.table-bordered
+
+                                            tr.text-center
+                                                th(scope='col') DATA
+                                                th(scope='col') VENCIMENTO
+                                                th(scope='col') DATA PGTO.
+                                                th(scope='col') FORMA PGTO.
+                                                th(scope='col') VALOR
+                                                th(scope='col') VALOR PGTO.
+                                                th(scope='col') SITUAÇÃO
+
+                                            each item in despesa.historicos
+
+                                                tr
+                                                    td.text-center= FN.DateUtil.momentToPug(item.createdAt,'DD/MM/YYYY')
+                                                    td.text-center #{item.vencimento}
+                                                    td.text-center #{item.dataPagamento}
+                                                    td.text-center= FN.StringUtil.toUpperCase(item.formaPagamento || 'NÃO INFORMADO')
+                                                    td.text-center= FN.NumberUtil.numberFormat(item.valor,2)
+                                                    td.text-center= FN.NumberUtil.numberFormat(item.valorPago,2)
+                                                    td.text-center= FN.StringUtil.toUpperCase(item.status)
+
+
+                                tr
+                                    td(colspan="7")
+
+            .row
+                .col-12
+                    table.table
+                        tr
+                            td(scope='col' colspan="") TOTAL FATURA
+                                strong= `R$ ${FN.NumberUtil.numberFormat(row.totalizador.totalFatura,2)}`
+                        tr
+                            td(scope='col' colspan="") TOTAL VALOR PAGO
+                                strong= `R$ ${FN.NumberUtil.numberFormat(row.totalizador.totalFatura,2)}`
+                        tr
+                            td(scope='col' colspan="") SALDO DEVEDOR
+                                strong= `R$ ${FN.NumberUtil.numberFormat(row.totalizador.totalSaldo,2)}`
+
+            div(style="page-break-before:always;")
+
+        .row
+            .col-12
+                table.table
+                    tr
+                        td(scope='col' colspan="") TOTAL GERAL FATURA
+                            strong= `R$ ${FN.NumberUtil.numberFormat(data.totalGeralFatura,2)}`
+                    tr
+                        td(scope='col' colspan="") TOTAL GERAL VALOR PAGO
+                            strong= `R$ ${FN.NumberUtil.numberFormat(data.totalGeralPagamento,2)}`
+                    tr
+                        td(scope='col' colspan="") TOTAL SALDO DEVEDOR
+                            strong= `R$ ${FN.NumberUtil.numberFormat(data.totalGeralSaldo,2)}`

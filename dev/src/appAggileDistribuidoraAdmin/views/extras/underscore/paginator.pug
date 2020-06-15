@@ -1,0 +1,7 @@
+script(type="template" id="template-paginator")
+    <% if(typeof(paginator) !== 'undefined'){ %>
+    ul.pagination.pagination-md.no-margin.center
+        <% _.each(paginator.values, function(item, key) { %>
+        li: a(href="#") <%= item %>
+        <% }) %>
+    <% } %>

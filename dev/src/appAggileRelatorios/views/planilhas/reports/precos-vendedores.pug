@@ -1,0 +1,47 @@
+extends ../../layout-report.pug
+
+block content
+    div.container
+
+
+        each row in rows
+
+            .row
+                table.table
+                    tbody
+                        tr
+                            th.text-center.text-default(scope="col" colspan="6"): h3 #{row.grupo}
+
+            .row
+                table.table
+                    thead
+                        tr
+                            th .
+                            th.text-left(scope='col') Referência
+                            th.text-left(scope='col') Produto
+                            th.text-center(scope='col') Preço Venda
+                            th.text-center(scope='col') Preço UN.
+                    tbody
+                        if row.produtos
+                            each item in row.produtos
+                                tr
+                                    td
+                                        img(width="100px" height="100px" src!="https://www.aggiledistribuidora.com.br/public/imagens/aggile-distribuidora/bebidas/bebidas-quentes/200x200/" + item.Ref + ".png")
+                                    td.text-left.align-middle #{item.Ref}
+                                    td.text-left.align-middle #{item.Produto}
+                                    td.text-left.align-middle #{item.PrecoVenda}
+                                    td.text-center.align-middle #{item.PrecoUN}                                
+
+                            tr
+                                th(colspan="5")
+            div(style="page-break-before:always;")
+
+                
+
+
+
+
+
+
+
+

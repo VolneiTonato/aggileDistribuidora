@@ -1,0 +1,31 @@
+header
+    nav(class="navbar  navbar-expand-lg navbar-dark   mdb-color darken-3 scrolling-navbar")
+        div(class="container")
+            a(class="navbar-brand" href="#home")
+                img(src="/public/imagens/aggile-distribuidora/logo.png" id="logo-page" )
+            button(class="navbar-toggler btn-responsive-menu" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation")
+                span(class="navbar-toggler-icon")
+            
+        
+            div(class="collapse navbar-collapse" id="navbarSupportedContent")
+                ul(class="navbar-nav mr-auto")
+
+                    //li(class="nav-item btn-group")
+                        a(class="nav-link dropdown-toggle" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false") Produtos
+                        
+                        div(class="dropdown-menu dropdown-primary" aria-labelledby="navbarDropdownMenuLink")
+                            a(class="dropdown-item" href="#produtos/bebidas-quentes") Bebidas Destiladas
+                            a(class="dropdown-item" href="#produtos/vinhos") Vinhos
+
+                    //li(class="nav-item btn-group")
+                        a(class="nav-link dropdown-toggle" id="navbarDropdownMenuLinkApresentacao" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false") Apresentação
+                        
+                        div(class="dropdown-menu dropdown-primary" aria-labelledby="navbarDropdownMenuLinkApresentacao")
+                            a(class="dropdown-item" href="#apresentacao/bebidas-quentes/catalogo") Catálogo Bebidas Destiladas
+                            a(class="dropdown-item" href="#apresentacao/bebidas-quentes/combos") Combos Bebidas Destiladas
+                            a(class="dropdown-item" href="#apresentacao/bebidas-quentes/galeria") Galeria Bebidas Destiladas
+                            div.dropdown-divider
+                            a(class="dropdown-item" href="#apresentacao/vinhos/catalogo") Catálogo Vinhos
+                
+                    li(class="nav-item btn-group")
+                        a(class="nav-link" href="/admin") Acesso Restrito

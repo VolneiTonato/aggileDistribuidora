@@ -1,0 +1,26 @@
+<% if(typeof(historicos) !== 'undefined'){ %>
+div.list-group
+<% _.each(historicos, function(item) { %>
+    div.list-group-item.list-group-item-action.flex-column.align-items-start.row-item-list(data-item!="<%- JSON.stringify(item) %>")
+        div.d-flex.w-100.justify-content-between
+
+            h5.mb-1: <strong>Vencimento:</strong> <%= App_vendorAdmin.DateUtil.formatToPtBR(item.vencimento) %>
+
+            h5.mb-1: <strong>Data Pagamento:</strong> <%= item.dataPagamento %>
+
+            h5.mb-1: <strong>Data Histórico:</strong> <%= App_vendorAdmin.DateUtil.formatToPtBR(item.updatedAt) %>
+
+            h5.mb-1: <strong>Valor Lançado:</strong> <%= App_vendorAdmin.NumberUtil.numberFormat(item.valor,2) %>
+
+            h5.mb-1: <strong>Valor Pago:</strong> <%= App_vendorAdmin.NumberUtil.numberFormat(item.valorTotal,2) %>
+
+            h5.mb-1.status-print: <strong>Status Receb.:</strong> <%= item.status %>
+
+            h5.mb-1: <strong>Forma Pgto.:</strong> <%= item.formaPagamento %>
+
+            h5.mb-1.bloco-botoes-historicos-contas-lancados: strong Opções:
+                button.btn.btn-info.editar-historico-lancado.btn-block.input-lg(type="button") Editar
+                button.btn.btn-success.pagar-historico-lancado.btn-block.input-lg(type="button") Pagar
+                button.btn.btn-success.btn-lancar-receita-paga.btn-block.input-lg(type="button"  style={'display' : 'none'}) Marcar como Paga
+<% }) %>
+<% } %>    

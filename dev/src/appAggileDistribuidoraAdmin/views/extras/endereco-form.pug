@@ -1,0 +1,34 @@
+div.col-xs-12.col-md-6
+    div.form-group
+        label(for="endereco_cep") CEP
+        input(type="text" value!="<%= _.get(form, 'endereco.cep') %>" class="form-control input-lg cep-mask" name="endereco_cep" id="endereco_cep" placeholder="CEP")
+
+
+div.col-xs-12.col-md-6
+    div.form-group
+        label(for="endereco_bairro") Bairro
+        input(type="text" required value!="<%= _.get(form, 'endereco.bairro') %>" class="form-control input-lg" name="endereco_bairro" id="endereco_bairro" placeholder="Bairro")
+
+
+div.col-xs-12.col-md-6
+        div.form-group
+            label(for="logradouro") Endereço
+            textarea(rows="3" required class="form-control input-lg" name="endereco_logradouro" id="endereco_logradouro" placeholder="Endereço") <%= _.get(form, 'endereco.logradouro') %>
+
+
+
+div.col-xs-12.col-md-6
+        div.form-group
+            label(for="endereco_latitudeLongitude") Latitude Longitude
+            input(type="text" required value!="<%= _.get(form, 'endereco.latitudeLongitude') %>" class="form-control input-lg" name="endereco_latitudeLongitude" id="endereco_latitudeLongitude" placeholder="Latitude Longitude")
+            .visible-xs.visible-sm
+                button.btn.btn-success.btn-add-geolocalizacao.btn-block.input-lg(type="button"): i.fa.fa-plus add Localização
+                button.btn.btn-info.google-maps.btn-block.input-lg(type="button"  data-position!="<%= _.get(form, 'endereco.latitudeLongitude') %>"): i.fa.fa-map-marker Acessar Mapa
+            .hidden-xs.hidden-sm
+                .btn-toolbar
+                    button.btn.btn-success.btn-add-geolocalizacao(type="button"): i.fa.fa-plus add Localização
+                    button.btn.btn-info.google-maps(type="button" data-position!="<%= _.get(form, 'endereco.latitudeLongitude') %>"): i.fa.fa-map-marker Acessar Mapa
+
+div.clearfix
+
+include ./estado-municipio-form.pug

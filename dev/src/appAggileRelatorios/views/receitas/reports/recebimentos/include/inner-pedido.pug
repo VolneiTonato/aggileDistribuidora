@@ -1,0 +1,48 @@
+if receita.pedidoCliente && (receita.pedidoCliente.itens.length > 0)
+
+
+    .row
+        table.table
+            tbody
+                tr
+                    td(colspan="8")
+                tr
+                    th.text-center.text-success(colspan="8")
+                        h3 PRODUTOS DO PEDIDO
+
+    .row
+        table.table.table-bordered
+            thead
+                tr.text-center
+                    th(scope='col') REF.
+                    th.text-left(scope='col') PRODUTO
+                    th(scope='col') UN.
+                    th(scope='col') BON.
+                    th(scope='col') CUSTO UN.
+                    th(scope='col') CUSTO
+                    th(scope='col') QTD
+                    th(scope='col') TOTAL
+
+            tbody
+                
+                each item in receita.pedidoCliente.itens
+                    - let valorUnitario = FN.NumberUtil.numberFormat(FN.NumberUtil.divisao(item.precoVenda, item.produto.fracao), 2)
+                    tr
+                        td.text-center #{item.produto.referencia}
+                        td.text-left #{item.produto.descricao}
+                        td.text-center #{item.tipoUnidade}
+
+                        if item.isBonificado
+                            td.text-center <span class="badge badge-info">SIM</span>
+                        else
+                            td.text-center NÃO
+
+                        td.text-center= valorUnitario
+
+                        if item.tipoUnidade == 'UNITARIO'
+                            td.text-center= valorUnitario
+                        else
+                            td.text-center= FN.NumberUtil.numberFormat(item.precoVenda, 2)
+
+                        td.text-center #{item.quantidade}
+                        td.text-center= FN.NumberUtil.numberFormat(item.total,2)

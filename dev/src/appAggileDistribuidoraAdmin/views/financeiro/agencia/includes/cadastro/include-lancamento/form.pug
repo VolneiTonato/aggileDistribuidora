@@ -1,0 +1,120 @@
+div#block-form-financeiro-agencia
+    div.row
+        div.col-xs-12
+            div.box.box-primary
+            
+                div.box-header.with-border
+                    h3.box-title Agências Bancárias
+
+                div.box-body
+
+                    div.row
+                        div.col-xs-12
+                            a.btn.btn-app(href="#home")
+                                i.fa.fa-home
+                                |Início
+
+                            a.btn.btn-app(href="#financeiro/cadastro-de-agencias/pesquisa")
+                                i.fa.fa-arrow-left
+                                |Agências Cadastradas
+
+                            a.btn.btn-app.link-navegacao(href="#financeiro/cadastro-de-agencias/novo-cadastro")
+                                    i.fa.fa-plus
+                                    |Nova Agência
+
+
+    div.row
+        div.col-xs-12
+            div.box.box-primary
+
+                div.box-header.with-border
+                    h3.box-title Cadastro de Agências Bancárias
+
+                form(role="form" method="POST" id="form-cadastro" autocomplete="off")
+                    div.box-body
+
+                        div#row-item(data-item!="<%- JSON.stringify(form) %>" style={'display':'none'})
+
+                        div.col-xs-12.col-md-6
+
+                            div.form-group
+                                label(for="nome") Nome
+                                input(type="text" required value!="<%= _.get(form,'agencia.nome') %>" class="form-control input-lg" name="agencia_nome" id="agencia_nome" placeholder="Nome")
+
+
+
+                        +autoCompleteBanco({id:'banco-autocomplete-cadastro-agencia'})
+                        
+                        div.col-xs-12.col-md-4
+                            div.form-group
+                                label(for="numero") Nº Agência
+                                input(type="number" required value!="<%= _.get(form, 'agencia.numero') %>" class="form-control input-lg" name="agencia_numero" id="agencia_numero" placeholder="Número Agência")
+
+                        div.col-xs-12.col-md-2
+                            div.form-group
+                                label(for="dv") DV
+                                input(type="number" required value!="<%= _.get(form, 'agencia.dv') %>" class="form-control input-lg integer" name="agencia_dv" id="agencia_dv" placeholder="")
+                        
+                        div.col-xs-12.col-md-6
+                            div.form-group
+                                label(for="tipoPessoa") Tipo Pessoa
+                                select.form-control.input-lg(name="agencia.tipoPessoa" id="tipo-pessoa")
+                                    option(value="J" id="tipoPessoaJuridica") Jurídica
+                                    option(value="F" id="tipoPessoaFisica") Física
+                                
+                        div.col-xs-12.col-md-6#bloco-pessoa-juridica
+                            div.form-group
+                                label(for="cnpj") CNPJ
+                                input(type="text" required value!="<%= _.get(form, 'agencia.cnpjCpf') %>" class="form-control input-lg cnpj-mask" name="cnpj" id="cnpj" placeholder="CNPJ")
+
+                        div.col-xs-12.col-md-6#bloco-pessoa-fisica(style={display:'none'})
+                            div.form-group
+                                label(for="cpf") CPF
+                                input(type="text" required value!="<%= _.get(form, 'agencia.cnpjCpf') %>" class="form-control input-lg cpf-mask" name="cpf" id="cpf" placeholder="CPF")
+
+                        div.col-xs-12.col-md-3
+                            div.form-group.form-group-lg
+                                label(for="status") Ativo
+                                select#status.form-control.input-lg(name="agencia_status")
+                                +overlay()
+
+                        div.col-xs-12.col-md-6
+                            div.form-group
+                                label(for="contato") Contato
+                                input(type="text" required value!="<%= _.get(form, 'agencia.contato') %>" class="form-control input-lg" name="agencia_contato" id="agencia-contato" placeholder="Contato")
+
+                        div.col-xs-12.col-md-6
+                            div.form-group
+                                label(for="observacao") Observações
+                                textarea(rows="5" class="form-control input-lg" name="agencia_observacao" id="observacao") <%= _.get(form, 'agencia.observacao') %>
+            
+                        div.col-xs-12.col-md-6
+                            #inner-telefone-financeiro-agencia
+
+                        div.clearfix
+
+                        .col-xs-12
+                            .box.box-solid.box-warning
+                                .box-header.with-border
+                                    h3.box-title Endereço Principal
+
+                        include ../../../../../extras/endereco-form.pug
+
+                        div.clearfix
+
+                        .col-xs-12
+                            div#inner-content-children-endereco
+
+
+
+                        div.col-xs-12
+                            input(type="hidden" value!="<%= _.get(form,'id') %>" class="form-control input-sm hidden" name="id" id="id")
+                            input(type="hidden" value!="<%= _.get(form,'banco.id') %>" class="form-control input-sm hidden" name="agencia_bancoId" id="agencia-banco-id")
+                            input(type="hidden" value!="<%= _.get(form,'agencia.id') %>" class="form-control input-sm hidden" name="agencia_id" id="agencia-id")
+                            input(type="hidden" value!="<%= _.get(form,'uuid') %>" class="form-control input-sm hidden" name="uuid" id="uuid")
+                            input(type="hidden" value!="<%= _.get(form,'endereco.id') %>" class="form-control input-sm hidden" name="endereco_id" id="endereco-id")
+
+                    div.box-footer
+
+                        div.col-xs-12.col-md-12
+                            button(type="button" class="btn btn-primary btn-lg input-lg" id="save") Salvar

@@ -1,0 +1,11 @@
+/node_modules/
+/app/
+/build/
+.env.local
+.env.development.local
+.gulp-cache
+yarn-error.log
+yarn.lock
+/dev/config/credenciais/
+compile.js
+/dev/helpers/_utils/repo/chrome-html-to-pdf/temp/

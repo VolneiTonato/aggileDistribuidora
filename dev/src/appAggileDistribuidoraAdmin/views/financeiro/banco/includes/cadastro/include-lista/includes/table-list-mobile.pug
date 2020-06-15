@@ -1,0 +1,15 @@
+<% if(typeof(bancos) !== 'undefined'){ %>
+<% _.each(bancos, function(item) { %>
+    div.visible-xs.visible-sm.list-group-item.list-group-item-action.flex-column.align-items-start.row-item-list(data-item!="<%- JSON.stringify(item) %>" data-key!="<%= item.id %>")
+
+        div.d-flex.w-100.justify-content-between
+
+            h5.mb-1: <strong>Código:</strong> <span><%= item.codigo %></span>
+
+            h5.mb-1: <strong>Nome:</strong> <span><%= item.descricao %></span>
+
+            button.btn.btn-success.btn-editar-cadastro.btn-block.input-lg(type="button") Editar
+
+            button.btn.btn-danger.btn-remover-cadastro.btn-block.input-lg(type="button") Remover
+<% }) %>
+<% } %>    

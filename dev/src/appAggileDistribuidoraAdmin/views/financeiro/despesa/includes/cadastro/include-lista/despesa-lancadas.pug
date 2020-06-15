@@ -1,0 +1,38 @@
+div.hidden-xs.hidden-sm
+
+    table.table.table-striped
+        thead
+            tr
+                th Número
+                th Data Lanc.
+                th Descrição
+                th Pessoa
+                th Município
+                th Valor
+                th Saldo
+                th Status
+                th Opções
+        tbody#inner-despesa-lancadas-desktop
+
+        tfooter
+                tr
+                    td(colspan="9")
+                        div.btn-toolbar
+                            button.btn.btn-lg.input-lg.bg-purple.btn-block.carregar-mais(disabled="disabled") Carregar Mais
+
+div.visible-xs.visible-sm
+
+    div.list-group
+        div#inner-despesa-lancadas-mobile
+
+    div.btn-toolbar
+        button.btn.btn-lg.input-lg.bg-purple.btn-block.carregar-mais(disabled="disabled") Carregar Mais
+
+
+<script></script>
+script(type="template" id="template-list-despesa-lancadas-desktop")
+    include includes/table-list-desktop.pug
+
+<script></script>
+script(type="template" id="template-list-despesa-lancadas-mobile")
+    include includes/table-list-mobile.pug             

@@ -1,0 +1,37 @@
+div.hidden-xs.hidden-sm
+
+    table.table.table-striped
+        thead
+            tr
+                th Número
+                th Data Lanc.
+                th Cliente
+                th Município
+                th Total a Rec.
+                th Saldo
+                th Status
+                th Opções
+        tbody#inner-receitas-lancadas-desktop
+
+        tfooter
+                tr
+                    td(colspan="8")
+                        div.btn-toolbar
+                            button.btn.btn-lg.input-lg.bg-purple.btn-block.carregar-mais(disabled="disabled") Carregar Mais
+
+div.visible-xs.visible-sm
+
+    div.list-group
+        div#inner-receitas-lancadas-mobile
+
+    div.btn-toolbar
+        button.btn.btn-lg.input-lg.bg-purple.btn-block.carregar-mais(disabled="disabled") Carregar Mais
+
+
+<script></script>
+script(type="template" id="template-list-receitas-lancadas-desktop")
+    include includes/table-list-desktop.pug
+
+<script></script>
+script(type="template" id="template-list-receitas-lancadas-mobile")
+    include includes/table-list-mobile.pug             

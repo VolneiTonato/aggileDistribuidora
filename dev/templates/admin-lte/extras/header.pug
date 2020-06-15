@@ -1,0 +1,25 @@
+mixin headerMasterTemplate(titulo)
+    header(class="main-header")
+        <!-- Logo -->
+        a(href="#" class="logo")
+            <!-- logo for regular state and mobile devices -->
+            span(class="logo-lg")= titulo
+
+        <!-- Header Navbar: style can be found in header.less -->
+        nav(class="navbar navbar-static-top")
+        
+            a(href="#" class="sidebar-toggle" data-toggle="push-menu" role="button")
+
+            div(class="navbar-custom-menu")
+                ul(class="nav navbar-nav")
+                    block navbarNav
+
+
+
+
+
+mixin headerDropDownUser(srcImg, name)
+    li(class="dropdown user user-menu")
+        a(href="#" class="dropdown-toggle" data-toggle="dropdown")
+            img(src=srcImg class="user-image" alt="User Image")
+            span(class="hidden-xs")=name

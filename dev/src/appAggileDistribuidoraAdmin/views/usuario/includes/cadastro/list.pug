@@ -1,0 +1,50 @@
+div#block-list-usuario
+    div.row
+        div.col-xs-12
+            div.box.box-primary
+            
+                div.box-header.with-border
+                    h3.box-title Usuários
+
+                div.box-body
+
+                    div.row
+                        div.col-xs-12
+                            a.btn.btn-app(href="#home")
+                                i.fa.fa-home
+                                |Início
+
+                            a.btn.btn-app#btn-novo-cadastro(href="#cadastro-de-usuarios/novo-cadastro")
+                                i.fa.fa-plus
+                                |Novo Cadastro
+
+
+    div.row
+        div.col-xs-12
+            div.box.box-primary
+
+                div.box-header.with-border
+                    h3.col-md-6.col-xs-12.box-title Lista de Usuários
+
+                    div.col-md-6.col-xs-12.box-tools
+                        div.input-group.input-group-sm
+                            input(type="text" name="table_search" class="form-control pull-right" placeholder="Search")
+
+                            div.input-group-btn
+                                button(type="submit" class="btn btn-default"): i.fa.fa-search
+
+                div.box-body
+
+                    div.hidden-xs.hidden-sm
+                        include table-list-desktop.pug
+
+                    div.visible-xs.visible-sm
+                        include table-list-mobile.pug
+
+                div.box-footer.clearfix
+                    ul.pagination.pagination-sm.no-margin.pull-right
+                        li: a(href="#") «
+                        li: a(href="#") 1
+                        li: a(href="#") 2
+                        li: a(href="#") 3
+                        li: a(href="#") »

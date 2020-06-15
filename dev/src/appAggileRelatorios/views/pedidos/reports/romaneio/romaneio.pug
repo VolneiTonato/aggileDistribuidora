@@ -1,0 +1,78 @@
+extends ../../../layout-report.pug
+
+block content
+    .block-report
+
+  
+        if 'undefined' != data.filtro
+            .row
+                table.table
+                    tbody
+                        tr.text-center
+                            th(scope='col' colspan="6"): strong Filtros
+
+                        if '' != data.filtro.dataInicial && '' != data.filtro.dataFinal 
+                            tr.text-left
+                                th(scope='col') Data Inicial: 
+                                    span.text-danger #{data.filtro.dataInicial}
+                                th(scope='col') Data Final: 
+                                    span.text-danger #{data.filtro.dataFinal}
+                                th(colspan="4")
+
+
+                        if '' != data.filtro.statusPedido
+                            tr.text-left
+                                th(scope='col') Status: 
+                                    span.text-danger= FN.StringUtil.toUpperCase(data.filtro.statusPedido)
+                                td(colspan="5")
+
+                        if data.filtro.municipio
+                            tr.text-left
+                                th(scope='col') Município: 
+                                    span.text-danger= FN.StringUtil.toUpperCase(data.filtro.municipio)
+                                td(colspan="5")
+
+                        tr
+                            td(colspan="6")
+        
+        
+        .row
+            table.table
+                thead
+                    tr.text-center
+                        th(scope='col') Cód.
+                        th(scope='col') Ref.
+                        th.text-left(scope='col') Produto
+                        th(scope='col') QTD FD
+                        th(scope='col') QTD UN
+                        th(scope='col') Total
+
+                tbody
+                    if pedidos
+                        each item in pedidos
+                            tr
+                                td.text-center #{item.id}
+                                td.text-center #{item.referencia}
+                                td.text-left #{item.produto}
+                                td.text-center #{item.quantidadeFD}
+                                td.text-center #{item.quantidadeUN}
+                                td.text-center #{item.total}
+
+                        tr
+                            td(colspan="6")
+                        tr
+                            th.text-left(colspan="3"): h4 TOTAL
+                            th.text-center: h4 #{data.totalQuantidadeFD}
+                            th.text-center: h4 #{data.totalQuantidadeUN}
+                            th.text-center: h4= FN.NumberUtil.numberFormat(data.total,2)
+                        tr
+                            th.text-default(colspan="1"): h4 PESO TOTAL
+                            th.text-left.text-default(colspan="5"): h4 #{data.pesoFD}
+
+
+                        
+
+
+
+
+

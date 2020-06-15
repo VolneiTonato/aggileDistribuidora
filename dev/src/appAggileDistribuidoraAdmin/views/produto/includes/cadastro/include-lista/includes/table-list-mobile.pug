@@ -1,0 +1,28 @@
+<% if(typeof(produtos) !== 'undefined'){ %>
+<% _.each(produtos, function(item) { %>
+
+    div.visible-xs.visible-sm.list-group-item.list-group-item-action.flex-column.align-items-start.row-item-list(data-item!="<%- JSON.stringify(item) %>")
+
+        div.d-flex.w-100.justify-content-between
+            h5.mb-1: <strong>Cód.:</strong> <%= item.id %>
+
+            h5.mb-1: <strong>Cód. Ref.:</strong> <%= item.referencia %>
+
+            h5.mb-1: <strong>Descrição:</strong> <%= item.descricao %>
+
+            h5.mb-1: <strong>Custo:</strong> <%= item.custo %>
+
+            h5.mb-1: <strong>Preço Venda:</strong> <%= item.precoVenda %>
+
+            h5.mb-1: <strong>Margem de Lucro:</strong> <%= item.margemLucro %>
+
+            h5.mb-1: <strong>Estoque:</strong> <%= item.estoque %>
+
+            h5.mb-1: <strong>Fábrica:</strong> <%= _.get(item, 'pessoa.fabrica.razaoSocial') %>
+
+            h5.mb-1: <strong>Ativo:</strong> <%= App_vendorAdmin.StringUtil.booleanToString(item.status) %>
+
+            button.btn.btn-success.btn-editar-cadastro.btn-block.input-lg(type="button") Editar
+
+<% }) %>
+<% } %>

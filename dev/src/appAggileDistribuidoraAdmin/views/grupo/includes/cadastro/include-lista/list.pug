@@ -1,0 +1,60 @@
+div#block-list-grupo
+    div.row
+        div.col-xs-12
+            div.box.box-primary
+            
+                div.box-header.with-border
+                    h3.box-title Grupos
+
+                div.box-body
+
+                    div.row
+                        div.col-xs-12
+                            a.btn.btn-app(href="#home")
+                                i.fa.fa-home
+                                |Início
+
+                            a.btn.btn-app#btn-novo-cadastro(href="#cadastro-de-grupos/novo-cadastro")
+                                i.fa.fa-plus
+                                |Novo Cadastro
+
+
+    div.row
+        div.col-xs-12
+            div.box.box-primary
+
+                div.box-header.with-border
+                    h3.col-md-6.col-xs-12.box-title Lista de Grupos
+
+                div.box-body
+
+                    div.hidden-xs.hidden-sm
+                        table.table.table-striped
+                            thead
+                                th Descrição
+                                th Grupo
+                                th Opções
+                            tbody#inner-grupos-cadastrados-desktop
+                        
+                            tfooter
+                                tr
+                                    td(colspan="8")
+                                        div.btn-toolbar
+                                            button.btn.btn-lg.input-lg.bg-purple.btn-block.carregar-mais(disabled="disabled") Carregar Mais
+
+
+                    div.visible-xs.visible-sm
+                        div.list-group
+                            div#inner-grupos-cadastrados-mobile
+
+                        div.btn-toolbar
+                            button.btn.btn-lg.input-lg.bg-purple.btn-block.carregar-mais(disabled="disabled") Carregar Mais
+                +overlay()
+
+<script></script>
+script(type="template" id="template-list-table-grupos-cadastrados-desktop")
+    include includes/table-list-desktop.pug
+
+<script></script>
+script(type="template" id="template-list-table-grupos-cadastrados-mobile")
+    include includes/table-list-mobile.pug

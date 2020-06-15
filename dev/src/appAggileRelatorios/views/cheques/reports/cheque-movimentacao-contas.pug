@@ -1,0 +1,301 @@
+extends ../../layout-report.pug
+
+
+
+block content
+
+    div.container
+            .row
+                .p-3
+
+    div.container
+        .row
+            .col-12
+                h3.alert.alert-info.text-center Informações do Cheque
+
+    .container
+        .row
+            .d-inline.p-2
+
+        .row
+            .col-12
+                .alert.alert-secondary(role="alert")
+
+                    .row
+                        .col
+                            span: strong Valor Cheque
+                            span.text-info.ml-2= `R$ ${FN.NumberUtil.numberFormat(result.cheque.valor, 2)}`
+
+                        .col
+                            span: strong Valor Recebido (Recebimento)
+                            span.text-info.ml-2= `R$ ${FN.NumberUtil.numberFormat(result.valorPendente.valorLancadoReceita, 2)}`
+
+                        .col
+                            span: strong Valor Lançado Contas (Despesas)
+                            span.text-info.ml-2= `R$ ${FN.NumberUtil.numberFormat(result.valorPendente.valorLancadoDespesa, 2)}`
+
+                        .col
+                            span: strong Valor Restante para Recebimento:
+                            span.text-info.ml-2= `R$ ${FN.NumberUtil.numberFormat(result.valorPendente.valorPendenteReceita, 2)}`
+
+                        .col
+                            span: strong Valor Restante para Pgto/Repasse:
+                            span.text-info.ml-2= `R$ ${FN.NumberUtil.numberFormat(result.valorPendente.valorPendenteDespesa, 2)}`
+
+                    .row
+                        .d-inline.p-2
+
+                    .row
+                        .col
+                            span: strong Número
+                            span.text-info.ml-2 #{result.cheque.numero}
+
+                        .col
+                            span: strong Data Lanc.
+                            span.text-info.ml-2= result.cheque.dataEmissao
+
+                        .col
+                            span: strong Data Pré Datado.
+                            span.text-info.ml-2= result.cheque.dataPreDatado
+
+                    .row
+                        .d-inline.p-2
+
+                    .row
+                        .col-4
+                            span: strong Titular
+                            span.text-info.ml-2= FN._.get(result.cheque, 'contaBancaria.titular')
+
+                        .col-4
+                            span: strong Agência.
+                            span.text-info.ml-2= FN._.get(result.cheque, 'contaBancaria.pessoaAgencia.agencia.nome')
+
+                        .col-4
+                            span: strong Banco
+                            span.text-info.ml-2= FN._.get(result.cheque, 'contaBancaria.pessoaAgencia.agencia.banco.descricao')
+
+                    .row
+                        .d-inline.p-2
+
+                    .row
+
+
+                        .col
+                            span: strong Cód. Emissor
+                            span.text-info.ml-2= FN._.get(result.cheque, `emissorId`)
+                        
+
+                        .col
+                            span: strong Emissor
+                            span.text-info.ml-2= FN._.get(result.cheque, `emissor.nome`)
+
+                        .col
+                            span: strong Tipo Emissor
+                            span.text-info.ml-2= FN._.get(result.cheque, `tipoEmissor`)
+
+
+                    .row
+                        .d-inline.p-2
+
+                    .row
+                        .col
+                            span: strong Status
+                            span.text-info.ml-2= FN.StringUtil.toUpperCase(result.cheque.status)
+
+                        .col
+                            span: strong Terceiro
+                            span.text-info.ml-2= FN.StringUtil.boolToString(result.cheque.isTerceiro)
+
+
+
+    if result.cheque.historicos.length
+
+        .container
+            .row
+                .d-inline.p-2.w-100
+
+            .row
+                .col
+                    table.table
+                        thead
+                            tr(style={'background-color':'#F0E68C'})
+                                th Data Atualização
+                                th Status
+                                th Pessoa (Recebido/Repassado)
+                                th Motivo Devolução
+                        tbody
+                            each historico in result.cheque.historicos
+                                tr
+                                    td= FN.DateUtil.momentToPug(historico.updatedAt,'DD/MM/YYYY')
+                                    td #{historico.status}
+                                    td 
+                                        span: strong= `${FN.StringUtil.toUpperCase(FN._.get(historico, 'pessoaRepasse.tipoPessoa', ''))} `
+                                        span.ml-2= FN._.get(historico, 'pessoaRepasse.nome', '')
+                                    td= `${FN._.get(historico, 'motivoDevolucao.descricao', '')}`
+                    
+
+
+    if result.receitas.length
+
+        div.container
+            .row
+                .p-3
+
+        div.container
+            .row
+                .col-12
+                    h3.alert.alert-success.text-center Receitas
+
+        div.container
+
+            each receita in result.receitas
+
+                .row
+                    .d-inline.p-2
+
+                .row
+                    .col-12
+                        .alert.alert-secondary(role="alert")
+                            .row
+                                .col
+                                    span: strong Receita Nº
+                                    span.text-info.ml-2 #{receita.header.id}
+
+                                .col
+                                    span: strong Valor Receita
+                                    span.text-info.ml-2= `R$ ${FN.NumberUtil.numberFormat(receita.header.valor, 2)}`
+
+                                .col
+                                    span: strong Data Atual.
+                                    span.text-info.ml-2= FN.DateUtil.momentToPug(receita.header.updatedAt,'DD/MM/YYYY')
+
+                                .col
+                                    span: strong Status
+                                    span.text-info.ml-2= FN.StringUtil.toUpperCase(receita.header.status)
+
+                            .row
+                                .d-inline.p-2
+
+                            .row
+                                .col-12
+                                    span: strong Observação
+                                    span.text-danger.ml-2= FN.StringUtil.toUpperCase(receita.header.descricao)
+
+                
+
+
+                .row
+                    .d-inline.p-2.w-100
+
+                .row
+                    .col
+                        table.table
+                            thead(style={'background-color':'#F0E68C'})
+                                th Valor
+                                th Data Atualização
+                                th Data Pagamento
+                                th Valor Pago
+                                th Troco
+                                th Desconto
+                                th Juro
+                                th Status
+
+                            tbody
+                                each historico in receita.historicos
+                                    tr
+                                        td= `R$ ${FN.NumberUtil.numberFormat(historico.valor, 2)}`
+                                        td= FN.DateUtil.momentToPug(historico.updatedAt,'DD/MM/YYYY')
+                                        td #{historico.dataPagamento}
+                                        td= `R$ ${FN.NumberUtil.numberFormat(historico.valorPago, 2)}`
+                                        td= `R$ ${FN.NumberUtil.numberFormat(historico.troco, 2)}`
+                                        td= `R$ ${FN.NumberUtil.numberFormat(historico.desconto, 2)}`
+                                        td= `R$ ${FN.NumberUtil.numberFormat(historico.juro, 2)}`
+                                        td #{historico.status}
+
+
+                div(style="page-break-before:always;")
+
+
+        if result.despesas.length
+
+            div(style="page-break-before:always;")
+
+            div.container
+                .row
+                    .p-3
+
+            div.container
+                .row
+                    .col-12
+                        h3.alert.alert-success.text-center Despesas
+
+            div.container
+
+                each despesa in result.despesas
+
+                    .row
+                        .d-inline.p-2
+
+                    .row
+                        .col-12
+                            .alert.alert-secondary(role="alert")
+                                .row
+                                    .col
+                                        span: strong Despesa Nº
+                                        span.text-info.ml-2 #{despesa.header.id}
+
+                                    .col
+                                        span: strong Valor Despesa
+                                        span.text-info.ml-2= `R$ ${FN.NumberUtil.numberFormat(despesa.header.valor, 2)}`
+
+                                    .col
+                                        span: strong Data Atual.
+                                        span.text-info.ml-2= FN.DateUtil.momentToPug(despesa.header.updatedAt,'DD/MM/YYYY')
+
+                                    .col
+                                        span: strong Status
+                                        span.text-info.ml-2= FN.StringUtil.toUpperCase(despesa.header.status)
+
+                                .row
+                                    .d-inline.p-2
+
+                                .row
+                                    .col-12
+                                        span: strong Observação
+                                        span.text-danger.ml-2= FN.StringUtil.toUpperCase(despesa.header.descricao)
+
+                    
+
+
+                    .row
+                        .d-inline.p-2.w-100
+
+                    .row
+                        .col
+                            table.table
+                                thead(style={'background-color':'#F0E68C'})
+                                    th Valor
+                                    th Data Atualização
+                                    th Data Pagamento
+                                    th Valor Pago
+                                    th Troco
+                                    th Desconto
+                                    th Juro
+                                    th Status
+
+                                tbody
+                                    each historico in despesa.historicos
+                                        tr
+                                            td= `R$ ${FN.NumberUtil.numberFormat(historico.valor, 2)}`
+                                            td= FN.DateUtil.momentToPug(historico.updatedAt,'DD/MM/YYYY')
+                                            td #{historico.dataPagamento}
+                                            td= `R$ ${FN.NumberUtil.numberFormat(historico.valorPago, 2)}`
+                                            td= `R$ ${FN.NumberUtil.numberFormat(historico.troco, 2)}`
+                                            td= `R$ ${FN.NumberUtil.numberFormat(historico.desconto, 2)}`
+                                            td= `R$ ${FN.NumberUtil.numberFormat(historico.juro, 2)}`
+                                            td #{historico.status}
+
+
+                    div(style="page-break-before:always;")
+
+        div(style="page-break-before:always;")

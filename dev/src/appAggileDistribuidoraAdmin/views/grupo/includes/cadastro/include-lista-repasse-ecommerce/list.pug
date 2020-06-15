@@ -1,0 +1,71 @@
+div#block-list-grupo-repasse-ecommerce
+    div.row
+        div.col-xs-12
+            div.box.box-primary
+            
+                div.box-header.with-border
+                    h3.box-title Grupos
+
+                div.box-body
+
+                    div.row
+                        div.col-xs-12
+                            a.btn.btn-app(href="#home")
+                                i.fa.fa-home
+                                |Início
+
+    div.row
+        div.col-xs-12
+            div.box.box-primary
+
+                div.box-header.with-border
+                    h3.col-md-6.col-xs-12.box-title Lista de Grupos
+
+                div.box-body
+
+                    div.hidden-xs.hidden-sm
+                        table.table.table-striped
+                            thead
+                                th Descrição
+                                th Ecommerce
+                                th Menu Principal
+                                th Ordem
+                                th Opções
+                            tbody#inner-grupos-cadastrados-desktop
+                        
+                            tfooter
+                                tr
+                                    td(colspan="8")
+                                        div.btn-toolbar
+                                            button.btn.btn-lg.input-lg.bg-purple.btn-block.carregar-mais(disabled="disabled") Carregar Mais
+
+
+                    div.visible-xs.visible-sm
+                        div.list-group
+                            div#inner-grupos-cadastrados-mobile
+
+                        div.btn-toolbar
+                            button.btn.btn-lg.input-lg.bg-purple.btn-block.carregar-mais(disabled="disabled") Carregar Mais
+
+                div.box-footer
+                    div.hidden-xs.hidden-sm    
+                        div.btn-toolbar
+                            button.btn.btn-lg.input-lg.btn-success.btn-block.salvar-geral.btn-is-desktop Salvar
+
+                    div.visible-xs.visible-sm
+                        div.btn-toolbar
+                            button.btn.btn-lg.input-lg.btn-success.btn-block.salvar-geral.btn-is-mobile Salvar
+
+                +overlay()
+
+<script></script>
+script(type="template" id="template-list-table-grupos-cadastrados-repasse-ecommerce-desktop")
+    include ./includes/table-list-desktop.pug
+
+<script></script>
+script(type="template" id="template-list-table-grupos-cadastrados-repasse-ecommerce-mobile")
+    include ./includes/table-list-mobile.pug
+
+<script></script>
+script(type="template" id="template-form-outros-campos-grupo-ecommerce")
+    include ./includes/form-campos.pug

@@ -1,0 +1,87 @@
+extends ../../../layout-report.pug
+
+
+
+block content
+
+    div.block-report
+
+        each despesa in result
+
+            .row
+                .col-12
+                    table.table
+                        tbody
+                            tr
+                                td(colspan="6")
+
+
+            .row
+                .col-12
+                    table.table
+                        tbody
+                            tr
+                                th.text-center.text-default(scope="col" colspan="6"): h3 Fatura nº #{despesa.id}
+
+                        
+                            tr.text-left
+                                th(scope='col')= FN._.get(despesa, 'pessoa.tipoPessoa')
+                                td.text-info.text-left= FN._.get(despesa, `pessoa.nome`)
+                                th(scope='col') Contato:
+                                td.text-info.text-left= FN._.get(despesa, `pessoa[${FN._.get(despesa, 'pessoa.tipoPessoa')}].contato`)
+                                th(scope='col') Municipio:
+                                td.text-info.text-left= FN._.get(despesa, 'pessoa.endereco.municipio.descricao')
+                            
+                            tr.text-left
+                                th(scope="col") Descrição:
+                                td.text-info.text-left(colspan="5")= FN.StringUtil.toUpperCase(despesa.descricao)
+
+                            tr.text-left
+                                th(scope='col') Status:
+                                td.text-info.text-left(colspan="5")= FN.StringUtil.toUpperCase(despesa.status)
+
+                            tr.text-left
+                                th(scope='col') Observação:
+                                td.text-info.text-left.text-danger(colspan="5")= FN.StringUtil.toUpperCase(despesa.observacao)
+
+                            tr
+                                td(colspan="6")
+                                
+                
+            .row
+                .col-12
+                    table.table.table-bordered
+                        thead
+                            tr.text-center
+                                th(scope='col') DATA
+                                th(scope='col') VENCIMENTO
+                                th(scope='col') DATA PGTO.
+                                th(scope='col') FORMA PGTO.
+                                th(scope='col') STATUS
+                                th(scope='col') VALOR
+                                th(scope='col') VALOR PGTO.
+
+                        tbody
+                            if despesa.historicos
+                                each item in despesa.historicos
+
+                                    tr
+                                        td.text-center= FN.DateUtil.momentToPug(item.createdAt,'DD/MM/YYYY')
+                                        td.text-center #{item.vencimento}
+                                        td.text-center #{item.dataPagamento}
+                                        td.text-center #{item.formaPagamento}
+                                        td.text-center #{item.status}
+                                        td.text-center= FN.NumberUtil.numberFormat(item.valor,2)
+                                        td.text-center= FN.NumberUtil.numberFormat(item.valorPago,2)
+
+                                tr
+                                    td(colspan="7")
+                                tr
+                                    th.text-left(colspan="6") VALOR 
+                                    th.text-center= `R$ ${FN.NumberUtil.numberFormat(despesa.valor,2)}`
+                                tr
+                                    th.text-left(colspan="6") SALDO DEVEDOR
+                                    th.text-center= `R$ ${FN.NumberUtil.numberFormat(despesa.saldo,2)}`
+
+
+            div(style="page-break-before:always;")

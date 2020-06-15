@@ -1,0 +1,11 @@
+div.col-xs-12.col-md-6
+        div.form-group
+            label(for="estado") UF
+            select#estado.form-control.input-lg(name="estado" disabled)
+            +overlay()
+
+div.col-xs-12.col-md-6
+    div.form-group.form-group-lg
+        label(for="municipio") Município
+        select#municipio.form-control.input-lg.select2.select2-container(name="endereco_municipio_id")
+        +overlay()

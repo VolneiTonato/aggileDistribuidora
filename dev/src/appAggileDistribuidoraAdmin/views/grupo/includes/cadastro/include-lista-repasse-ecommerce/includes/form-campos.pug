@@ -1,0 +1,28 @@
+div#block-list-grupo-repasse-ecommerce-form-outros-campos
+    div.col-xs-12
+        div.form-group
+            label.text-left Descrição
+            input(type="text" required value!="<%= _.get(form,'grupoEcommerce.descricao') %>" class="form-control input-lg text-uppercase" name="grupoEcommerce_descricao" id="grupoEcommerce-descricao")
+
+    div.col-xs-12 
+        div.form-group
+            label.text-left Bread Crumb
+            input.breadcrumb.form-control.input-lg(id="grupoEcommerce-bread-crumb" name="grupoEcommerce_breadCrumb" value!="<%= _.get(form, 'grupoEcommerce.breadCrumb') %>")
+
+    div.col-xs-12
+        div.form-group
+            label.text-left Descrição Detalhada
+            textarea(class="editor-ckeditor form-control input-lg text-uppercase" name="grupoEcommerce_descricaoDetalhada" id="grupoEcommerce-descricao-detalhada") <%= _.get(form,'grupoEcommerce.descricaoDetalhada') %>
+
+    input(type="hidden" value!="<%= form.id %>" name="id" id="id")
+
+
+    div.clear-fix
+
+    div.col-xs-12
+        div.form-group
+            div.hidden-xs.hidden-sm
+                div.btn-toolbar
+                    button.btn.btn-lg.input-lg.btn-success.save Ok
+            div.visible-xs.visible-sm
+                button.btn.btn-success.btn-block.input-lg.save Ok

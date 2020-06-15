@@ -1,0 +1,22 @@
+<script></script>
+
+script(type="template" id="template-report-despesas-contas-a-pagar")
+    +tipoPessoaRadioButtom(['cliente','fabrica','cedente','vendedor'])
+    +autoCompletePessoa()
+    .clearfix
+    +radioButtonInline('Data Lançamento / Data Pagamento', 
+        [
+            {checked: true, value : "dataLancamento", text: "Data de Lançamento", name:"report_dataFiltro"}, 
+            { value : "dataPagamento", text: "Data de Pagamento", name:'report_dataFiltro'}
+        ])
+    +dataInicialFinal()
+    .clearfix
+    +statusReceitas
+    +municipio()
+    .clearfix
+    +radioButtonResumidoDetalhado()
+    +radioButtonInline('Visualização Fatura', [{value : "detalharFatura", text: "Detalhar", name:"report_visualizacaoFaturaReport"}, { value : "resumirFatura", text: "Resumir", name:'report_visualizacaoFaturaReport'}])
+    .clearfix
+    +filtroObrigatorioReport()
+    .clearfix
+    +submit()

@@ -1,0 +1,255 @@
+mixin menuLeft(titulo)
+    aside(class="main-sidebar")
+        section(class="sidebar" style={'height':'auto'})
+            ul(class="sidebar-menu" data-widget="tree")
+                li(class="header")= titulo
+                li
+                    a(href="#home")
+                        i(class="fa fa-th")
+                        span Início
+                
+                li(class="treeview")
+                    a(href="#")
+                        i(class="fa fa-phone")
+                        span Cadastros
+                        span(class="pull-right-container")
+                            i(class="fa fa-angle-left pull-right")
+                    ul(class="treeview-menu")
+                        li
+                            a(href="#cadastro-de-fabricas/pesquisa")
+                                i(class="fa fa-circle-o")
+                                |Fábricas
+                        
+                        li
+                            a(href="#cadastro-de-clientes/pesquisa")
+                                i(class="fa fa-circle-o")
+                                |Clientes
+
+                        li
+                            a(href="#cadastro-de-cedentes/pesquisa")
+                                i(class="fa fa-circle-o")
+                                |Cedentes
+
+                        li
+                            a(href="#cadastro-de-vendedores/pesquisa")
+                                i(class="fa fa-circle-o")
+                                |Vendedores
+
+                        li
+                            a(href="#cadastro-de-usuarios/pesquisa")
+                                i(class="fa fa-circle-o")
+                                |Usuários
+
+                        li.treeview
+                            a(href="#")
+                                i(class="fa fa-phone")
+                                span Produtos
+                                span(class="pull-right-container")
+                                    i(class="fa fa-angle-left pull-right")
+
+                            ul(class="treeview-menu")
+
+                                
+
+                                li
+                                    a(href="#cadastro-de-grupos/pesquisa")
+                                        i(class="fa fa-circle-o")
+                                        |Grupos
+
+                                li
+                                    a(href="#cadastro-de-volumes/pesquisa")
+                                        i(class="fa fa-circle-o")
+                                        |Volumes
+
+                                li
+                                    a(href="#cadastro-de-tipos-unidades/pesquisa")
+                                        i(class="fa fa-circle-o")
+                                        |Tipos Unidades
+
+                                li
+                                    a(href="#cadastro-de-produtos/pesquisa")
+                                        i(class="fa fa-circle-o")
+                                        |Produtos
+
+
+                            
+
+                li(class="treeview")
+                    a(href="#")
+                        i(class="fa fa-user")
+                        span Inventário
+                        span(class="pull-right-container")
+                            i(class="fa fa-angle-left pull-right")
+                    ul(class="treeview-menu")
+
+                        li
+                            a(href="#ajuste-inventario/novo")
+                                i(class="fa fa-circle-o")
+                                | Novo
+
+                        li
+                            a(href="#ajuste-inventario/pesquisa")
+                                i(class="fa fa-circle-o")
+                                | Listar
+                        
+
+                li(class="treeview")
+                    a(href="#")
+                        i(class="fa fa-user")
+                        span Compras
+                        span(class="pull-right-container")
+                            i(class="fa fa-angle-left pull-right")
+
+                    ul(class="treeview-menu")
+                           
+
+                        li.treeview
+                            a(href="#")
+                                i(class="fa fa-user")
+                                span Pedido Fabrica
+                                span(class="pull-right-container")
+                                    i(class="fa fa-angle-left pull-right")
+
+                            ul(class="treeview-menu")
+
+                                li
+                                    a(href="#pedidos/fabrica/novo")
+                                        i(class="fa fa-circle-o")
+                                        | Novo Pedido
+
+                                    a(href="#pedidos/fabrica/pesquisa")
+                                        i(class="fa fa-circle-o")
+                                        | Listar
+
+
+                        li.treeview
+                            a(href="#")
+                                i(class="fa fa-user")
+                                span Nota Fiscal
+                                span(class="pull-right-container")
+                                    i(class="fa fa-angle-left pull-right")
+
+                            ul(class="treeview-menu")
+
+                                li
+                                    a(href="#compras/nota-fiscal/entrada")
+                                        i(class="fa fa-circle-o")
+                                        | Nova Nota
+
+                                    a(href="#compras/nota-fiscal/pesquisa")
+                                        i(class="fa fa-circle-o")
+                                        | Listar
+
+                li(class="treeview")
+                    a(href="#")
+                        i(class="fa fa-user")
+                        span Pedidos
+                        span(class="pull-right-container")
+                            i(class="fa fa-angle-left pull-right")
+                    ul(class="treeview-menu")
+
+                        li
+                            a(href="#pedidos/cliente/novo")
+                                i(class="fa fa-circle-o")
+                                | Novo Pedido
+
+                            a(href="#pedidos/cliente/pesquisa")
+                                i(class="fa fa-circle-o")
+                                | Listar
+
+                li(class="treeview")
+                    a(href="#")
+                        i(class="fa fa-user")
+                        span Financeiro
+                        span(class="pull-right-container")
+                            i(class="fa fa-angle-left pull-right")
+                    ul(class="treeview-menu")
+
+                        li
+                            a(href="#financeiro/cadastro-de-bancos/pesquisa")
+                                i(class="fa fa-circle-o")
+                                | Bancos
+
+                        li
+                            a(href="#financeiro/cadastro-de-agencias/pesquisa")
+                                i(class="fa fa-circle-o")
+                                | Agências
+
+                        li
+                            a(href="#financeiro/cadastro-de-contas-bancarias/pesquisa")
+                                i(class="fa fa-circle-o")
+                                | Contas Bancárias
+
+                        li
+                            a(href="#financeiro/contas-a-pagar/pesquisa")
+                                i(class="fa fa-circle-o")
+                                | Despesas
+
+                        li
+                            a(href="#financeiro/contas-a-receber/pesquisa")
+                                i(class="fa fa-user")
+                                | Receitas
+
+                        li
+                            a(href="#financeiro/cadastro-de-cheques/pesquisa")
+                                i(class="fa fa-user")
+                                | Cheques
+
+
+                li(class="treeview")
+                    a(href="#")
+                        i(class="fa fa-user")
+                        span Ferramentas
+                        span(class="pull-right-container")
+                            i(class="fa fa-angle-left pull-right")
+                    ul(class="treeview-menu")
+
+                        li.treeview
+                            a(href="#")
+                                i(class="fa fa-database")
+                                span Sincronização
+                                span(class="pull-right-container")
+                                    i(class="fa fa-angle-left pull-right")
+
+                            ul(class="treeview-menu")
+
+                                li
+                                    a(href="#sincronizacao/server-to-app")
+                                        i(class="fa fa-exchange")
+                                        | Server to App
+
+                                li
+                                    a(href="#sincronizacao/server-to-ecommerce")
+                                        i(class="fa fa-exchange")
+                                        | Server to Ecommerce
+
+                        li.treeview
+                            a(href="#")
+                                i(class="fa fa-database")
+                                span Ecommerce
+                                span(class="pull-right-container")
+                                    i(class="fa fa-angle-left pull-right")
+
+                            ul(class="treeview-menu")
+
+                                li
+                                    a(href="#repasses/ecommerce/grupo-ecommerce")
+                                        i(class="fa fa-exchange")
+                                        | Repasse Grupos
+
+                                li
+                                    a(href="#repasses/ecommerce/produto-ecommerce")
+                                        i(class="fa fa-exchange")
+                                        | Repasse Produtos
+
+                li
+                    a(href="/reports")
+                        i(class="fa fa-bar-chart-o")
+                        span Relatórios 
+
+                li
+                    a(href="/admin/auth/logout")
+                        i(class="fa fa-circle-o-notch text-red")
+                        span Sair                          
+
++menuLeft('Navegação')

@@ -1,0 +1,17 @@
+<script></script>
+
+script(type="template" id="template-financeiro-cheque-historicos")
+    #block-list-historico-cheques
+        div.col-xs-12
+            div.form-group
+
+                .box.box-solid.box-info
+                    .box-header.with-border
+                        h3.box-title Históricos
+                        
+                    .box-body
+                        div.hidden-xs.hidden-sm
+                            include parts/historicos-lancados-desktop.pug
+                            
+                        div.visible-xs.visible-sm
+                            include parts/historicos-lancados-mobile.pug                

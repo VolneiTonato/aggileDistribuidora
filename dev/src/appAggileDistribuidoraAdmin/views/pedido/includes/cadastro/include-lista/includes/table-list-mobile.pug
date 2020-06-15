@@ -1,0 +1,29 @@
+<% if(typeof(pedidos) !== 'undefined'){ %>
+<% _.each(pedidos, function(item) { %>
+
+    div.list-group-item.list-group-item-action.flex-column.align-items-start.row-item-list(data-item!="<%- JSON.stringify(item) %>")
+        div.d-flex.w-100.justify-content-between
+            h5.mb-1: <strong>Número:</strong> <%= item.id %>
+
+            h5.mb-1: <strong>Cliente:</strong> <%= _.get(item, 'clienteRef.cliente.nomeFantasia') %>
+            
+            h5.mb-1: <strong>Município:</strong> <%= _.get(item,'clienteRef.endereco.municipio.descricao') %>
+            
+            h5.mb-1: <strong>Data Lançamento:</strong> <%= App_vendorAdmin.DateUtil.formatToPtBR(item.createdAt) %>
+
+            h5.mb-1: <strong>Total Pedido:</strong> <%= item.total %>
+
+            h5.mb-1: <strong>Total de Itens:</strong> <%= item.totalItens %>
+
+            h5.mb-1: <strong>Status:</strong> <span class="status-print"><%= item.status %></span>
+
+            button.btn.btn-info.btn-visualizar-pedido-info.btn-block.input-lg(type="button"): i.fa.fa-eye
+            button.btn.btn-success.btn-visualizar-pedido.btn-block.input-lg(type="button"): i.fa.fa-pencil
+            button.btn.btn-danger.btn-cancelar-pedido.btn-block.input-lg(type="button"): i.fa.fa-remove
+            button.btn.btn-success.btn-lancar-pedido.btn-block.input-lg(type="button"): i.fa.fa-mail-forward
+            button.btn.btn-warning.btn-estornar-pedido.btn-block.input-lg(type="button"): i.fa.fa-reply
+            button.btn.btn-warning.btn-is-pedido-consignado-or-normal-pedido.btn-block.input-lg(type="button"): i.fa.fa-refresh
+            button.btn.btn-success.btn-marcar-como-entregue.btn-block.input-lg(type="button"): i.fa.fa-check-circle
+            a.btn.btn-default.btn-block.input-lg(href!="/reports/pedidos/report-cliente/<%= item.uuid %>" target="_blanck"): i.fa.fa-print
+<% }) %>
+<% } %>    

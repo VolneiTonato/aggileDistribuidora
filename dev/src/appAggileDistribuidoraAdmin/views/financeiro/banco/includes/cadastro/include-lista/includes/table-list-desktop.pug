@@ -1,0 +1,12 @@
+<% if(typeof(bancos) !== 'undefined'){ %>
+<% _.each(bancos, function(item) { %>
+
+tr.row-item-list(data-item!="<%- JSON.stringify(item) %>" data-key!="<%= item.id %>")
+    td <%= item.codigo %>
+    td <%= item.descricao %>
+    td
+        div.btn-toolbar
+            button.btn.btn-success.btn-editar-cadastro(type="button") Editar
+            button.btn.btn-danger.btn-remover-cadastro(type="button") Remover
+<% }) %>
+<% } %>

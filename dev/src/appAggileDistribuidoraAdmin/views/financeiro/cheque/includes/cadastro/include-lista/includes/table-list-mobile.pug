@@ -1,0 +1,25 @@
+<% if(typeof(agencias) !== 'undefined'){ %>
+<% _.each(agencias, function(item) { %>
+
+    div.visible-xs.visible-sm.list-group-item.list-group-item-action.flex-column.align-items-start.row-item-list(data-item!="<%- JSON.stringify(item) %>")
+
+        div.d-flex.w-100.justify-content-between
+            h5.mb-1: <strong>Nome:</strong> <%= item.nome %>
+
+            h5.mb-1: <strong>Número/DV:</strong> <%= item.numero %> / <%= item.dv %>
+
+            h5.mb-1: <strong>CNPJ/CPF:</strong> <%= item.cnpjCpf %>
+
+            h5.mb-1: <strong>Banco:</strong> <%= _.get(item, 'agencia.banco.descricao') %>
+
+            h5.mb-1: <strong>Agência:</strong> <%= _.get(item, 'agencia.nome') %>
+
+            h5.mb-1: <strong>Telefone:</strong> <%= item.telefones.map((item) => { return item.numero  }) %>
+
+            h5.mb-1: <strong>Ativo:</strong> <%= App_vendorAdmin.StringUtil.booleanToString(item.status) %>
+
+            button.btn.btn-success.btn-editar-cadastro.btn-block.input-lg(type="button"): i.fa.fa-pencil
+            button.btn.btn-info.google-maps.btn-block.input-lg(type="button"  data-position!="<%= _.get(item, 'endereco.latitudeLongitude') %>"): i.fa.fa-map-marker
+
+<% }) %>
+<% } %>

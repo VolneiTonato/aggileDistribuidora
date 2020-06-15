@@ -1,0 +1,74 @@
+div#block-form-financeiro-contas-a-receber
+
+    div.row
+        div.col-xs-12
+            div.box.box-primary
+            
+                div.box-header.with-border
+                    h3.box-title Contas a Receber
+
+                div.box-body
+
+                    div.row
+                        div.col-xs-12
+                            a.btn.btn-app(href="#home")
+                                i.fa.fa-home
+                                |Início
+
+                            a.btn.btn-app(href="#financeiro/contas-a-receber/pesquisa")
+                                i.fa.fa-arrow-left
+                                |Receitas Lançadas
+
+                            a.btn.btn-app#btn-novo-cadastro(href="#financeiro/contas-a-receber/nova")
+                                    i.fa.fa-plus
+                                    |Nova Receita
+
+
+    div.row
+        div.col-xs-12
+            div.box.box-primary
+
+                div.box-header.with-border
+                    h3.box-title Conta a Receber
+
+                form(role="form" method="POST" id="form-cadastro" autocomplete="off")
+                    div.box-body
+
+                        div.col-xs-12.col-md-12
+                            div.form-group
+                                +radioButtonInline('Tipo Pessoa', [
+                                    {value:'', checked: true, name:'tipoPessoa',text:'Sem Relação'},
+                                    {value:'fabrica', name:'tipoPessoa',text:'Fábrica'},
+                                    {value:'cliente', name:'tipoPessoa',text:'Cliente'},
+                                    {value:'cedente', name:'tipoPessoa',text:'Cedente'},
+                                    {value:'vendedor', name:'tipoPessoa',text:'Vendedor'},
+                                    ], {class: 'tipo-pessoa'})
+
+                        
+
+                        div.col-xs-12.col-md-12
+                            div#inner-pessoa-autocomplete
+
+                        div.col-xs-12.col-md-12
+                            div#inner-cabecalho
+
+                        div.col-xs-12(style={'margin':'5px, 0px'})
+                            <hr />
+
+
+
+                        //div.col-xs-12.col-md-12
+                            div#inner-form-historico(style={'display': 'none'})
+
+                        div.col-xs-12.col-md-12
+                            div#inner-form-historico-pagamento(style={'display': 'none'})
+
+                        div.col-xs-12.col-md-12
+                            div#inner-historicos-lancados(style={'display': 'none'})
+
+
+                        
+                    div.box-footer                            
+                        div.col-xs-12.col-md-12
+                            div.btn-toolbar
+                                button(type="button" class="btn btn-success btn-lg input-lg" id="btn-lancar-receita") Lançar

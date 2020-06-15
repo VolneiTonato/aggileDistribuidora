@@ -1,0 +1,63 @@
+#overlay-dialog { background-color:rgba(0,0,0,0.5); position:fixed; width:100%; height:100%; top:0; left:0;  z-index: 10050 !important }
+.ui-dialog { position: fixed; padding: .2em; width: 300px; overflow: visible !important;  z-index: 999999 !important ; overflow-x:hidden}
+.autocomplete-vtt { font-size: 28px; padding: 10px; width: 100%; border: 1px solid #CCC; display: block; margin: 0px 0; overflow: scroll !important;}
+
+
+.content-header>.breadcrumb{ font-size:20px !important}
+
+
+.ui-autocomplete {
+    max-height: 300px;
+    overflow-y: auto;
+    /* prevent horizontal scrollbar */
+    overflow-x: hidden;
+    /* add padding to account for vertical scrollbar */
+    padding-right: 20px;
+}
+
+.select2-dropdown { z-index: 10060 !important;/*1051;*/ }
+
+/*
+.select2-container .myclass{
+    height: 46px !important;
+}*/
+/*
+.select2-dropdown.increasedzindexclass {
+    z-index: 999999;
+  }
+*/
+.centered-form{
+    margin-top: 20px;
+}
+
+.centered-form .panel{
+    background: rgba(255, 255, 255, 0.8);
+    box-shadow: rgba(0, 0, 0, 0.3) 20px 20px 20px;
+}
+
+
+body { overflow-x: hidden;}
+.panel-body .btn:not(.btn-block) { width:200px;margin-bottom:5px;}
+
+
+
+.navbar-static-top {
+    margin-bottom: 19px;
+}
+
+
+.cor-topo{
+    background-color: #337ab7;
+    border-color: #337ab7;
+}
+
+#teste-flex-box-volnei {
+    .col-xs-12 {
+      min-width: 0;
+    }
+  }
+
+
+.form-control.select2-hidden-accessible {
+    position: absolute !important;
+}

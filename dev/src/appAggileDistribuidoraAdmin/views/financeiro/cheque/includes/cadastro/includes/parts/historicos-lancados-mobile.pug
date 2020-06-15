@@ -1,0 +1,15 @@
+<% if(typeof(historicos) !== 'undefined'){ %>
+div.list-group
+<% _.each(historicos, function(item) { %>
+    div.list-group-item.list-group-item-action.flex-column.align-items-start.row-item-list(data-item!="<%- JSON.stringify(item) %>")
+        div.d-flex.w-100.justify-content-between
+
+            h5.mb-1: <strong>Data:</strong> <%= App_vendorAdmin.DateUtil.formatToPtBR(item.createdAt, true) %>
+
+            h5.mb-1: <strong>Status:</strong> <%= item.status %>
+
+            h5.mb-1: <strong>Pessoa Repasse:</strong> <%= _.get(item, 'pessoaRepasse.nome') %>
+
+            h5.mb-1: <strong>Motivo Devolução:</strong> <%= _.get(item, 'motivoDevolucao.codigo') %> - <%= _.get(item, 'motivoDevolucao.descricao') %>
+<% }) %>
+<% } %>    

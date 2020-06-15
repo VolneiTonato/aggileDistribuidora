@@ -1,0 +1,18 @@
+<script></script>
+
+script(type="template" id="template-report-produto-estoque")
+    +fabrica()
+    +radioButtonInline('Filtro para estoque', [
+        {value : "all", text: "Todos", name:"report_visualizacaoEstoqueProdutoReport"}, 
+        { value : "maiorQueZero", text: "Maior que zero", name:'report_visualizacaoEstoqueProdutoReport'}, 
+        { value : "zerado", text: "Zerados", name:'report_visualizacaoEstoqueProdutoReport'}
+    ])
+    +radioButtonInline('Status', [
+        {value : "all", text: "Todos", name:"report_visualizacaoStatusProdutoReport"}, 
+        { value : "ativo", text: "Ativos", name:'report_visualizacaoStatusProdutoReport'}, 
+        { value : "inativo", text: "Inativos", name:'report_visualizacaoStatusProdutoReport'}
+    ])
+    .clearfix
+    +filtroObrigatorioReport()
+    .clearfix
+    +submit()

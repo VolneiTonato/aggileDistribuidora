@@ -1,0 +1,37 @@
+{
+    "name": "aggile-distribuidora",
+    "description": "",
+    "main": "",
+    "authors": [
+        "Volnei Tonato"
+    ],
+    "license": "ISC",
+    "homepage": "/",
+    "ignore": [
+        "**/.*",
+        "node_modules",
+        "test",
+        "tests"
+    ],
+    "dependencies": {
+        "backbone": "*",
+        "admin-lte":"2.4",
+        "gentelella": "*",
+        "mobile-detect": "*",
+        "moment":"*",
+        "jquery-ui": "*",
+        "bootstrapv3.3.7":"bootstrap#3",
+        "bootstrapv4.0.0-alpha.6":"bootstrap#v4.0.0-alpha.6",
+        "select2":"*",
+        "select2-bootstrap-theme":"*",
+        "jquery.inputmask":"4.0.2",
+        "jquery-price-format":"*",
+        "jstree":"*",
+        "jquery-migrate":"*",
+        "popper.js":"*",
+        "jquery-lazy":"*",
+        "MDBootstrap":"*",
+        "dexie":"2.0.4",
+        "ckeditor":"*"
+        }
+}

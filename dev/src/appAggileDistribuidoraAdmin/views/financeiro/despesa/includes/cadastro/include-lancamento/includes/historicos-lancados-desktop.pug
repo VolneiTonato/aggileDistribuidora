@@ -1,0 +1,45 @@
+table.table.table-striped.historicos-lancados-table
+    tbody
+        tr.control-checkbox
+            th Data Pgto.
+            th Vencimento
+            th Data Histórico
+            th Valor Lançado
+            th Valor Total
+            th Valor Recebido
+            th Troco
+            th Desconto
+            th Juro
+            th Status Receb
+            th Forma de Pgto
+            th Opções
+        <% if(typeof(historicos) !== 'undefined'){ %>
+        <% _.each(historicos, function(item) { %>
+        tr.row-item-list(data-item!="<%- JSON.stringify(item) %>")
+            td <%= item.dataPagamento %>
+            td <%= item.vencimento %>
+            td <%= App_vendorAdmin.DateUtil.formatToPtBR(item.updatedAt) %>
+            td <%= App_vendorAdmin.NumberUtil.numberFormat(item.valor,2) %>
+            td <%= App_vendorAdmin.NumberUtil.numberFormat(item.valorTotal,2) %>
+            td <%= App_vendorAdmin.NumberUtil.numberFormat(item.valorRecebido,2) %>
+
+            td R$ <%= App_vendorAdmin.NumberUtil.numberFormat(item.troco, 2) %>
+            td
+                p R$ <%= App_vendorAdmin.NumberUtil.numberFormat(item.desconto, 2) %>
+                p <%= App_vendorAdmin.NumberUtil.numberFormat(item.descontoPercentual, 2) %> %
+            td
+                p R$ <%= App_vendorAdmin.NumberUtil.numberFormat(item.juro, 2) %>
+                p <%= App_vendorAdmin.NumberUtil.numberFormat(item.juroPercentual, 2) %> %
+
+            td.status-print <%= item.status %>
+
+            td <%= item.formaPagamento %>
+            td
+                div.bloco-botoes-historicos-contas-lancados
+                    div.btn-toolbar
+                        button.btn.btn-info.btn-sm.editar-historico-lancado(type="button"): i.fa.fa-pencil
+                        button.btn.btn-success.btn-sm.pagar-historico-lancado(type="button"): i.fa.fa-money
+                        button.btn.btn-success.btn-sm.btn-lancar-receita-paga(type="button" style={'display' : 'none'}): i.fa.fa-check-circle
+                
+        <% }) %>
+        <% } %>

@@ -1,0 +1,58 @@
+div.row
+    div.col-xs-12
+        div.box.box-primary
+        
+            div.box-header.with-border
+                h3.box-title Pedido Cliente
+
+            div.box-body
+
+                div.row
+                    div.col-xs-12
+                        a.btn.btn-app(href="#home")
+                            i.fa.fa-home
+                            |Início
+
+                        a.btn.btn-app(href="#pedidos/fabrica/pesquisa")
+                            i.fa.fa-arrow-left
+                            |Pedidos Lançados
+
+
+
+<script></script>
+
+script(type="template" id="template-pedido-fabrica-lancamento-form-principal")
+    include include-lancamento/form.pug
+
+<script></script>
+
+script(type="template" id="template-pedido-fabrica-lancamento-produto-autocomplete")
+    include include-lancamento/produto-autocomplete.pug
+
+<script></script>
+
+script(type="template" id="template-pedido-fabrica-lancamento-step1")
+    include include-lancamento/fabrica-selecao.pug
+
+<script></script>
+
+script(type="template" id="template-pedido-fabrica-lancamento-cabecalho")
+    include include-lancamento/cabecalho.pug
+
+<script></script>
+
+script(type="template" id="template-pedido-fabrica-lancamento-produto")
+    include include-lancamento/produto.pug
+
+<script></script>
+
+script(type="template" id="template-pedido-fabrica-produtos-lancados")
+    include include-lancamento/produtos-lancados.pug
+
+<script></script>
+script(type="template" id="template-pedido-fabrica-selecionado")
+    include include-lancamento/fabrica.pug
+
+<script></script>
+script(type="template" id="template-pedido-fabrica-lista-produtos-grade")
+    include include-lancamento/produtos-grade.pug

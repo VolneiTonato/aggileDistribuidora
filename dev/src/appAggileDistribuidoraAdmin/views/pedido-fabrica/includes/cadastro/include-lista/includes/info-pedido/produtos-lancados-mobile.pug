@@ -1,0 +1,24 @@
+<% if(typeof(lancamentos) !== 'undefined'){ %>
+.list-group
+<% _.each(lancamentos, function(item) { %>
+    .list-group-item.list-group-item-action.flex-column.align-items-start
+        .d-flex.w-100.justify-content-between
+
+            h5.mb-1: <strong>Cód.:</strong> <%= item.produto.id %>
+
+            h5.mb-1: <strong>Cód. Ref.:</strong> <%= item.produto.referencia %>
+            
+            h5.mb-1: <strong>Descrição:</strong> <%= item.produto.descricao %>
+
+            h5.mb-1: <strong>UN.:</strong> <%= item.tipoUnidade %>
+
+            h5.mb-1: <strong>Custo:</strong> <%= item.custo %>
+
+            h5.mb-1: <strong>Quantidade:</strong> <%= item.quantidade %>
+
+            h5.mb-1: <strong>Bonificado:</strong> <%= App_vendorAdmin.StringUtil.booleanToString(item.isBonificado) %>
+
+            h5.mb-1: <strong>SubTotal:</strong> <%= App_vendorAdmin.NumberUtil.numberFormat(item.total, 2) %>
+
+<% }) %>
+<% } %>    

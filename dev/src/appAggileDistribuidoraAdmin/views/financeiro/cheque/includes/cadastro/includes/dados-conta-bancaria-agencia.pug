@@ -1,0 +1,114 @@
+<script></script>
+
+script(type="template" id="template-financeiro-cheque-dados-conta-bancaria-agencia")
+    div
+        h3 <%= _.get(form, 'pessoaAgencia.agencia.nome') %>
+        p Dados Adic.: <%= _.get(form, 'pessoaAgencia.agencia.observacao') %>
+        p Endereço: <%= _.get(form, 'pessoaAgencia.endereco.logradouro') %>
+        p Bairro: <%= _.get(form, 'pessoaAgencia.endereco.bairro') %>
+        p Municipio: <%= _.get(form, 'pessoaAgencia.endereco.municipio.descricao') %> / <%= _.get(form, 'pessoaAgencia.endereco.municipio.estado.uf') %>
+        p Telefone: <%= _.get(form, 'pessoaAgencia.telefones[0].numero') %>
+
+script(type="template" id="template-financeiro-cheque-dados-conta-pessoa")
+    div
+        h3 <%= form.titular %>
+        p CPF/CNPJ: <%= form.cnpjCpf %>
+        p Telefone: <%= _.get(form, 'telefones[0].numero') %>
+
+script(type="template" id="template-financeiro-cheque-dados-conta-emissor")
+    div
+        h3 <%= _.get(form, 'pessoa.nome') %>
+        p Tipo Pessoa: <%= _.get(form, 'pessoa.tipoPessoa') %>
+        p CPF/CNPJ: <%= _.get(form, 'pessoa[form.tipoCadastro].cnpjCpf') %>
+        p Endereço: <%= _.get(form, 'pessoa.endereco.logradouro') %>
+        p Bairro: <%= _.get(form, 'pessoa.endereco.bairro') %>
+        p Municipio: <%= _.get(form, 'pessoa.endereco.municipio.descricao') %> / <%= _.get(form, 'pessoa.endereco.municipio.estado.uf') %>
+        p Telefone: <%= _.get(form, 'pessoa.telefones[0].numero') %>
+
+
+script(type="template" id="template-financeiro-cheque-dados-pessoa-repasse")
+    div
+        h3 <%= _.get(form, 'pessoa.nome') %>
+        p Tipo Pessoa: <%= _.get(form, 'pessoa.tipoPessoa') %>
+        p CPF/CNPJ: <%= _.get(form, 'pessoa[form.tipoCadastro].cnpjCpf') %>
+        p Endereço: <%= _.get(form, 'pessoa.endereco.logradouro') %>
+        p Bairro: <%= _.get(form, 'pessoa.endereco.bairro') %>
+        p Municipio: <%= _.get(form, 'pessoa.endereco.municipio.descricao') %> / <%= _.get(form, 'pessoa.endereco.municipio.estado.uf') %>
+        p Telefone: <%= _.get(form, 'pessoa.telefones[0].numero') %>
+
+
+
+
+script(type="template" id="template-financeiro-cheque-dados-valor-lancado-contas")
+    div.col-xs-12
+        div.form-group
+
+            .box.box-solid.box-info
+                .box-header.with-border
+                    h3.box-title Valor Lançado em contas
+                    
+                .box-body
+                    p <strong>Valor Cheque:</strong> <%= _.get(form, 'valor') %>
+                    p <strong>Valor Recebido (Recebimento):</strong> <%= _.get(form, 'valorLancadoReceita') %>
+                    p <strong>Valor Lançado Contas (Despesas):</strong> <%= _.get(form, 'valorLancadoDespesa') %>
+                    p <strong>Valor Restante para Recebimento:</strong> <%= _.get(form, 'valorPendenteReceita') %>
+                    p <strong>Valor Restante para Pgto/Repasse:</strong> <%= _.get(form, 'valorPendenteDespesa') %>
+
+
+script(type="template" id="template-financeiro-cheque-dados-cheque")
+    div.col-xs-12
+        div.form-group
+
+            .box.box-solid.box-info
+                .box-header.with-border
+                    h3.box-title Dados Cheque
+                    
+                .box-body
+                    p <strong>Número:</strong> <%= _.get(form, 'numero') %>
+                    p <strong>Emissor:</strong> (<%= _.startCase(_.get(form, 'tipoEmissor')) %>): <%= _.get(form, 'emissor.nome') %>
+                    p <strong>Valor:</strong> <%= _.get(form, 'valor') %>
+                    p <strong>Status:</strong> <%= _.get(form, 'status') %>
+                    p <strong>Emissão:</strong> <%= _.get(form, 'dataEmissao') %> | <strong>Data Pré Datado:</strong> <%= _.get(form,'dataPreDatado') %>
+                    p <strong>Titular:</strong> <%= _.get(form, 'contaBancaria.titular') %>
+                    p <strong>Banco:</strong> <%= _.get(form, 'contaBancaria.pessoaAgencia.agencia.banco.descricao') %>
+                    p <strong>Agência:</strong> <%= _.get(form, 'contaBancaria.pessoaAgencia.nome') %> / Nº <%= _.get(form, 'contaBancaria.pessoaAgencia.agencia.numero') %>
+
+
+script(type="template" id="template-financeiro-cheque-dados-principais")
+    div.col-xs-12
+        div.form-group
+
+            .box.box-solid.box-info
+                .box-header.with-border
+                    h3.box-title Dados Cheque
+                    
+                .box-body
+
+                    div.col-xs-12
+                        div.form-group
+
+                            .box.box-solid.box-primary
+                                .box-header.with-border
+                                    h3.box-title Agência
+                                    
+                                .box-body
+                                    #inner-dados-conta-bancaria-agencia
+
+                    div.col-xs-12
+                        div.form-group
+
+                            .box.box-solid.box-primary
+                                .box-header.with-border
+                                    h3.box-title Dono do Cheque
+                                    
+                                .box-body
+                                    #inner-dados-conta-pessoa
+
+                            <hr />
+
+                            .box.box-solid.box-primary
+                                .box-header.with-border
+                                    h3.box-title Emissor
+                                    
+                                .box-body
+                                    #inner-dados-conta-emissor   

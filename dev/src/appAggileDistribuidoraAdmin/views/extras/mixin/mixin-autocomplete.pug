@@ -1,0 +1,94 @@
+mixin autoCompleteAgencia(data)
+    - var options = {id : 'bloco-autocomplete-agencia', placeholder: 'Pesquisa de agência', label : 'Agência', isInputAux : false, inputAux: {name: 'agenciaId', id: 'agencia-id'}}
+    - data = functionView._.defaultsDeep(data, options)
+    .col-xs-12.col-md-12
+        .form-group
+            label(for="") #{data.label}
+            input(type="text" autocomplete="off" class="input-lg form-control autocomplete-vtt ui-autocomplete-input text-uppercase" id!=data.id placeholder!=data.placeholder)
+            span(style="display:none" class="text-"): strong
+            if(data.isInputAux)
+                input(type="hidden" value="" name=!data.inputAux.name id!=data.inputAux.id)
+
+
+mixin autoCompleteCliente(data)
+    - var options = {id : 'bloco-autocomplete-cliente', placeholder: 'Pesquisa de cliente', label : 'Cliente', isInputAux : false, inputAux: {name: 'clienteId', id: 'cliente-id'}}
+    - data = functionView._.defaultsDeep(data, options)
+    .col-xs-12.col-md-12
+        .form-group
+            label(for="") #{data.label}
+            input(type="text" autocomplete="off" class="input-lg form-control autocomplete-vtt ui-autocomplete-input text-uppercase" id!=data.id placeholder!=data.placeholder)
+            span(style="display:none" class="text-"): strong
+            if(data.isInputAux)
+                input(type="hidden" value="" name=!data.inputAux.name id!=data.inputAux.id)
+
+
+mixin autoCompleteFabrica(data)
+    - var options = {id : 'bloco-autocomplete-fabrica', placeholder: 'Pesquisa de fábrica', label : 'Fábrica', isInputAux : false, inputAux: {name: 'fabricaId', id: 'fabrica-id'}}
+    - data = functionView._.defaultsDeep(data, options)
+    .col-xs-12.col-md-12
+        .form-group
+            label(for="") #{data.label}
+            input(type="text" autocomplete="off" class="input-lg form-control autocomplete-vtt ui-autocomplete-input text-uppercase" id!=data.id placeholder!=data.placeholder)
+            span(style="display:none" class="text-"): strong
+            if(data.isInputAux)
+                input(type="hidden" value="" name=!data.inputAux.name id!=data.inputAux.id)                
+
+
+mixin autoCompleteBanco(data)
+    - var options = {id : 'bloco-autocomplete-banco', valueDefault: '', placeholder: 'Pesquisa de Bancos', label : 'Banco', isInputAux : false, inputAux: {name: 'bancoId', id: 'banco-id'}}
+    - data = functionView._.defaultsDeep(data, options)
+    .col-xs-12.col-md-12
+        .form-group
+            label(for="") #{data.label}
+            input(type="text" value!=data.valueDefault autocomplete="off" class="input-lg form-control autocomplete-vtt ui-autocomplete-input text-uppercase" id!=data.id placeholder!=data.placeholder)
+            span(style="display:none" class="text-"): strong
+            if(data.isInputAux)
+                input(type="hidden" value="" name=!data.inputAux.name id!=data.inputAux.id)            
+
+
+mixin autoCompleteIndexDB(data)
+    - var options = {id : 'bloco-autocomplete-indexdb', valueDefault: '', placeholder: '', label : '', isInputAux : false, inputAux: {name: '', id: ''}}
+    - data = functionView._.defaultsDeep(data, options)
+    .col-xs-12.col-md-12
+        .form-group
+            label(for="") #{data.label}
+            input(type="text" value!=data.valueDefault autocomplete="off" class="input-lg form-control autocomplete-vtt ui-autocomplete-input text-uppercase" id!=data.id placeholder!=data.placeholder)
+            span(style="display:none" class="text-"): strong
+            if(data.isInputAux)
+                input(type="hidden" value="" name=!data.inputAux.name id!=data.inputAux.id)            
+
+
+
+mixin autoComplete(type, data)
+
+    - var option = {}
+
+    if type == 'cliente'
+        - options = {id : 'bloco-autocomplete-cliente', valueDefault: '', placeholder: 'Pesquisa de cliente', label : 'Cliente', isInputAux : false, inputAux: {name: 'clienteId', id: 'cliente-id'}}
+    else if type == 'fabrica'
+        - options = {id : 'bloco-autocomplete-fabrica',  valueDefault: '', placeholder: 'Pesquisa de fábrica', label : 'Fábrica', isInputAux : false, inputAux: {name: 'fabricaId', id: 'fabrica-id'}}
+    else if type == 'banco'
+        - options = {id : 'bloco-autocomplete-banco', valueDefault: '', placeholder: 'Pesquisa de Bancos', label : 'Banco', isInputAux : false, inputAux: {name: 'bancoId', id: 'banco-id'}}
+    else if type == 'agencia'
+        - options = {id : 'bloco-autocomplete-agencia',  valueDefault: '',placeholder: 'Pesquisa de agência', label : 'Agência', isInputAux : false, inputAux: {name: 'agenciaId', id: 'agencia-id'}}
+    else if type == 'cedente'
+        - options = {id : 'bloco-autocomplete-cedente',  valueDefault: '',placeholder: 'Pesquisa de cedente', label : 'Cedente', isInputAux : false, inputAux: {name: 'cedenteId', id: 'cedente-id'}}
+    else if type == 'vendedor'
+        - options = {id : 'bloco-autocomplete-vendedor',  valueDefault: '',placeholder: 'Pesquisa de vendedor', label : 'Vendedor', isInputAux : false, inputAux: {name: 'vendedorId', id: 'vendedor-id'}}
+    else if type == 'pessoa'
+        - options = {id : 'bloco-autocomplete-pessoa',  valueDefault: '',placeholder: 'Pesquisa de pessoa', label : 'Pessoa', isInputAux : false, inputAux: {name: 'pessoaId', id: 'pessoa-id'}}
+    else if type == 'conta-bancaria'
+        - options = {id : 'bloco-autocomplete-conta-bancaria',  valueDefault: '',placeholder: 'Pesquisa de conta bancária', label : 'Conta Bancária', isInputAux : false, inputAux: {name: 'contaBancariaId', id: 'conta-bancaria-id'}}
+    else if type == 'cheque'
+        - options = {id : 'bloco-autocomplete-cheque',  valueDefault: '',placeholder: 'Pesquisa de cheque', label : 'Cheque', isInputAux : false, inputAux: {name: 'chequeId', id: 'cheque-id'}}
+    
+
+    - data = functionView._.defaultsDeep(data, options)
+
+    .col-xs-12.col-md-12
+        .form-group
+            label(for="") #{data.label}
+            input(type="text" value!=data.valueDefault autocomplete="off" class="input-lg form-control autocomplete-vtt ui-autocomplete-input text-uppercase" id!=data.id placeholder!=data.placeholder)
+            span(style="display:none" class="text-"): strong
+            if(data.isInputAux)
+                input(type="hidden" value="" name=!data.inputAux.name id!=data.inputAux.id)                

@@ -1,0 +1,58 @@
+div#block-list-compra
+    div.row
+        div.col-xs-12
+            div.box.box-primary
+            
+                div.box-header.with-border
+                    h3.box-title Lançamentos
+
+                div.box-body
+
+                    div.row
+                        div.col-xs-12
+                            a.btn.btn-app(href="#home")
+                                i.fa.fa-home
+                                |Início
+
+                            a.btn.btn-app#btn-novo-cadastro(href="#compras/nota-fiscal/entrada")
+                                i.fa.fa-plus
+                                |Nova Nota Entrada
+
+    div.row
+        div.col-xs-12
+            div.box.box-solid.box-success
+                div.box-header.with-border
+                    h3.col-md-6.col-xs-12.box-title Pesquisa
+
+                    div.box-tools.pull-right
+                        button.btn.btn-box-tool(type='button', data-widget='collapse'): i.fa.fa-minus(style={'font-size':'24px'})
+
+                
+                div.box-body#inner-form-pesquisa-nota-entrada
+
+
+    div.row
+        div.col-xs-12
+            div.box.box-primary#overlay-painel-list-cadastro
+
+                div.box-header.with-border
+                    h3.col-md-6.col-xs-12.box-title Lista de Notas Fiscais
+
+                div.box-body
+                
+                    #inner-list-notas-entradas-lancadas-parent
+
+                +overlay()
+
+
+<script></script>
+script(type="template" id="template-form-pesquisa-entrada-nota")
+    include include-lista/form-pesquisa.pug     
+
+<script></script>
+script(type="template" id="template-list-entrada-nota-lancadas-parent")
+    include include-lista/notas-lancadas.pug      
+
+<script></script>
+script(type="template" id="template-list-entrada-nota-info-notas-lancadas")
+    include include-lista/includes/info-nota-entrada/info-nota-entrada.pug                  

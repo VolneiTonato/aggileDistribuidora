@@ -1,0 +1,50 @@
+div#block-form-inventario
+    div.row
+        div.col-xs-12
+            div.box.box-primary
+            
+                div.box-header.with-border
+                    h3.box-title Inventário
+
+                div.box-body
+
+                    div.row
+                        div.col-xs-12
+                            a.btn.btn-app(href="#home")
+                                i.fa.fa-home
+                                |Início
+
+                            a.btn.btn-app(href="#ajuste-inventario/pesquisa")
+                                i.fa.fa-arrow-left
+                                |Voltar
+
+
+    div.row
+        div.col-xs-12
+            div.box.box-primary
+
+                div.box-header.with-border
+                    h3.box-title Lançamento de Inventário
+
+                form(role="form" method="POST" id="form-cadastro" autocomplete="off")
+                    div.box-body
+
+                        div.col-xs-12.col-md-12
+                            div#inner-produto-autocomplete
+
+                        div.col-xs-12.col-md-12
+                            div.form-group
+                                div#inner-lancamento-produto
+
+
+
+<script></script>
+
+script(type="template" id="template-inventario-lancamento-produto-autocomplete")
+    include includes/produto-autocomplete.pug
+
+
+<script></script>
+
+script(type="template" id="template-inventario-lancamento-produto")
+    include includes/produto.pug

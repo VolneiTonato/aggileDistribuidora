@@ -1,0 +1,36 @@
+div.hidden-xs.hidden-sm
+    table.table.table-striped
+        tbody
+            tr
+                th Número
+                th Fábrica
+                th Municipio
+                th Data Lanc.
+                th Total Pedido
+                th Total Itens
+                th Status
+                th Opções
+
+        tbody#inner-pedidos-lancados-desktop
+
+        tfooter
+                tr
+                    td(colspan="8")
+                        div.btn-toolbar
+                            button.btn.btn-lg.input-lg.bg-purple.btn-block.carregar-mais(disabled="disabled") Carregar Mais
+
+div.visible-xs.visible-sm
+
+    div.list-group
+        div#inner-pedidos-lancados-mobile
+
+    div.btn-toolbar
+        button.btn.btn-lg.input-lg.bg-purple.btn-block.carregar-mais(disabled="disabled") Carregar Mais
+
+<script></script>
+script(type="template" id="template-list-pedidos-fabrica-lancados-desktop")
+    include includes/table-list-desktop.pug
+
+<script></script>
+script(type="template" id="template-list-pedidos-fabrica-lancados-mobile")
+    include includes/table-list-mobile.pug          

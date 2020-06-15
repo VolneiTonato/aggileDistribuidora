@@ -1,0 +1,34 @@
+doctype html
+html
+  head
+    title= title
+    meta(charset="utf-8")
+    meta(name="viewport", content="width=device-width, initial-scale=1")
+    meta(http-equiv="X-UA-Compatible" content="IE=edge")
+
+    block styleTemplate
+        link(href="/public/libraries/node_modules/gentelella/vendors/bootstrap/dist/css/bootstrap.min.css", rel="stylesheet")
+        link(href="/public/libraries/node_modules/gentelella/vendors/font-awesome/css/font-awesome.min.css", rel="stylesheet")
+        link(href="/public/libraries/node_modules/gentelella/vendors/iCheck/skins/flat/green.css", rel="stylesheet")
+        link(href="/public/libraries/node_modules/gentelella/vendors/bootstrap-progressbar/css/bootstrap-progressbar-3.3.4.min.css", rel="stylesheet")
+        link(href="/public/libraries/node_modules/gentelella/production/css/maps/jquery-jvectormap-2.0.3.css", rel="stylesheet")
+        link(href="/public/libraries/node_modules/gentelella/build/css/custom.min.css", rel="stylesheet")
+        link(href="/public/libraries/node_modules/gentelella/build/css/custom.min.css" rel="stylesheet")
+
+    block styleLocal
+    
+    
+  body.login
+    div(class="login_wrapper")
+        div(class="animate form login_form")
+            section(class="login_content")
+                block content
+
+
+                
+block sriptTemplate
+    script(src="/public/libraries/node_modules/gentelella/vendors/jquery/dist/jquery.min.js")
+    script(src="/public/libraries/node_modules/gentelella/vendors/bootstrap/dist/js/bootstrap.min.js")
+                    
+block scriptLocal
+

@@ -1,0 +1,89 @@
+div#block-list-financeiro-agencia
+    div.row
+        div.col-xs-12
+            div.box.box-primary
+            
+                div.box-header.with-border
+                    h3.box-title Agências
+
+                div.box-body
+
+                    div.row
+                        div.col-xs-12
+                            a.btn.btn-app(href="#home")
+                                i.fa.fa-home
+                                |Início
+
+                            a.btn.btn-app#btn-novo-cadastro(href="#financeiro/cadastro-de-agencias/novo-cadastro")
+                                i.fa.fa-plus
+                                |Novo Cadastro
+
+    div.row
+        div.col-xs-12
+            div.box.box-solid.box-success
+                div.box-header.with-border
+                    h3.col-md-6.col-xs-12.box-title Pesquisa
+
+                    div.box-tools.pull-right
+                        button.btn.btn-box-tool(type='button', data-widget='collapse'): i.fa.fa-minus(style={'font-size':'24px'})
+
+                
+                div.box-body#inner-form-pesquisa-financeiro-agencia
+
+
+    div.row
+        div.col-xs-12
+
+            div.box.box-primary#overlay-painel-list-cadastro
+
+                div.box-header.with-border
+                    h3.col-md-6.col-xs-12.box-title Lista de Agências
+
+                div.box-body
+
+                    div.hidden-xs.hidden-sm
+
+                        table.table.table-striped
+                            tbody
+                                tr
+                                    th Nome
+                                    th Número / DV
+                                    th CNPJ
+                                    th Banco
+                                    th Bairro
+                                    th Endereço
+                                    th Telefone
+                                    th Ativo
+                                    th Opções
+                            tbody#inner-financeiro-agencias-cadastrados-desktop
+
+                            tfooter
+                                tr
+                                    td(colspan="9")
+                                        div.btn-toolbar
+                                            button.btn.btn-lg.input-lg.bg-purple.btn-block.carregar-mais(disabled="disabled") Carregar Mais
+
+
+
+                    div.visible-xs.visible-sm
+
+                        div.list-group
+                            div#inner-financeiro-agencias-cadastrados-mobile
+
+                        div.btn-toolbar
+                            button.btn.btn-lg.input-lg.bg-purple.btn-block.carregar-mais(disabled="disabled") Carregar Mais
+                
+                +overlay()
+
+
+<script></script>
+script(type="template" id="template-form-pesquisa-financeiro-agencia")
+    include includes/form-pesquisa.pug                      
+
+<script></script>
+script(type="template" id="template-list-table-financeiro-agencias-cadastrados-desktop")
+    include includes/table-list-desktop.pug
+
+<script></script>
+script(type="template" id="template-list-table-financeiro-agencias-cadastrados-mobile")
+    include includes/table-list-mobile.pug                

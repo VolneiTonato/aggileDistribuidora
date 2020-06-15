@@ -1,0 +1,35 @@
+extends ../../../layout-report.pug
+
+
+
+
+block content
+
+    div.block-report
+
+        .row
+            .col-12
+
+                table.table.table-bordered
+                
+                    tr.text-center
+                        th(scope='col') CLIENTE
+                        th(scope='col') MUNICIPIO
+                        th(scope='col') TOTAL DE PRODUTOS
+                        th(scope='col') TOTAL PEDIDO
+
+                    each row in result
+                        tr
+                            td.text-left= FN.StringUtil.toUpperCase(row.clienteRef.cliente.nomeFantasia)
+                            td.text-center= FN.StringUtil.toUpperCase(row.clienteRef.endereco.municipio.descricao)
+                            td.text-center #{row.totalizador.totalItens}
+                            td.text-center= `R$ ${FN.NumberUtil.numberFormat(row.totalizador.totalPedido,2)}`
+                        tr
+                            td(colspan="4")
+                    tr
+                        td(colspan="4")
+
+                    tr
+                        td(scope='col' colspan="2"): strong TOTAL GERAL
+                        td.text-center: strong #{data.totalGeralItens}
+                        td.text-center: strong= `R$ ${FN.NumberUtil.numberFormat(data.totalGeralPedido,2)}`

@@ -1,0 +1,46 @@
+extends ../../../templates/admin-lte/template.pug
+
+include extras/mixin.pug
+
+include extras/mixin-form.pug
+
+block styleTemplateBeforeInit
+    meta(name="google-site-verification" content="eMVej3Mt9BofR58LgGM5U8-SfDiWurubIf4eqvmK5n0")
+    link(href="/public/libraries/bower/select2/dist/css/select2.min.css", rel="stylesheet")
+    link(href="/public/libraries/bower/select2-bootstrap-theme/dist/select2-bootstrap.min.css", rel="stylesheet")
+    link(href="/public/libraries/bower/jquery-ui/themes/smoothness/jquery-ui.min.css", rel="stylesheet")
+    link(rel="stylesheet" href="/public/libraries/bower/jstree/dist/themes/default/style.min.css")
+    link(rel="manifest", href="/public/manifest.json")
+
+block header
+    +headerMasterTemplate()
+
+
+block menuLeft
+    include extras/menu-left.pug    
+
+block content
+    div#inner-content
+
+
+block append scriptLocal
+
+    include extras/underscore/underscore.pug
+
+    
+
+
+block scriptTemplateBeforeInit
+    script(src="/public/libraries/bower/chart.js/Chart.js")
+    script(src="https://cdnjs.cloudflare.com/ajax/libs/mobile-detect/1.4.1/mobile-detect.min.js")
+    script(src="/public/libraries/bower/select2/dist/js/select2.full.min.js")
+    script(src="/public/libraries/bower/jquery.inputmask/dist/min/inputmask/inputmask.min.js")
+    script(src="/public/libraries/bower/jquery.inputmask/dist/min/inputmask/jquery.inputmask.min.js")
+    script(src="/public/libraries/bower/jquery.inputmask/dist/min/inputmask/inputmask.numeric.extensions.min.js")
+    script(src="/public/libraries/bower/jquery-price-format/jquery.priceformat.min.js")
+    script(src="/public/libraries/bower/moment/min/moment.min.js")
+    script(src="https://cdnjs.cloudflare.com/ajax/libs/dexie/3.0.0-alpha.3/dexie.min.js")
+
+block scriptAfter
+    script(src="/public/dist/vendorAdmin.bundle.js")
+    script(src="/public/dist/aggileDistribuidoraReports.bundle.js")

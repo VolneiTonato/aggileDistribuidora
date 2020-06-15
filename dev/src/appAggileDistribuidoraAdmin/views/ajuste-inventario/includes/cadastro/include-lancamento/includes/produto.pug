@@ -1,0 +1,44 @@
+div.box.box-primary.box-solid
+    div.box-body.bg-gray-active.color-palette#form-lancamento-inventario(data-item!="<%- JSON.stringify(inventario) %>")
+        div.col-xs-12.col-md-8
+            div.form-group
+                label.text-left Produto
+                input(type="text" required value!="<%= _.get(inventario,'descricao') %>" class="form-control input-lg text-uppercase" name="lancamento_produtoText" id="lancamento-produto-text" readonly="readonly")
+
+        div.col-xs-12.col-md-4
+            div.form-group
+                label.text-center(for="referencia") Quantidade
+                input(type="text" required class="text-center form-control input-lg text-uppercase integer" id="lancamento-quantidade" name="lancamento_quantidade" placeholder="Quantidade")
+
+
+        div.col-xs-12.col-md-4
+            div.form-group.form-group-lg
+                label(for="operacao") Operação
+                select#lancamento-operacao.form-control.input-lg.select2.select2-container(name="lancamento_operacao")
+                +overlay()
+
+        div.col-xs-12.col-md-2
+            div.form-group
+                label.text-center(for="referencia") Tipo Unidade
+                select#lancamento-tipo-unidade.text-center.form-control.input-lg.text-uppercase(name="lancamento_tipoUnidade")
+                    option(value="FARDO") FARDO
+                    option(value="UNITARIO") UNITÁRIO
+
+
+        div.clear-fix
+
+        div.col-xs-12.col-md-12
+            div.form-group
+                label.text-center Observação
+                input(type="text" class="form-control input-lg text-uppercase" id="lancamento-observacao" name="lancamento_observacao" placeholder="Observação")
+
+        div.clear-fix
+        input(type="hidden" required value!="<%= _.get(inventario,'id') %>" class="form-control input-lg text-uppercase" id="lancamento-produto-id" name="lancamento_produtoId")
+
+        
+    div.box-footer.bg-gray-active.color-palette
+
+        div.col-xs-12
+            div.btn-toolbar
+                button.btn.btn-lg.input-lg.btn-warning#lancar-produto-inventario Lançar
+                button.btn.btn-lg.input-lg.btn-danger#cancelar-lancamento Cancelar

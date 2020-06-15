@@ -1,0 +1,90 @@
+doctype html
+html(lang="en")
+    head
+        meta(charset="utf8-8")
+        meta(name="viewport", content="width=device-width, initial-scale=1.0")
+        meta(http-equiv="X-UA-Compatible", content="ie=edge")
+        meta(name="keywords" content="bebidas alcoólicas, bebidas, drinks, bebidas para bares, bebidas para mercado")
+        meta(name="description" content="Aggile Distribuidora")
+        meta(name="author" content="Volnei Tonato")
+        meta(name="google-site-verification" content="eMVej3Mt9BofR58LgGM5U8-SfDiWurubIf4eqvmK5n0")
+        link(rel="shortcut icon" href="/public/imagens/aggile-distribuidora/favicon.ico" type="image/x-icon")
+        link(rel="icon" href="/public/imagens/aggile-distribuidora/favicon.ico" type="image/x-icon")
+        link(rel="manifest", href="/public/manifest.json")
+
+        title AGGILE Distribuidora
+
+
+        block style
+            link(rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css")
+            link(href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet")
+            link(href="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.5.0/css/mdb.min.css" rel="stylesheet")
+            link(rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.3.5/jquery.fancybox.min.css")
+
+
+            
+
+
+        block styleAfter
+            link(rel="stylesheet" href="/public/styles/aggile-distribuidora/template.css")
+
+    body
+        if(tokenAccess)
+            div#tokenAccess(style={"display":"none"}) #{tokenAccess}
+
+        block navPrincipal
+            include extras/nav-principal.pug
+
+        block conteudo
+
+
+        block returnTop
+            a(id="back-to-top" style={"display":"none"} href="#" class="btn btn-primary btn-small back-to-top" role="button" title="Voltar ao topo" data-toggle="tooltip" data-placement="top")
+                i(class="fa fa-arrow-up" aria-hidden="true")
+
+
+        block footer
+            include extras/footer.pug
+
+            // Modal
+            #basicExampleModal.modal.fade(tabindex='-1', role='dialog', aria-labelledby='exampleModalLabel', aria-hidden='true')
+                .modal-dialog(role='document')
+                    .modal-content
+                        .modal-header
+                            h5#exampleModalLabel.modal-title Aggile Distribuidora
+                        .modal-body
+                            | Você tem mais de 18 anos?
+                        .modal-footer
+                            button.btn.btn-primary#btn-maior-18-anos(type='button') SIM
+                            button.btn.btn-secondary#btn-nao-maior-18-anos(type='button', data-dismiss='modal') NÃO
+
+        
+        block script
+            script(type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js")
+            script(type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.13.0/umd/popper.min.js")
+            script(type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.0.0/js/bootstrap.min.js")
+            script(type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.5.0/js/mdb.min.js")
+            script(type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery.lazy/1.7.7/jquery.lazy.min.js")
+            script(type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery.lazy/1.7.7/jquery.lazy.plugins.min.js")
+            script(type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.21.0/moment.min.js")
+            script(type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.21.0/locale/pt-br.js")
+            script(type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/underscore.js/1.8.3/underscore-min.js")
+            script(type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/backbone.js/1.3.3/backbone-min.js")
+            script(type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.3.5/jquery.fancybox.min.js")
+            script(src="https://cdnjs.cloudflare.com/ajax/libs/mobile-detect/1.4.1/mobile-detect.min.js")
+            script(src="/public/dist/vendorSite.bundle.js")
+
+        block scriptTemplate
+
+            script(type="template" id="template-loader")
+                include ./extras/templates-underscore/loader.pug
+
+        block scriptAfter
+            script(src="/public/dist/aggileDistribuidora.bundle.js")
+            
+            script(async src="https://www.googletagmanager.com/gtag/js?id=UA-43395902-2")
+            script.
+                window.dataLayer = window.dataLayer || [];
+                function gtag(){dataLayer.push(arguments);}
+                gtag('js', new Date());
+                gtag('config', 'UA-43395902-2');

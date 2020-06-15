@@ -1,0 +1,103 @@
+script(type="template" id="template-autocomplete-cliente")
+	p
+		strong Razão Social: <%= cliente.razaoSocial %> | Fantasia: <%= cliente.nomeFantasia %>
+		<br/>
+		|Código: <%= id %> | CNPJ/CPF: <%= cliente.cnpjCpf %>
+		<% if(telefones) {%>
+		| | Telefone: <%= telefones.map((item) => { return item.numero }) %>
+		<% } %>
+		<% if('endereco' in window) {%>
+		| | Endereço: <%= endereco.bairro %> | <%= endereco.logradouro %>
+		| | Municipio: <%= endereco.municipio.descricao %> | UF: <%= endereco.municipio.estado.uf %>
+		<% } %>
+
+
+script(type="template" id="template-autocomplete-conta-bancaria")
+	p
+		strong Titular: <%= titular %>&nbsp;|&nbsp;
+		<% if(['cliente','fabrica','cedente','vendedor'].indexOf(tipoCadastro) !== -1){ %>
+		strong <%= _.startCase(tipoCadastro) %>: <%= _.get(pessoa, 'nome') %>
+		<% } %>
+		<br/>
+		|Código: <%= id %> | CNPJ/CPF: <%= cnpjCpf%>
+		| | Banco: <%= _.get(pessoaAgencia, 'agencia.banco.descricao') %>
+		<br/>
+		|Agência: <%= _.get(pessoaAgencia, 'agencia.nome') %> / Nº <%= _.get(pessoaAgencia, 'agencia.numero') %>
+		<br/>
+		<% if(telefones) {%>
+		| | Telefone: <%= telefones.map((item) => { return item.numero }) %>
+		<% } %>
+
+
+script(type="template" id="template-autocomplete-cheque")
+	p
+		strong Número: <%= numero %>&nbsp;|&nbsp;
+		strong Emissor (<%= _.startCase(tipoEmissor) %>): <%= _.get(emissor, 'nome') %>
+		<br/>
+		|Emissão: <%= createdAt %> | Data Pré Datado: <%= dataPreDatado %>
+		<br />
+		|Titular: <%= _.get(contaBancaria, 'titular') %>
+		<br />
+		|Banco: <%= _.get(contaBancaria, 'pessoaAgencia.agencia.banco.descricao') %>
+		<br/>
+		|Agência: <%= _.get(contaBancaria, 'pessoaAgencia.agencia.nome') %> / Nº <%= _.get(contaBancaria, 'pessoaAgencia.agencia.numero') %>
+
+
+script(type="template" id="template-autocomplete-fabrica")
+	p
+		strong Razão Social: <%= fabrica.razaoSocial %> | Fantasia: <%= fabrica.nomeFantasia %>
+		<br/>
+		|Código: <%= id %> | CNPJ/CPF: <%= fabrica.cnpjCpf %>
+		<% if(telefones) {%>
+		|Telefone: <%= telefones.map((item) => { return item.numero }) %>
+		<% } %>
+		<% if('endereco' in window) {%>
+		|Endereço: <%= endereco.bairro %> | <%= endereco.logradouro %>
+		|Municipio: <%= endereco.municipio.descricao %> | UF: <%= endereco.municipio.estado.uf %>
+		<% } %>()
+
+
+script(type="template" id="template-autocomplete-cedente")
+	p
+		strong Razão Social: <%= cedente.razaoSocial %> | Fantasia: <%= cedente.nomeFantasia %>
+		<br/>
+		|Código: <%= id %> | CNPJ/CPF: <%= cedente.cnpjCpf %>
+		<% if(telefones) {%>
+		|Telefone: <%= telefones.map((item) => { return item.numero }) %>
+		<% } %>
+		<% if('endereco' in window) {%>
+		|Endereço: <%= endereco.bairro %> | <%= endereco.logradouro %>
+		|Municipio: <%= endereco.municipio.descricao %> | UF: <%= endereco.municipio.estado.uf %>
+		<% } %>
+	
+
+script(type="template" id="template-autocomplete-vendedor")
+	p
+		strong Nome Completo: <%= vendedor.nomeCompleto %>
+		<br/>
+		|Código: <%= id %> | CNPJ/CPF: <%= vendedor.cnpjCpf %>
+		|Telefone: <%= telefones.map((item) => { return item.numero }) %>
+		|Endereço: <%= endereco.bairro %> | <%= endereco.logradouro %>
+		|Municipio: <%= endereco.municipio.descricao %> | UF: <%= endereco.municipio.estado.uf %>		
+
+
+script(type="template" id="template-autocomplete-agencia")
+	p
+		strong Nome: <%= agencia.nome %>
+		<br/>
+		|Código: <%= agencia.numero %> | CNPJ/CPF: <%= agencia.cnpjCpf %>
+		|Telefone: <%= telefones.map((item) => { return item.numero }) %>
+		|Endereço: <%= endereco.bairro %> | <%= endereco.logradouro %>
+		|Municipio: <%= endereco.municipio.descricao %> | UF: <%= endereco.municipio.estado.uf %>
+
+
+script(type="template" id="template-autocomplete-produto")
+	p
+		strong (<%= referencia  %>) | <%= descricao %>
+		<br />
+		<strong>Volume:</strong> <span class="text-primary"><%= volume.descricao %></span>
+		<strong>Grupo:</strong> <span class="text-primary"><%= grupo.breadCrumb %></span>
+		<strong>Tipo Unidade:</strong> <span class="text-primary"><%= tipoUnidade.descricao %></span>
+		<strong>Estoque:</strong> <span class="text-danger"><%= estoque %></span>
+		<strong>Custo:</strong> <span class="text-info"><%= custo %></span>
+		<strong>Preço Venda:</strong> <span class="text-success"><%= precoVenda %></span>

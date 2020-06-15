@@ -1,0 +1,15 @@
+table.table.table-striped
+    tbody
+        tr
+            th Nome Completo
+            th Opções
+        <% if(typeof(usuarios) !== 'undefined'){ %>
+        <% _.each(usuarios, function(item) { %>
+
+        tr.row-item-list(data-item!="<%- JSON.stringify(item) %>")
+            td <%= item.nome %>
+            td
+                div.btn-toolbar
+                    button.btn.btn-success.btn-editar-cadastro(type="button") Editar
+        <% }) %>
+        <% } %>

@@ -1,0 +1,75 @@
+.row
+    .col-xs-12
+        form(role="form" autocomplete="off")
+
+            .box.box-primary.box-solid
+
+                .box-header.with-border
+                    h3.box-title Nota Entrada
+
+                .box-body
+
+
+                    div.col-xs-12.col-md-4
+                        div.form-group
+                            label Código
+                            input(type="text" disabled value!="<%= _.get(form,'id') %>" class="form-control input-lg text-uppercase")
+
+
+                    div.col-xs-12.col-md-4
+                        div.form-group
+                            label Número
+                            input(type="text" disabled value!="<%= _.get(form,'numero') %>" class="form-control input-lg text-uppercase")
+
+
+
+
+                    div.col-xs-12.col-md-4
+                        div.form-group
+                            label Data Emissão
+                            input(type="text" disabled value!="<%= App_vendorAdmin.DateUtil.formatToPtBR(_.get(form,'data')) %>" class="form-control input-lg text-uppercase")
+
+
+                    div.col-xs-12.col-md-4
+                        div.form-group
+                            label Data Entrada
+                            input(type="text" disabled value!="<%= App_vendorAdmin.DateUtil.formatToPtBR(_.get(form,'createdAt')) %>" class="form-control input-lg text-uppercase")
+
+                    div.col-xs-12.col-md-6
+                        div.form-group
+                            label Fábrica
+                            input(type="text" disabled value!="<%= _.get(form,'pessoaFabrica.fabrica.razaoSocial') %>" class="form-control input-lg text-uppercase")
+
+                    div.clear-fix
+
+                    div.col-xs-12.col-md-12
+                        div.form-group
+                            label Chave Acesso NF
+                            input(type="text" disabled value!="<%= _.get(form,'chaveAcessoNF') %>" class="form-control input-lg text-uppercase")
+
+
+                    .col-xs-12.col-md-2
+                        .form-group
+                            label.text-center Status
+                            input(type="text" disabled required value!="<%= App_vendorAdmin.ObjectUtil.getValueProperty(form, 'status') %>" class="form-control input-lg text-uppercase")
+
+                    .clearfix
+
+            .box.box-primary.box-solid
+
+                .box-header.with-border
+                    h3.box-title Produtos
+
+                .box-body
+
+                    div.hidden-xs.hidden-sm
+                        include produtos-lancados-desktop.pug
+                        
+                    div.visible-xs.visible-sm
+                        include produtos-lancados-mobile.pug
+
+                    include ../../../include-lancamento/includes/total-nota.pug
+
+
+
+                        

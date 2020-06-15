@@ -1,0 +1,52 @@
+<script></script>
+
+script(type="template" id="template-financeiro-cheque-form-deposito")
+    div#form-deposito-cheque
+
+        div.col-xs-12
+            h6.alert.alert-info Depósito de Cheque
+
+        
+        +autoComplete('conta-bancaria')
+
+
+        <hr />
+
+
+        div.col-xs-12
+            div.form-group
+
+                .box.box-solid.box-info
+                    .box-header.with-border
+                        h3.box-title Dados da Conta
+                        
+                    .box-body
+
+                        div.col-xs-12
+                            div.form-group
+
+                                .box.box-solid.box-primary
+                                    .box-header.with-border
+                                        h3.box-title Agência
+                                        
+                                    .box-body
+                                        #inner-dados-conta-bancaria-agencia
+
+                        div.col-xs-12
+                            div.form-group
+
+                                .box.box-solid.box-primary
+                                    .box-header.with-border
+                                        h3.box-title Titular da Conta
+                                        
+                                    .box-body
+                                        #inner-dados-conta-pessoa
+
+        div.col-xs-12
+            div.form-group
+                div.hidden-xs.hidden-sm
+                    div.btn-toolbar
+                        button.btn.btn-lg.input-lg.btn-success.btn-depositar-cheque(type="button") Lançar para depóstio
+
+                div.visible-xs.visible-sm
+                    button.btn.btn-success.btn-depositar-cheque.btn-block.input-lg(type="button") Lançar para depóstio

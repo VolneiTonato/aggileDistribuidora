@@ -1,0 +1,176 @@
+div#block-form-produto
+    div.row
+        div.col-xs-12
+            div.box.box-primary
+            
+                div.box-header.with-border
+                    h3.box-title Produtos
+
+                div.box-body
+
+                    div.row
+                        div.col-xs-12
+                            a.btn.btn-app(href="#home")
+                                i.fa.fa-home
+                                |Início
+
+                            a.btn.btn-app(href="#cadastro-de-produtos/pesquisa")
+                                i.fa.fa-arrow-left
+                                |Voltar
+
+                            a.btn.btn-app#btn-novo-cadastro
+                                i.fa.fa-plus
+                                |Novo Produto
+
+
+    div.row
+        div.col-xs-12
+            div.box.box-primary
+
+                div.box-header.with-border
+                    h3.box-title Cadastro de Produtos
+
+                form(role="form" method="POST" id="form-cadastro" autocomplete="off")
+                    div.box-body
+
+                        div.col-xs-12.col-md-4
+                            div.form-group
+                                label(for="referencia") Código Referência
+                                input(type="text" required value!="<%= _.get(form,'referencia') %>" class="form-control input-lg text-uppercase" name="referencia" id="referencia" placeholder="Código Referência")
+
+                        div.col-xs-12.col-md-8
+
+                            div.form-group
+                                label(for="descricao") Descrição
+                                input(type="text" required value!="<%= _.get(form,'descricao') %>" class="form-control input-lg text-uppercase" name="descricao" id="descricao" placeholder="Descrição")
+
+                        div.clearfix 
+                        
+                        div.col-xs-12.col-md-2
+                            div.form-group
+                                label(for="estoque") Estoque Atual
+                                input(type="text" required value!="<%= _.get(form, 'estoque') %>" class="form-control input-lg" name="estoque" id="estoque" placeholder="Estoque Atual")
+
+                        div.col-xs-12.col-md-2
+                            div.form-group
+                                label(for="fracao") Fração
+                                input(type="text" required value!="<%= _.get(form, 'fracao') %>" class="form-control input-lg integer" name="fracao" id="fracao" placeholder="Fração")
+
+                        div.col-xs-12.col-md-8
+                            div.form-group.form-group-lg
+                                label(for="fabrica") Fábrica
+                                select#fabrica.form-control.input-lg.select2.select2-container(name="fabricaId")
+                                +overlay()
+
+                        
+
+                        div.clearfix        
+
+                        div.col-xs-12.col-md-3
+                            div.form-group
+                                label(for="custo") Custo
+                                input(type="text" required value!="<%= _.get(form, 'custo') %>" class="form-control input-lg currency" name="custo" id="custo" placeholder="Custo")
+
+
+                        div.col-xs-12.col-md-3
+                            div.form-group
+                                label(for="margem-lucro") Margem de Lucro %
+                                input(type="text" required value!="<%= _.get(form, 'margemLucro') %>" class="form-control input-lg currency" name="margemLucro" id="margem-lucro" placeholder="Margem de Lucro")
+
+                        div.col-xs-12.col-md-3
+                            div.form-group
+                                label(for="precoVenda") Preço de Venda
+                                input(type="text" value!="<%= _.get(form, 'precoVenda') %>" class="form-control input-lg currency" name="precoVenda" id="preco-venda" placeholder="Preço de Venda")
+
+
+                        div.col-xs-12.col-md-3
+                            div.form-group
+                                label(for="comissao") Comissão
+                                input(type="text" required value!="<%= _.get(form, 'comissao') %>" class="form-control input-lg currency" name="comissao" id="comissao" placeholder="Comissão")
+
+                        div.clearfix
+
+                        div.col-xs-12.col-md-3
+                            div.form-group
+                                label(for="peso") Peso
+                                input(type="text" required value!="<%= _.get(form, 'peso') %>" class="form-control input-lg currency" name="peso" id="peso" placeholder="Peso")
+
+
+                        div.col-xs-12.col-md-3
+                            div.form-group
+                                label(for="altura") Altura
+                                input(type="text" required value!="<%= _.get(form, 'altura') %>" class="form-control input-lg currency" name="altura" id="altura" placeholder="Altura")
+
+
+                        div.col-xs-12.col-md-3
+                            div.form-group
+                                label(for="largura") Largura
+                                input(type="text" required value!="<%= _.get(form, 'largura') %>" class="form-control input-lg currency" name="largura" id="largura" placeholder="Largura")
+
+
+                        div.col-xs-12.col-md-3
+                            div.form-group
+                                label(for="comprimento") Comprimento
+                                input(type="text" required value!="<%= _.get(form, 'comprimento') %>" class="form-control input-lg currency" name="comprimento" id="compimento" placeholder="Comprimento")
+
+
+                        div.clearfix
+
+
+                        div.col-xs-12.col-md-3
+                            div.form-group.form-group-lg
+                                label(for="tipoUnidade") Tipo Unidade
+                                select#tipo-unidade.form-control.input-lg.select2.select2-container(name="tipoUnidadeId")
+                                +overlay()
+
+                        div.col-xs-12.col-md-3
+                            div.form-group
+                                label(for="unidadePorEmbalagem") Unidade por Embalagem
+                                input(type="text" required value!="<%= _.get(form, 'unidadePorEmbalagem') %>" class="form-control input-lg integer" name="unidadePorEmbalagem" id="unidade-por-embalagem" placeholder="Unidade por Embalagem")
+
+                        div.col-xs-12.col-md-3
+                            div.form-group
+                                label(for="graduacaoAlcoolica") Graduação Alcoolica
+                                input(type="text" required value!="<%= _.get(form, 'graduacaoAlcoolica') %>" class="form-control input-lg percent" name="graduacaoAlcoolica" id="graduacao-alcoolica" placeholder="Graduação Alcoolica")
+
+                        div.col-xs-12.col-md-3
+                            div.form-group.form-group-lg
+                                label(for="volume") Volume
+                                select#volume.form-control.input-lg.select2.select2-container(name="volumeId")
+                                +overlay()
+
+                        div.col-xs-12.col-md-3
+                            div.form-group.form-group-lg
+                                label(for="status") Ativo
+                                select#status.form-control.input-lg(name="status")
+                                +overlay()
+
+
+                        div.col-xs-12.col-md-9
+                            div.form-group
+                                label(for="observacao") Descrição
+                                textarea#descricao-detalhada(class="form-control input-lg text-uppercase" name="descricaoDetalhada", cols="5", rows="5")
+                                    <%= _.get(form,'descricaoDetalhada') %>
+
+                        div.clearfix
+
+
+                        
+
+                        div.col-xs-12.col-md-12
+                            div.form-group.form-group-lg
+                                label Grupo
+                                div#grupos-tree-view
+                                +overlay()
+        
+                        div.clearfix
+
+                        div.col-xs-12
+                            div.form-group
+                                input(type="hidden" value!="<%= _.get(form,'id') %>" class="form-control input-sm hidden" name="id" id="id")
+                                input(type="hidden" value!="<%= _.get(form,'grupoId') %>" class="form-control input-sm hidden" name="grupoId" id="grupo-id")
+
+                    div.box-footer
+
+                        div.col-xs-12.col-md-12
+                            button(type="button" class="btn btn-primary btn-lg input-lg" id="save") Salvar

@@ -1,0 +1,37 @@
+<% if(typeof(recebimentos) !== 'undefined'){ %>
+<% _.each(recebimentos, function(item) { %>     
+
+
+tr(data-item!="<%- JSON.stringify(item) %>" class="row-item-list")
+    td 
+        <%= item.id %>
+        <% if(App_vendorAdmin.ObjectUtil.getValueProperty(item, 'notaEntrada.id')){ %>
+        | / Nota Entrada <%= item.notaEntrada.id %>
+        <% } %>
+
+    td <%= App_vendorAdmin.DateUtil.formatToPtBR(item.createdAt) %>
+
+
+    td <%= item.descricao %>
+    
+    <% if(['cliente','fabrica','cedente'].indexOf(_.get(item, 'pessoa.tipoPessoa')) !== -1){ %>
+        td <%= _.startCase(item.pessoa.tipoPessoa) %> :  <%= item.pessoa[item.pessoa.tipoPessoa].nomeFantasia %>
+        td <%= _.get(item,'pessoa.endereco.municipio.descricao') %>
+    <% }else if(_.get(item, 'pessoa.tipoPessoa') == 'vendedor'){ %>
+        td Vendedor :  <%= _.get(item, 'pessoa.vendedor.nome') %>
+        td <%= _.get(item,'pessoa.endereco.municipio.descricao') %>
+    <% }else{ %>
+        td
+        td
+    <% } %>
+    
+    td R$ <%= App_vendorAdmin.NumberUtil.numberFormat(item.valor,2) %>
+    td R$ <%= App_vendorAdmin.NumberUtil.numberFormat(item.saldo,2) %>
+    td.status-print <%= item.status %>
+    td
+        div.btn-toolbar
+            button.btn.btn-info.btn-visualizar-despesa.btn-sm(type="button"): i.fa.fa-eye
+            button.btn.btn-danger.btn-cancelar-despesa.btn-sm(type="button"): i.fa.fa-remove
+            button.btn.btn-success.btn-pagar-total-despesa.btn-sm(type="button" style={'display' : 'none'}): i.fa.fa-check-circle
+<% }) %>
+<% } %>

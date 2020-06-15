@@ -1,0 +1,44 @@
+div.box.box-primary.box-solid
+    div.box-header.with-border
+        h3.box-title Informação Cliente
+        div.box-tools.pull-right
+            button.btn.btn-box-tool(type="button" data-widget="collapse"): i.fa.fa-minus
+
+    div.box-body.bg-gray-active.color-palette
+        div.col-xs-12.col-md-6
+            div.form-group
+                label.text-left Razão Social
+                input(type="text" required value!="<%= _.get(cliente,'razaoSocial') %>" class="form-control input-lg text-uppercase" readonly="readonly")
+
+        div.col-xs-12.col-md-6
+            div.form-group
+                label.text-left Nome Fantasia
+                input(type="text" required value!="<%= _.get(cliente,'nomeFantasia') %>" class="form-control input-lg text-uppercase" readonly="readonly")
+
+
+        div.col-xs-12.col-md-6
+            div.form-group
+                label.text-left Endereço
+                input(type="text" required value!="<%= _.get(cliente,'endereco.logradouro') %>" class="form-control input-lg text-uppercase" readonly="readonly")
+
+        div.col-xs-12.col-md-6
+            div.form-group
+                label.text-left Bairro
+                input(type="text" required value!="<%= _.get(cliente,'endereco.bairro') %>" class="form-control input-lg text-uppercase" readonly="readonly")
+
+        div.col-xs-12.col-md-6
+            div.form-group
+                label.text-left Municipio
+                input(type="text" required value!="<%= _.get(cliente,'endereco.municipio.descricao') %>" class="form-control input-lg text-uppercase" readonly="readonly")
+
+        div.col-xs-12.col-md-2
+            div.form-group
+                label.text-center UF
+                input(type="text" required class="text-center form-control input-lg text-uppercase integer" value!="<%= _.get(cliente,'endereco.municipio.estado.uf') %>"  readonly="readonly")
+
+        
+    div.box-footer.bg-gray-active.color-palette
+
+        div.col-xs-12
+            div.form-group
+                button.btn.btn-lg.input-lg.btn-warning#selecionar-outro-cliente Selecionar Outro Cliente

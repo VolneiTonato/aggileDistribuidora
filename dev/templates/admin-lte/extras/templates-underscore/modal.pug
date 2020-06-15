@@ -1,0 +1,10 @@
+script(type="template" id="template-modal")
+    div(id!="bloco-modal-vtt-<%= hash %>",  style={'display':'none'} title!="<%= title %>")
+        div(class="row")
+            <% if(typeof(iframe) == 'object'){%>
+                div(class="col-lg-12")
+                    iframe(src!="<%= iframe.src %>" width!="<%= iframe.width %>" height!="<%= iframe.height %>")
+            <%}else{%>
+                div(class="col-lg-12")
+                    <%= html %>
+            <% } %>

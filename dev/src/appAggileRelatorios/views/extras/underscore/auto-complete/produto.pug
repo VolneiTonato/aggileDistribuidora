@@ -1,0 +1,10 @@
+script(type="template" id="template-autocomplete-produto")
+    p
+        strong (<%= referencia  %>) | <%= descricao %>
+        <br />
+        <strong>Volume:</strong> <span class="text-primary"><%= volume.descricao %></span>
+        <strong>Grupo:</strong> <span class="text-primary"><%= grupo.breadCrumb %></span>
+        <strong>Tipo Unidade:</strong> <span class="text-primary"><%= tipoUnidade.descricao %></span>
+        <strong>Estoque:</strong> <span class="text-danger"><%= estoqueAtual %></span>
+        <strong>Custo:</strong> <span class="text-info"><%= custo %></span>
+        <strong>Preço Venda:</strong> <span class="text-success"><%= precoVenda %></span>        

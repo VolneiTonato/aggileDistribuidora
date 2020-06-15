@@ -1,0 +1,23 @@
+<% if(typeof(enderecos) !== 'undefined'){ %>
+<% _.each(enderecos, function(item) { %>
+
+    div.visible-xs.visible-sm.list-group-item.list-group-item-action.flex-column.align-items-start.row-item-list(data-item!="<%- JSON.stringify(item) %>")
+
+        div.d-flex.w-100.justify-content-between
+            h5.mb-1: <strong>Bairro:</strong> <%= item.bairro %>
+
+            h5.mb-1: <strong>Endereço:</strong> <%= item.logradouro %>
+
+            h5.mb-1: <strong>CEP:</strong> <%= item.cep %>
+
+            h5.mb-1: <strong>Lat. Long.:</strong> <%= item.latitudeLongitude %>
+
+            h5.mb-1: <strong>Municipio:</strong> <%= _.get(item, 'municipio.descricao') %>
+
+            h5.mb-1: <strong>UF:</strong> <%= _.get(item, 'municipio.estado.uf') %>
+
+            button.btn.btn-success.btn-editar-cadastro.btn-block.input-lg(type="button"): i.fa.fa-pencil
+            button.btn.btn-info.google-maps.btn-block.input-lg(type="button"  data-position!="<%= _.get(item, 'latitudeLongitude') %>"): i.fa.fa-map-marker
+
+<% }) %>
+<% } %>

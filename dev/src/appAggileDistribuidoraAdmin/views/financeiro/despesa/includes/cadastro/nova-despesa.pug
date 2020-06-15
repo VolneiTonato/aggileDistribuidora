@@ -1,0 +1,53 @@
+div.row
+    div.col-xs-12
+        div.box.box-primary
+        
+            div.box-header.with-border
+                h3.box-title Despesas
+
+            div.box-body
+
+                div.row
+                    div.col-xs-12
+                        a.btn.btn-app(href="#home")
+                            i.fa.fa-home
+                            |Início
+
+                        a.btn.btn-app(href="#financeiro/despesa/pesquisa")
+                            i.fa.fa-arrow-left
+                            |Contas a pagar
+
+
+
+<script></script>
+
+script(type="template" id="template-financeiro-despesa-lancamento-form-principal")
+    include include-lancamento/form.pug
+
+<script></script>
+
+script(type="template" id="template-financeiro-despesa-lancamento-cabecalho")
+    include include-lancamento/cabecalho.pug
+
+<script></script>
+
+script(type="template" id="template-financeiro-despesa-lancamento-historico-form")
+    include include-lancamento/historico.pug
+
+<script></script>
+
+script(type="template" id="template-financeiro-despesa-historicos-lancados")
+    include include-lancamento/historicos-lancados.pug    
+
+<script></script>
+
+script(type="template" id="template-financeiro-despesa-historicos-pagamento-form")
+    include include-lancamento/historico-pagamento.pug    
+
+<script></script>
+script(type="template" id="template-financeiro-despesa-lancamento-parcela-form")
+    include include-lancamento/includes/form-parcela.pug 
+
+<script></script>
+script(type="template" id="template-financeiro-despesa-lancamento-troco-form")
+    include include-lancamento/includes/form-troco.pug 

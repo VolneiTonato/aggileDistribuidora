@@ -1,0 +1,84 @@
+extends ../../../layout-report.pug
+
+
+
+block content
+
+    div.block-report
+
+        each nota in result
+
+            .row
+                table.table
+                    tbody
+                        tr
+                            td(colspan="6")
+
+            .row
+                table.table
+                    tbody
+                        tr
+                            th.text-center.text-default(scope="col" colspan="6")
+                                h3
+                                    |Nota nº 
+                                    = nota.numero || nota.id
+                        tr.text-left
+                            th(scope='col' colspan="1") Fabrica:
+                            td.text-info.text-left(colspan="7") #{nota.pessoaFabrica.fabrica.nomeFantasia}
+
+                        tr.text-left
+                            th(scope='col') Data Entrada:
+                            td.text-info.text-left= FN.DateUtil.momentToPug(nota.data, 'DD/MM/YYYY')
+                            th(scope='col') Status:
+                            td.text-info.text-left= FN.StringUtil.toUpperCase(nota.status)
+
+                        tr
+                            td(colspan="6")
+                        
+            
+            .row
+                table.table.table-bordered
+                    thead
+                        tr.text-center
+                            th(scope='col') REF.
+                            th.text-left(scope='col') PRODUTO
+                            th(scope='col') UN.
+                            th(scope='col') BON.
+                            th(scope='col') CUSTO UN.
+                            th(scope='col') CUSTO
+                            th(scope='col') QTD
+                            th(scope='col') TOTAL
+
+                    tbody
+                        if nota.itens
+                            
+                            each item in nota.itens
+                                - let valorUnitario = FN.NumberUtil.numberFormat(FN.NumberUtil.divisao(item.custo, item.produto.fracao), 2)
+                                tr
+                                    td.text-center #{item.produto.referencia}
+                                    td.text-left #{item.produto.descricao}
+                                    td.text-center #{item.tipoUnidade}
+
+                                    if item.isBonificado
+                                        td.text-center <span class="badge badge-info">SIM</span>
+                                    else
+                                        td.text-center NÃO
+
+                                    td.text-center= valorUnitario
+
+                                    if item.tipoUnidade == 'UNITARIO'
+                                        td.text-center= valorUnitario
+                                    else
+                                        td.text-center= FN.NumberUtil.numberFormat(item.custo, 2)
+
+                                    td.text-center #{item.quantidade}
+                                    td.text-center= FN.NumberUtil.numberFormat(item.total,2)
+
+                            tr
+                                td(colspan="8")
+                            tr
+                                th.text-left(colspan="6") TOTAL
+                                th.text-center #{nota.totalItens}
+                                th.text-center= `R$ ${FN.NumberUtil.numberFormat(nota.total,2)}`
+
+            div(style="page-break-before:always;")

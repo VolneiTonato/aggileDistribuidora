@@ -1,0 +1,11 @@
+<% if(typeof(inventarios) !== 'undefined'){ %>
+<% _.each(inventarios, function(item) { %>
+
+tr.row-item-list(data-item!="<%- JSON.stringify(item) %>")
+    td <%= App_vendorAdmin.DateUtil.formatToPtBR(item.createdAt) %>
+    td <%= item.produto.descricao %>
+    td <%= item.quantidade %>
+    td <%= item.operacao %>
+    td <%= item.observacao %>
+<% }) %>
+<% } %>

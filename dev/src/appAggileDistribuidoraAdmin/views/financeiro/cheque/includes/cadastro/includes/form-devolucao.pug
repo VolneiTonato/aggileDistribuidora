@@ -1,0 +1,45 @@
+<script></script>
+
+script(type="template" id="template-financeiro-cheque-form-devolucao")
+    div#form-devolucao-cheque
+
+        div.col-xs-12
+            h6.alert.alert-success Devolução de Cheque
+
+        +autoCompleteIndexDB({
+            id: 'bloco-autocomplete-motivo-devolucao-cheque',
+            inputAux:{
+                name:'motivoDevolucaoId',
+                id: 'motivo-devolucao-id'
+            },
+            label: 'Motivo Devolução',
+            placeholder: 'Pesquisa Motivo Devolução'
+        })
+
+        <hr />
+
+
+        div.col-xs-12
+            div.form-group
+
+                .box.box-solid.box-info
+                    .box-header.with-border
+                        h3.box-title Motivo Devolução Selecionado
+                        
+                    .box-body
+
+                        #inner-motivo-devolucao-selecionado
+                        
+        div.col-xs-12
+            div.form-group
+                div.hidden-xs.hidden-sm
+                    div.btn-toolbar
+                        button.btn.btn-lg.input-lg.btn-success.btn-devolver-cheque(type="button") Devolver Cheque
+
+                div.visible-xs.visible-sm
+                    button.btn.btn-success.btn-devolver-cheque.btn-block.input-lg(type="button") Devolver Cheque
+
+
+script(type="template" id="template-financeiro-cheque-form-devolucao-motivo-selecionado")
+    h2 Código: <%= codigo %>
+    h4 Motivo: <%= descricao %>

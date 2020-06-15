@@ -1,0 +1,29 @@
+<% if(typeof(historicos) !== 'undefined'){ %>
+div.list-group
+<% _.each(historicos, function(item) { %>
+    div.list-group-item.list-group-item-action.flex-column.align-items-start.row-item-list(data-item!="<%- JSON.stringify(item) %>")
+        div.d-flex.w-100.justify-content-between
+
+
+            h5.mb-1: <strong>Vencimento:</strong> <%= item.vencimento %>
+
+            h5.mb-1: <strong>Valor Lançado:</strong> <%= App_vendorAdmin.NumberUtil.numberFormat(item.valor,2) %>
+
+            h5.mb-1: <strong>Valor Pago:</strong> <%= App_vendorAdmin.NumberUtil.numberFormat(item.valorTotal,2) %>
+
+            h5.mb-1: <strong>Desconto:</strong> R$ <%= App_vendorAdmin.NumberUtil.numberFormat(item.desconto, 2) %>
+            h5.mb-1: <strong>Desconto Perc.:</strong> R$ <%= App_vendorAdmin.NumberUtil.numberFormat(item.descontoPercentual, 2) %>
+
+            h5.mb-1: <strong>Juro:</strong> R$ <%= App_vendorAdmin.NumberUtil.numberFormat(item.juro, 2) %>
+            h5.mb-1: <strong>Juro Perc.:</strong> R$ <%= App_vendorAdmin.NumberUtil.numberFormat(item.juroPercentual, 2) %>
+
+            h5.mb-1.status-print: <strong>Status Receb.:</strong> <%= item.status %>
+
+            h5.mb-1: <strong>Forma Pgto.:</strong> <%= item.formaPagamento %>
+
+            h5.mb-1.block-botoes-historicos-contas-lancados: strong Opções:
+                button.btn.btn-info.editar-historico-lancado.btn-block.input-lg(type="button") Editar
+                button.btn.btn-success.pagar-historico-lancado.btn-block.input-lg(type="button") Pagar
+                button.btn.btn-success.btn-lancar-despesa-paga.btn-block.input-lg(type="button"  style={'display' : 'none'}) Marcar como Paga
+<% }) %>
+<% } %>    

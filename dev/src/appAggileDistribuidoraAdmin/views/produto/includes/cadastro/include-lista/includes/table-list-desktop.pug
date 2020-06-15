@@ -1,0 +1,18 @@
+<% if(typeof(produtos) !== 'undefined'){ %>
+<% _.each(produtos, function(item) { %>
+
+    tr.hidden-xs.hidden-sm.row-item-list(data-item!="<%- JSON.stringify(item) %>")
+        td <%= item.id %>
+        td <%= item.referencia %>
+        td <%= item.descricao %>
+        td <%= item.custo %>
+        td <%= item.precoVenda %>
+        td <%= item.margemLucro %>
+        td <%= item.estoque %>
+        td <%=  _.get(item, 'pessoa.fabrica.razaoSocial') %>
+        td <%= App_vendorAdmin.StringUtil.booleanToString(item.status) %>
+        td
+            div.btn-toolbar
+                button.btn.btn-success.btn-editar-cadastro(type="button") Editar
+<% }) %>
+<% } %>

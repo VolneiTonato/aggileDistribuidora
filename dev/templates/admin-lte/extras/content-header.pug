@@ -1,0 +1,11 @@
+mixin contentHeaderMasterTemplate()
+    section(class="content-header")
+        h1= title
+        if breadcrumbs
+            ol(class="breadcrumb")
+                each val in breadcrumbs
+                    li(class=val.class)
+                        a(href=val.url)
+                            if val.iconFirst == true
+                                i(class="fa fa-dashboard")
+                            =val.label

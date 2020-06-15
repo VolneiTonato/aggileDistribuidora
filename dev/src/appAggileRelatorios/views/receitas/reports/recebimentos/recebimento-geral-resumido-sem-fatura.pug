@@ -1,0 +1,44 @@
+extends ../../../layout-report.pug
+
+
+
+block content
+
+    div.block-report
+
+        .row
+            .col-12
+                table.table.table-bordered
+                
+                    tr.text-center
+                        th(scope='col') PESSOA
+                        th(scope='col') MUNICIPIO
+                        th(scope='col') TOTAL FATURA
+                        th(scope='col') TOTAL RECEBIDO
+                        th(scope='col') SALDO EM ABERTO
+
+                    each row in result
+                        tr
+                            td.text-left= FN.StringUtil.toUpperCase(FN._.get(row, `pessoa.nome`))
+                            td.text-left= FN.StringUtil.toUpperCase(FN._.get(row, 'pessoa.endereco.municipio.descricao'))
+                            td.text-center= `R$ ${FN.NumberUtil.numberFormat(row.totalizador.totalFatura,2)}`
+                            td.text-center= `R$ ${FN.NumberUtil.numberFormat(row.totalizador.totalPago, 2)}`
+                            td.text-center= `R$ ${FN.NumberUtil.numberFormat(row.totalizador.totalSaldo,2)}`
+           
+        .row
+
+            .col-12
+
+                table.table
+                    tr
+                        td(scope='col' colspan="")
+                            |TOTAL FATURA
+                            strong= `R$ ${FN.NumberUtil.numberFormat(data.totalGeralFatura,2)}`
+
+                        td(scope='col' colspan="")
+                            |TOTAL VALOR PAGO
+                            strong= `R$ ${FN.NumberUtil.numberFormat(data.totalGeralPagamento, 2)}`
+
+                        td(scope='col' colspan="")
+                            |SALDO DEVEDOR
+                            strong= `R$ ${FN.NumberUtil.numberFormat(data.totalGeralSaldo,2)}`

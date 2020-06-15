@@ -1,0 +1,28 @@
+tr(style={'font-size': '12px'} class='row-itens')
+    td
+        .row
+            .col-sm-2.hidden-xs.imagem
+                img.img-responsive(src='//localhost/php_testes/bebidas/multidrink/public/imagens/10322.png', width='30px', heigth='30px', alt='...')
+            .col-sm-10
+                h5.nomargin
+                span.text-danger 10322 - 
+                | CONHAQUE  ALCATRÃO BARRA SANTA
+    td.row-detalhe
+        p 
+            |CUSTO
+            span.text-primary
+                strong 40,00
+                | com 6 UN - Embalagem VIDRO Volume 900ML
+            br
+            | PESO: 8.75 kg
+
+    td.row-preco(style="text-align=center;")
+        h5 6,67
+
+    td
+        input.form-control.text-center.quantidade(type='number', name='quantidade', value='0')
+        p.text-center.text-info.quantidade-print(style='display:none') 3
+
+    td.text-center.subtotal-peso.row-subtotal-peso 26,25
+
+    td.text-center.subtotal.row-subtotal 26,25

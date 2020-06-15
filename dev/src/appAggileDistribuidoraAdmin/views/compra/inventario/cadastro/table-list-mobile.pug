@@ -1,0 +1,22 @@
+<% if(typeof(fabricas) !== 'undefined'){ %>
+<% _.each(fabricas, function(item) { %>
+dl.row-item-list(data-item!="<%- JSON.stringify(item) %>")
+    dt Cód. Ref.
+    dd <%= item.referencia %>
+    dt Descrição
+    dd <%= item.descricao %>
+    dt Custo
+    dd <%= item.custo %>
+    dt Preço Venda
+    dd <%= item.precoVenda %>
+    dt Margem Lucro
+    dd 
+    dt Estoque
+    dd <%= item.estoqueAtual %>
+    dt Fábrica
+    dd <%= _.get(item, 'fabrica.razaoSocial') %>
+    dt Opções
+    button.btn.btn-success.btn-editar-cadastro(type="button") Editar
+    button.btn.btn-danger(type="button") Inativar
+<% }) %>
+<% } %>    

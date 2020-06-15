@@ -1,0 +1,17 @@
+include auto-complete/produto.pug
+
+include auto-complete/pessoa.pug
+
+include form/form-master.pug
+
+
+
+script#template-adicionar-municipio-report(type='template')
+    tr(id!="key-municipio-report-<%= municipio.id %>" class="list-group-item")
+        td(style={'display':'none'})
+            input(type="text" name="report_municipiosId[]" value!="<%= municipio.id %>")
+        td(width="80%")
+            strong <%= municipio.descricao %> / <%= municipio.estado.uf %>
+        td(width="10%")
+            .btn-toolbar
+                button(class="remover-municipio-selecionado-report btn btn-danger" type="button"): i.fa.fa-remove

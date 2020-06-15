@@ -1,0 +1,26 @@
+<% if(typeof(pedidos) !== 'undefined'){ %>
+<% _.each(pedidos, function(item) { %>
+tr.row-item-list(data-item!="<%- JSON.stringify(item) %>")
+    td <%= item.id %>
+    td <%= _.get(item, 'clienteRef.cliente.nomeFantasia') %>
+    td <%= _.get(item,'clienteRef.endereco.municipio.descricao') %>
+    td <%= App_vendorAdmin.DateUtil.formatToPtBR(item.createdAt) %>
+    td <%= item.total %>
+    td <%= item.totalItens %>
+    td.status-print <%= item.status %>
+    td
+        .btn-toolbar
+            button.btn.btn-info.btn-visualizar-pedido-info(type="button"): i.fa.fa-eye
+            button.btn.btn-success.btn-visualizar-pedido(type="button"): i.fa.fa-pencil
+            button.btn.btn-danger.btn-cancelar-pedido(type="button"): i.fa.fa-remove
+            button.btn.btn-success.btn-lancar-pedido(type="button"): i.fa.fa-mail-forward
+            button.btn.btn-warning.btn-estornar-pedido(type="button"): i.fa.fa-reply
+            button.btn.btn-warning.btn-is-pedido-consignado-or-normal-pedido(type="button"): i.fa.fa-refresh
+            button.btn.btn-success.btn-marcar-como-entregue(type="button"): i.fa.fa-check-circle
+            a.btn.btn-default(href!="/reports/pedidos/report-cliente/<%= item.uuid %>" target="_blanck"): i.fa.fa-print
+            a.btn.btn-default(href!="/reports/pedidos/cliente-report-view-anonymous/<%= item.uuid %>" target="_blanck"): i.fa.fa-paperclip
+<% }) %>
+<% } %>
+
+
+

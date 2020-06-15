@@ -1,0 +1,29 @@
+table.table.table-striped
+    tbody
+        tr
+            th Cód. Ref.
+            th Descrição
+            th Custo
+            th Preço Venda
+            th Margem Lucro
+            th Estoque
+            th Fábrica
+            th Opções
+        <% if(typeof(fabricas) !== 'undefined'){ %>
+        <% _.each(fabricas, function(item) { %>
+
+        tr.row-item-list(data-item!="<%- JSON.stringify(item) %>")
+            td <%= item.referencia %>
+            td <%= item.descricao %>
+            td <%= item.custo %>
+            td <%= item.precoVenda %>
+            td 
+            td <%= item.estoqueAtual %>
+            td <%=  _.get(item, 'fabrica.razaoSocial') %>
+            td
+                div.btn-group-vertical
+                    button.btn.btn-success.btn-editar-cadastro(type="button") Editar
+                    button.btn.btn-danger(type="button") Inativar
+                </div>
+        <% }) %>
+        <% } %>

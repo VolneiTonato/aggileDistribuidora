@@ -1,0 +1,17 @@
+{
+    "apps": [
+      {
+        "name": "site-aggile",
+        "script": "index.js",
+        "watch": true,
+        "error_file":"/dev/null",
+        "ignore_watch":["node_modules","templates","public","templates-email", "helpers/_utils/repo/chrome-html-to-pdf/temp"],
+        "watch_options":{
+          "followSymlinks":false
+        },
+        "env": {
+          "NODE_ENV": "production"
+        }
+      }
+    ]
+  }

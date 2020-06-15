@@ -1,0 +1,47 @@
+div#form-pesquisa
+
+    div.col-xs-12.col-md-12
+        div.form-group
+            +radioButtonInline('Tipo Pessoa', [
+                {value:'', checked: true, name:'pesquisa_tipoPessoa',text:'Sem Relação'},
+                {value:'fabrica', name:'pesquisa_tipoPessoa',text:'Fábrica'},
+                {value:'cliente', name:'pesquisa_tipoPessoa',text:'Cliente'},
+                {value:'cedente', name:'pesquisa_tipoPessoa',text:'Cedente'},
+                {value:'vendedor', name:'pesquisa_tipoPessoa',text:'Vendedor'},
+                ], {class: 'pesquisa-tipo-pessoa'})
+
+    div#inner-pessoa-autocomplete-pesquisa
+
+                
+    +autoComplete('agencia')
+
+    +autoComplete('banco')
+
+    div.col-xs-12.col-md-6
+        div.form-group
+            label.text-left CNPJ
+            input(type="text" required value!="<%= _.get(form,'cnpjCpf') %>" class="form-control input-lg text-uppercase" name="pesquisa_cnpjCpf" id="pesquisa-cnpj-cpf")
+
+    div.col-xs-12.col-md-3
+        div.form-group.form-group-lg
+            label(for="") Ativo
+            select#pesquisa-status.form-control.input-lg(name="pesquisa_status")
+            +overlay() 
+
+
+    div.col-xs-12
+        input(type="hidden" name="pesquisa_bancoId" value!="<%= _.get(form, 'bancoId') %>")
+        input(type="hidden" name="pesquisa_pessoaAgenciaId" value!="<%= _.get(form, 'pessoaAgenciaId') %>")
+        input(type="hidden" name="pesquisa_pessoaId" value!="<%= _.get(form, 'pessoaId') %>")
+
+
+    div.clear-fix
+
+    div.col-xs-12
+        div.hidden-xs.hidden-sm
+            div.btn-toolbar
+                button.btn.btn-lg.input-lg.btn-warning.pesquisar Pesquisar
+                button.btn.btn-lg.input-lg.btn-danger.limpar-pesquisa Limpar Pesquisa
+        div.visible-xs.visible-sm
+            button.btn.btn-danger.btn-block.input-lg.pesquisar Pesquisar
+            button.btn.btn-warning.btn-block.input-lg.limpar-pesquisa Limpar Pesquisa

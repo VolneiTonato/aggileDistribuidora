@@ -1,0 +1,98 @@
+.row
+    .col-xs-12
+        form(role="form" autocomplete="off")
+
+            .box.box-primary.box-solid
+
+                .box-header.with-border
+                    h3.box-title Pedido Cliente
+
+                .box-body
+
+                    .col-xs-12.col-md-4
+                        .form-group
+                            label() Número
+                            input(type="text" disabled required value!="<%= _.get(form,'id') %>" class="form-control input-lg text-uppercase")
+
+                    .col-xs-12.col-md-4
+                        .form-group
+                            label() Data Pedido
+                            input(type="text" disabled required value!="<%= App_vendorAdmin.DateUtil.formatToPtBR(_.get(form,'createdAt')) %>" class="form-control input-lg text-uppercase")
+
+                    .col-xs-12.col-md-4
+                        .form-group
+                            label() Data Entrega
+                            input(type="text" disabled required value!="<%= App_vendorAdmin.DateUtil.formatToPtBR(_.get(form,'dataEntrega')) %>" class="form-control input-lg text-uppercase")
+
+                    .col-xs-12.col-md-2
+                        .form-group
+                            label.text-center NF
+                            input(type="text" disabled required value!="<%= App_vendorAdmin.ObjectUtil.getValueProperty(form, 'isNF') == true ? 'SIM' : 'NÃO' %>" class="form-control input-lg text-uppercase")
+
+                    .col-xs-12.col-md-2
+                        .form-group
+                            label.text-center Consignado
+                            input(type="text" disabled required value!="<%= App_vendorAdmin.ObjectUtil.getValueProperty(form, 'consignado') == true ? 'SIM' : 'NÃO' %>" class="form-control input-lg text-uppercase")
+
+                    .col-xs-12.col-md-2
+                        .form-group
+                            label.text-center Status
+                            input(type="text" disabled required value!="<%= App_vendorAdmin.ObjectUtil.getValueProperty(form, 'status') %>" class="form-control input-lg text-uppercase")
+
+
+                    .col-xs-12.col-md-2
+                        .form-group
+                            label.text-center Total de Itens
+                            input(type="text" disabled required value!="<%= App_vendorAdmin.ObjectUtil.getValueProperty(form, 'totalItens') %>" class="form-control input-lg text-uppercase")
+
+                    .col-xs-12.col-md-2
+                        .form-group
+                            label.text-center Total
+                            input(type="text" disabled required value!="R$ <%= App_vendorAdmin.ObjectUtil.getValueProperty(form, 'total') %>" class="form-control input-lg text-uppercase")
+
+                    .clearfix
+
+                    .col-xs-12.col-md-12
+                        .form-group
+                            label() Observação
+                            textarea.form-control.input-lg.text-uppercase(disabled, cols="5", rows="5")
+                                <%= _.get(form,'observacao') %>
+
+                    .clearfix
+
+            .box.box-primary.box-solid
+
+                .box-header.with-border
+                    h3.box-title Informação Cliente
+
+                .box-body
+
+                    .col-xs-12.col-md-6
+                        .form-group
+                            label() Cliente
+                            input(type="text" disabled required value!="<%= _.get(form,'cliente.child.nomeFantasia') %>" class="form-control input-lg text-uppercase")
+
+                    .col-xs-12.col-md-6
+                        .form-group
+                            label() Municipio
+                            input(type="text" disabled required value!="<%= _.get(form,'cliente.endereco.municipio.descricao') %>" class="form-control input-lg text-uppercase")
+
+
+            .box.box-primary.box-solid
+
+                .box-header.with-border
+                    h3.box-title Produtos
+
+                .box-body
+
+                    div.hidden-xs.hidden-sm
+                        include produtos-lancados-desktop.pug
+                        
+                    div.visible-xs.visible-sm
+                        include produtos-lancados-mobile.pug
+
+                    include ../../../include-lancamento/includes/total-pedido.pug
+
+
+
+                        

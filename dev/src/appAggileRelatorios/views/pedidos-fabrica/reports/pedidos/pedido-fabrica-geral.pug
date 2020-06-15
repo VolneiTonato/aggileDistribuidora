@@ -1,0 +1,102 @@
+extends ../../../layout-report.pug
+
+
+
+block content
+
+    div.block-report
+
+        each pedido in result
+
+            if pedido.itens && (pedido.itens.length > 0)
+
+                .row
+                    .col-12
+                        table.table
+                            tbody
+                                tr
+                                    td(colspan="6")
+
+                .row
+                    .col-12
+                        table.table
+                            tbody
+                                tr
+                                    th.text-center.text-default(scope="col" colspan="6"): h3 Pedido nº #{pedido.id}
+                                tr.text-left
+                                    th(scope='col') Fábrica:
+                                    td.text-info.text-left(colspan="2") #{pedido.pedidoFabrica.fabrica.nomeFantasia}
+                                    th(scope='col') Municipio:
+                                    td.text-info.text-left(colspan="2") #{pedido.pedidoFabrica.endereco.municipio.descricao}
+                                    
+
+                                tr.text-left
+                                    th(scope='col') Data Entrada:
+                                    td.text-info.text-left(colspan="2")= FN.DateUtil.momentToPug(pedido.createdAt, 'DD/MM/YYYY')
+
+                                    th(scope='col') Status:
+                                    td.text-info.text-left(colspan="2")= FN.StringUtil.toUpperCase(pedido.status)
+
+                                tr.text-left
+                                    th(scope='col') Observação:
+                                    td.text-info.text-left.text-danger(colspan="5")= FN.StringUtil.toUpperCase(pedido.observacao)
+
+                                tr
+                                    td(colspan="6")
+                            
+                
+                .row
+                    .col-12
+                        table.table.table-bordered
+                            thead
+                                tr.text-center
+                                    th(scope='col') REF.
+                                    th.text-left(scope='col') PRODUTO.
+                                    th(scope='col') UN.
+                                    th(scope='col') VOL.
+                                    th(scope='col') BON.
+                                    th(scope='col') VALOR.UN.
+                                    th(scope='col') VALOR
+                                    th(scope='col') PESO
+                                    th(scope='col') QTD
+                                    th(scope='col') SUB.TOTAL
+
+                            tbody
+                                
+                                each item in pedido.itens
+                                    - let valorUnitario = FN.NumberUtil.numberFormat(FN.NumberUtil.divisao(item.custo, item.produto.fracao), 2)
+                                    tr
+                                        td.text-center #{item.produto.referencia}
+                                        td.text-left #{item.produto.descricao}
+                                        td.text-center #{item.tipoUnidade}
+                                        td.text-center #{item.produto.fracao}
+
+                                        if item.isBonificado
+                                            td.text-center <span class="badge badge-info">SIM</span>
+                                        else
+                                            td.text-center NÃO
+
+                                    
+
+                                        td.text-center= valorUnitario
+
+                                        if item.tipoUnidade == 'UNITARIO'
+                                            td.text-center= valorUnitario
+                                        else
+                                            td.text-center= FN.NumberUtil.numberFormat(item.custo, 2)
+
+                                        td.text-center #{item.peso}
+                                        
+
+                                        td.text-center #{item.quantidade}
+                                        td.text-center= FN.NumberUtil.numberFormat(item.total,2)
+
+                            tr
+                                td(colspan="10")
+                            tr
+                                th.text-left(colspan="7") TOTAL
+                                th.text-center #{pedido.pesoTotal}
+                                th.text-center #{pedido.totalItens}
+                                th.text-center= `R$ ${FN.NumberUtil.numberFormat(pedido.total,2)}`
+
+                div(style="page-break-before:always;")

@@ -1,0 +1,44 @@
+mixin radioButtonResumidoDetalhado()
+    +radioButtonInline("Tipo Relatório", [{checked: true,  value : "detalhado", text: "Detalhado", name:"report_typeReport"}, { value : "resumido", text: "Resumido", name:'report_typeReport'}])
+
+mixin radioButtonInline(title, data, options = {})
+
+    - var defaultsValue = {class : functionView.UUID(), checked: false, value: 0, name: functionView.UUID()}
+    - options = functionView._.defaultsDeep(options, defaultsValue)
+    .col-xs-12
+        .form-group
+            label
+                h4.text-green #{title}
+            .row
+                .col-xs-12
+                    each item in data
+                        label.radio-inline
+                            input(type='radio' checked!=item.checked value!=item.value name!=item.name class!=options.class)
+                            strong #{item.text}
+        hr
+
+mixin cheboxInline(data)
+    .col-xs-12
+        .form-group
+            each item in data
+                label.checkbox-inline
+                    input(type='checkbox' value!=item.value name!="report_" + item.value)
+                    h4 #{item.text}
+
+mixin cheboxRowSelect(data)
+    .col-xs-12
+        .form-group
+            label.checkbox
+                input(type='checkbox' name="cheboxRow")
+
+
+mixin cheboxTableSelect(data)
+    .col-xs-12
+        .form-group
+            label.checkbox
+                input(type='checkbox' name="cheboxTable")
+
+
+include ./mixin/mixin-autocomplete.pug                    
+
+include ./mixin/mixin-form-pesquisa.pug

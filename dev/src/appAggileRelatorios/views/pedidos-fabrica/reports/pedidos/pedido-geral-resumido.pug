@@ -1,0 +1,118 @@
+extends ../../../layout-report.pug
+
+
+
+block content
+
+    div.block-report
+
+        each row in result
+
+            .row
+                table.table
+                    tbody
+                        tr
+                            td(colspan="6")
+
+            .row
+                table.table
+                    tbody
+                        tr.text-left
+                            th(scope='col') Fábrica:
+                            td.text-info.text-left= FN.StringUtil.toUpperCase(row.pedidoFabrica.fabrica.nomeFantasia)
+                            th(scope='col') Municipio:
+                            td.text-info.text-left= FN.StringUtil.toUpperCase(row.pedidoFabrica.endereco.municipio.descricao)
+
+                        
+                        tr
+                            td(colspan="6")
+                        
+            
+            .row
+
+                table.table
+
+                    each pedido in row.pedidos
+
+                        if pedido.itens
+
+                            tr
+                                td(scope='col' colspan="") PEDIDO Nº <strong>#{pedido.id}</strong>
+                                td(scope='col' colspan="") TOTAL PEDIDO 
+                                    strong= `R$ ${FN.NumberUtil.numberFormat(pedido.total,2)}`
+                                td(scope='col' colspan="") TOTAL DE ITENS <strong> #{pedido.totalItens} </strong>
+                                td(scope='col' colspan="") STATUS <strong> #{pedido.status} </strong>
+
+                            tr:td(colspan="7")
+
+                            tr
+                                td(colspan="7")
+                                    table.table.table-bordered
+
+                                        tr.text-center
+                                            th(scope='col') REF.
+                                            th.text-left(scope='col') PRODUTO
+                                            th(scope='col') UN.
+                                            th(scope='col') BON.
+                                            th(scope='col') CUSTO. UN.
+                                            th(scope='col') CUSTO
+                                            th(scope='col') QTD
+                                            th(scope='col') TOTAL
+
+                                        each item in pedido.itens
+
+                                            - let valorUnitario = FN.NumberUtil.numberFormat(FN.NumberUtil.divisao(item.custo, item.produto.fracao), 2)
+
+                                            tr
+                                                td.text-center #{item.produto.referencia}
+                                                td.text-left #{item.produto.descricao}
+                                                td.text-center #{item.tipoUnidade}
+
+                                                if item.isBonificado
+                                                    td.text-center <span class="badge badge-info">SIM</span>
+                                                else
+                                                    td.text-center NÃO
+
+                                                td.text-center= valorUnitario
+
+                                                if item.tipoUnidade == 'UNITARIO'
+                                                    td.text-center= valorUnitario
+                                                else
+                                                    td.text-center= FN.NumberUtil.numberFormat(item.custo, 2)
+
+                                                td.text-center #{item.quantidade}
+                                                td.text-center= FN.NumberUtil.numberFormat(item.total,2)
+
+                                        tr
+                                                td(colspan="8")
+
+                                        tr
+                                            th.text-left(colspan="6") TOTAL
+                                            th.text-center #{pedido.totalItens}
+                                            th.text-center= `R$ ${FN.NumberUtil.numberFormat(pedido.total,2)}`
+
+
+                            tr
+                                td(colspan="8")
+
+            .row
+
+                table.table
+                    tr
+                        td(scope='col' colspan="") TOTAL PEDIDO CLIENTE
+                            span.text-success
+                                strong= FN.StringUtil.toUpperCase(row.pedidoFabrica.fabrica.nomeFantasia)
+                            strong= `R$ ${FN.NumberUtil.numberFormat(row.totalizador.totalPedido,2)}`
+                    tr
+                        td(scope='col' colspan="") TOTAL DE PRODUTOS <strong> #{row.totalizador.totalItens} </strong>
+
+            div(style="page-break-before:always;")
+
+        .row
+
+            table.table
+                tr
+                    td(scope='col' colspan="") TOTAL GERAL PEDIDOS
+                        strong= `R$ ${FN.NumberUtil.numberFormat(data.totalGeralPedido,2)}`
+                tr
+                    td(scope='col' colspan="") TOTAL GERAL PRODUTOS <strong> #{data.totalGeralItens} </strong>

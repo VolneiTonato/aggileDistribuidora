@@ -1,0 +1,49 @@
+div.box.box-primary.box-solid
+    div.box-body.bg-gray-active.color-palette#form-lancamento-produto-entrada(data-item!="<%- JSON.stringify(produto) %>")
+        div.col-xs-12.col-md-6
+            div.form-group
+                label.text-left Produto
+                input(type="text" required value!="<%= _.get(produto,'descricao') %>" class="form-control input-lg text-uppercase" name="lancamento_produtoText" id="lancamento-produto-text" readonly="readonly")
+
+        div.col-xs-12.col-md-2
+            div.form-group
+                label.text-center(for="referencia") Quantidade
+                input(type="text" required class="text-center form-control input-lg text-uppercase integer" id="lancamento-quantidade" name="lancamento_quantidade" placeholder="Quantidade")
+
+        div.col-xs-12.col-md-2
+            div.form-group
+                label.text-center(for="referencia") Tipo Unidade
+                select#lancamento-tipo-unidade.text-center.form-control.input-lg.text-uppercase(name="lancamento_tipoUnidade")
+                    option(value="FARDO") FARDO
+                    option(value="UNITARIO") UNITÁRIO
+
+        div.col-xs-12.col-md-2
+            div.form-group
+                label.text-center Custo
+                input(type="text" required value!="<%= _.get(produto,'custo') %>" class="text-right form-control input-lg text-uppercase currency" id="lancamento-custo" name="lancamento_custo" placeholder="Custo")
+
+
+        div.col-xs-12.col-md-2
+            div.form-group
+                label.text-center Bonificação
+                select#lancamento-is-bonificado.text-center.form-control.input-lg.text-uppercase(name="lancamento_isBonificado")
+                    option(value="false") NÃO
+                    option(value="true") SIM
+
+        div.col-xs-12.col-md-2
+            div.form-group
+                label.text-center Sub Total
+                input(type="text" required class="form-control input-lg text-uppercase currency text-right" id="lancamento-subtotal" name="lancamento_subtotal" readonly="readonly")
+
+        div.clear-fix
+        input(type="hidden" readonly="readonly" required value!="<%- JSON.stringify(produto) %>" name="lancamento_produto" id="lancamento-produto" )
+        input(type="hidden" required value!="<%= _.get(produto,'id') %>" class="form-control input-lg text-uppercase" id="lancamento-produto-id" name="lancamento_produtoId")
+
+        
+    div.box-footer.bg-gray-active.color-palette
+
+        div.col-xs-12
+            div.form-group
+                button.btn.btn-lg.input-lg.btn-warning#adicionar-produto Adicionar
+                | !{' '}
+                button.btn.btn-lg.input-lg.btn-danger#cancelar-lancamento Cancelar

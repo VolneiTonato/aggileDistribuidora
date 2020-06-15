@@ -1,0 +1,29 @@
+<% if(typeof(notas) !== 'undefined'){ %>
+    <% _.each(notas, function(item) { %>
+
+    div.list-group-item.list-group-item-action.flex-column.align-items-start.row-item-list(data-item!="<%- JSON.stringify(item) %>")
+        div.d-flex.w-100.justify-content-between
+            h5.mb-1: <strong>Cód.:</strong> <%= item.id %>
+
+            h5.mb-1: <strong>Número Doc.:</strong> <%= item.numero %>
+            
+            h5.mb-1: <strong>Fábrica:</strong> <%= _.get(item, 'pessoaFabrica.fabrica.razaoSocial') %>
+
+            h5.mb-1: <strong>Data Nota Fiscal:</strong> <%= App_vendorAdmin.DateUtil.formatToPtBR(item.data) %>
+            
+            h5.mb-1: <strong>Data Lançamento:</strong> <%= App_vendorAdmin.DateUtil.formatToPtBR(item.createdAt) %>
+
+            h5.mb-1: <strong>Total Nota:</strong> <%= item.total %>
+
+            h5.mb-1: <strong>Total de Itens:</strong> <%= item.totalItens %>
+
+            h5.mb-1: <strong>Status:</strong> <span class="status-print"><%= item.status %></span>
+
+            button.btn.btn-info.btn-visualizar-nota-info.btn-block.input-lg(type="button"): i.fa.fa-eye
+            button.btn.btn-success.btn-detalhar-nota.btn-block.input-lg(type="button"): i.fa.fa-pencil
+            button.btn.btn-danger.btn-cancelar-nota.btn-block.input-lg(type="button"): i.fa.fa-remove
+            button.btn.btn-warning.btn-estornar-nota.btn-block.input-lg(type="button"): i.fa.fa-reply
+            button.btn.btn-success.btn-marcar-como-finalizada.btn-block.input-lg(type="button"): i.fa.fa-check-circle
+            
+    <% }) %>
+<% } %>    

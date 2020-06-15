@@ -1,0 +1,45 @@
+div#form-pesquisa
+
+    form(autocomplete="off")
+
+        +radioButtonInline('Data Entrega / Data Pedido', [{checked: true, value : "dataEntrega", text: "Data de Entrega", name:"pesquisa_dataFiltro"}, { value : "dataPedido", text: "Data do Pedido", name:'pesquisa_dataFiltro'}], {id : "pesquisa-data-filtro"})
+
+        div.col-xs-12.col-md-4
+            div.form-group
+                label(for="data") Data Inicial
+                input(type="text" required value!="<%= _.get(form, 'dataInicial') %>" class="datapicker form-control input-lg text-uppercase" name="pesquisa_dataInicial" id="pesquisa-dataInicial" placeholder="Data de Inicial")
+
+        div.col-xs-12.col-md-4
+            div.form-group
+                label(for="data") Data Final
+                input(type="text" value!="<%= _.get(form, 'dataFinal') %>" required class="datapicker form-control input-lg text-uppercase" name="pesquisa_dataFinal" id="pesquisa-dataFinal" placeholder="Data de Final")
+
+        div#inner-fabrica-selecao-pesquisa
+
+        div.col-xs-12.col-md-6
+            div.form-group.form-group-lg
+                label(for="status") Status Pedido
+                select#pesquisa-status.form-control.input-lg.select2.select2-container(name="pesquisa_status")
+                +overlay()
+
+        div.col-xs-12.col-md-6
+            div.form-group
+                label.text-left Número Pedido
+                input(type="text" required value!="<%= _.get(form,'numero') %>" class="form-control input-lg text-uppercase" name="pesquisa_id" id="pesquisa-id")
+
+
+        div.col-xs-12.col-md-2
+            div.form-group.form-group-lg
+                label.text-center Consignado
+                    select#pesquisa-consignado.text-center.form-control.input-lg.text-uppercase(name="pesquisa_consignado")
+
+        div.clear-fix
+
+        div.col-xs-12
+            div.hidden-xs.hidden-sm
+                div.btn-toolbar
+                    button.btn.btn-lg.input-lg.btn-warning.pesquisar Pesquisar
+                    button.btn.btn-lg.input-lg.btn-danger.limpar-pesquisa Limpar Pesquisa
+            div.visible-xs.visible-sm
+                button.btn.btn-warning.btn-block.input-lg.pesquisar Pesquisar
+                button.btn.btn-danger.btn-block.input-lg.limpar-pesquisa Limpar Pesquisa

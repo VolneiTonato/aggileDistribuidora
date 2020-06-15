@@ -1,0 +1,62 @@
+div#block-list-pedido-fabrica
+    div.row
+        div.col-xs-12
+            div.box.box-primary
+            
+                div.box-header.with-border
+                    h3.box-title Lançamentos
+
+                div.box-body
+
+                    div.row
+                        div.col-xs-12
+                            a.btn.btn-app(href="#home")
+                                i.fa.fa-home
+                                |Início
+
+                            a.btn.btn-app#btn-novo-cadastro(href="#pedidos/fabrica/novo")
+                                i.fa.fa-plus
+                                |Novo Pedido
+
+    div.row
+        div.col-xs-12
+            div.box.box-primary
+                div.box-header.with-border
+                    h3.col-md-6.col-xs-12.box-title Pesquisa
+
+                    div.box-tools.pull-right
+                        button.btn.btn-box-tool(type='button', data-widget='collapse'): i.fa.fa-minus(style={'font-size':'24px'})
+
+                
+                div.box-body#inner-form-pesquisa-pedido-fabrica
+                
+
+
+    div.row
+        div.col-xs-12
+            div.box.box-solid.box-primary#overlay-painel-list-cadastro
+
+                div.box-header.with-border
+                    h3.col-md-6.col-xs-12.box-title Lista de Pedidos
+
+                div.box-body
+
+                    div#inner-pedidos-lancados-parent
+
+                +overlay()
+
+<script></script>
+script(type="template" id="template-form-pesquisa-pedido-fabrica")
+    include include-lista/form-pesquisa.pug     
+
+<script></script>
+script(type="template" id="template-form-pesquisa-pedido-autocomplete-fabrica")
+    include include-lista/includes/fabrica-selecao.pug
+
+<script></script>
+script(type="template" id="template-list-pedidos-fabrica-lancados-parent")
+    include include-lista/pedidos-lancados.pug
+
+<script></script>
+script(type="template" id="template-list-pedidos-info-pedido-fabrica-lancado")
+    include include-lista/includes/info-pedido/info-pedido.pug

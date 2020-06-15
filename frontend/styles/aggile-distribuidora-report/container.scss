@@ -1,0 +1,24 @@
+$direcao : ('left', 'top', 'right', 'bottom', 'center');
+
+
+
+@each $dir in $direcao {
+    @for $i from 1 through 10{
+        .m-#{$dir}-#{$i}{ margin-#{$dir}: (10 * $i) + unquote($string: '%'); }
+    }
+}
+
+@each $dir in $direcao {
+    @for $i from 1 through 100{
+        .p-#{dir}-#{$i}{ padding-#{$dir}: (10 * $i) + unquote($string: 'px'); }
+    }
+}
+
+@for $i from 1 through 10{
+    .w-#{$i}{ width: (10 * $i) + unquote($string: '%');}
+}
+
+
+@each $dir in $direcao {
+    .text-#{$dir}{text-align: #{$dir};}
+}

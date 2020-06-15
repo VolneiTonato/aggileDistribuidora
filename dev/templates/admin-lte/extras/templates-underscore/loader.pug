@@ -1,0 +1,15 @@
+script(type="template" id="template-loader")
+    div.row.loader-app.center(key!="<%= loader.key %>" align="center")
+        div.col-xs-12
+            div(style!="height:<%= loader.height %>; width:<%= loader.width %>")
+                img(class="img-responsive text-center" src="/public/imagens/loader.svg")
+
+
+script(type="template" id="template-loader-fech")
+    .row
+        div(class!="col-xs-12 alert alert-<%= type %>")
+            .col-xs-3
+                div(style!="height:50px; width:50px")
+                    img(class="img-responsive text-center" src="/public/imagens/loader-blue.gif")
+            .col-xs-9
+                h3 <%= message %>

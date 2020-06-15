@@ -1,0 +1,48 @@
+#form-cadastro-endereco
+
+    div#row-item-endereco(data-item!="<%- JSON.stringify(form) %>" style={'display':'none'})
+
+    div.col-xs-12.col-md-6
+        div.form-group
+            label(for="cep") CEP
+            input(type="text" value!="<%= _.get(form, 'cep') %>" class="form-control input-lg cep-mask" name="cep" id="cep" placeholder="CEP")
+
+
+    div.col-xs-12.col-md-6
+        div.form-group
+            label(for="bairro") Bairro
+            input(type="text" required value!="<%= _.get(form, 'bairro') %>" class="form-control input-lg" name="bairro" id="bairro" placeholder="Bairro")
+
+
+    div.col-xs-12.col-md-6
+            div.form-group
+                label(for="logradouro") Endereço
+                textarea(rows="3" required class="form-control input-lg" name="logradouro" id="logradouro" placeholder="Endereço") <%= _.get(form, 'logradouro') %>
+
+
+
+    div.col-xs-12.col-md-6
+            div.form-group
+                label(for="endereco_latitudeLongitude") Latitude Longitude
+                input(type="text" required value!="<%= _.get(form, 'latitudeLongitude') %>" class="form-control input-lg" name="latitudeLongitude" id="latitudeLongitude" placeholder="Latitude Longitude")
+                .visible-xs.visible-sm
+                    button.btn.btn-success.btn-add-geolocalizacao.btn-block.input-lg(type="button"): i.fa.fa-plus add Localização
+                    button.btn.btn-info.google-maps.btn-block.input-lg(type="button"  data-position!="<%= _.get(form, 'latitudeLongitude') %>"): i.fa.fa-map-marker Acessar Mapa
+                .hidden-xs.hidden-sm
+                    .btn-toolbar
+                        button.btn.btn-success.btn-add-geolocalizacao(type="button"): i.fa.fa-plus add Localização
+                        button.btn.btn-info.google-maps(type="button" data-position!="<%= _.get(form, 'latitudeLongitude') %>"): i.fa.fa-map-marker Acessar Mapa
+
+    div.clearfix
+
+    div.col-xs-12.col-md-6
+            div.form-group
+                label(for="estado") UF
+                select#estado.form-control.input-lg(name="estado" disabled)
+                +overlay()
+
+    div.col-xs-12.col-md-6
+        div.form-group.form-group-lg
+            label(for="municipio") Município
+            select#municipio.form-control.input-lg.select2.select2-container(name="municipio_id")
+            +overlay()

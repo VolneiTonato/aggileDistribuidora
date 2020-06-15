@@ -1,0 +1,50 @@
+div.row
+    div.col-xs-12
+        div.box.box-primary
+        
+            div.box-header.with-border
+                h3.box-title Nota Fiscal
+
+            div.box-body
+
+                div.row
+                    div.col-xs-12
+                        a.btn.btn-app(href="#home")
+                            i.fa.fa-home
+                            |Início
+
+                        a.btn.btn-app(href="#compras/nota-fiscal/pesquisa")
+                            i.fa.fa-arrow-left
+                            |Notas Lançadas
+
+
+
+<script></script>
+
+script(type="template" id="template-nota-fiscal-lancamento-form-principal")
+    include include-lancamento/form.pug
+
+<script></script>
+
+script(type="template" id="template-nota-fiscal-lancamento-selecao-fornecedor")
+    include include-lancamento/selecao-fornecedor.pug
+
+<script></script>
+
+script(type="template" id="template-nota-fiscal-lancamento-produto-autocomplete")
+    include include-lancamento/produto-autocomplete.pug
+
+<script></script>
+
+script(type="template" id="template-nota-fiscal-lancamento-cabecalho")
+    include include-lancamento/cabecalho.pug
+
+<script></script>
+
+script(type="template" id="template-nota-fiscal-lancamento-produto")
+    include include-lancamento/produto.pug
+
+<script></script>
+
+script(type="template" id="template-nota-fiscal-produtos-lancados")
+    include include-lancamento/produtos-lancados.pug

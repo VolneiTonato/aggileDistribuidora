@@ -1,0 +1,37 @@
+div.hidden-xs.hidden-sm
+    table.table.table-striped
+        tbody
+            tr
+                th Cód.
+                th Número Doc.
+                th Fabrica
+                th Data Lanc.
+                th Data NF
+                th Total Nota
+                th Total Itens
+                th Status
+                th Opções
+        tbody#inner-list-notas-entradas-lancadas-desktop
+
+        tfooter
+                tr
+                    td(colspan="9")
+                        div.btn-toolbar
+                            button.btn.btn-lg.input-lg.bg-purple.btn-block.carregar-mais(disabled="disabled") Carregar Mais
+
+div.visible-xs.visible-sm
+
+    div.list-group
+        div#inner-list-notas-entradas-lancadas-mobile
+
+    div.btn-toolbar
+        button.btn.btn-lg.input-lg.bg-purple.btn-block.carregar-mais(disabled="disabled") Carregar Mais
+
+
+<script></script>
+script(type="template" id="template-list-entrada-nota-lancadas-desktop")
+    include includes/table-list-desktop.pug
+
+<script></script>
+script(type="template" id="template-list-entrada-nota-lancadas-mobile")
+    include includes/table-list-mobile.pug

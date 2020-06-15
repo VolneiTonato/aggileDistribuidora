@@ -1,0 +1,22 @@
+table.table.table-striped
+    tbody
+        tr
+            th Cód.
+            th Cód. Ref.
+            th Descrição
+            th Bon.
+            th Custo
+            th QTD.
+            th SubTotal
+        <% if(typeof(lancamentos) !== 'undefined'){ %>
+        <% _.each(lancamentos, function(item) { %>
+            tr
+                td <%= item.produto.id %>
+                td <%= item.produto.referencia %>
+                td <%= item.produto.descricao %>
+                td <%=  App_vendorAdmin.StringUtil.booleanToString(item.isBonificado) %>
+                td <%= item.custo %>
+                td <%= item.quantidade %>
+                td <%=  App_vendorAdmin.NumberUtil.numberFormat(item.total, 2) %>
+        <% }) %>
+        <% } %>

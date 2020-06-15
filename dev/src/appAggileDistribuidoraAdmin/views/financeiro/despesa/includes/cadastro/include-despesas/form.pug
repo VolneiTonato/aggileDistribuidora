@@ -1,0 +1,76 @@
+div.row
+    div.col-xs-12
+        div.box.box-primary
+        
+            div.box-header.with-border
+                h3.box-title Despesa
+
+            div.box-body
+
+                div.row
+                    div.col-xs-12
+                        a.btn.btn-app(href="#home")
+                            i.fa.fa-home
+                            |Início
+
+                        a.btn.btn-app(href="#financeiro/contas-a-pagar/pesquisa")
+                            i.fa.fa-arrow-left
+                            |Despesas
+
+                        a.btn.btn-app#btn-novo-cadastro(href="#financeiro/contas-a-pagar/nova")
+                                i.fa.fa-plus
+                                |Nova Despesa
+
+div#block-form-financeiro-lancamento-pagamento-historico
+    div.row
+        div.col-xs-12
+            div.box.box-primary
+
+                div.box-header.with-border
+                    h3.box-title Pagamento de conta
+
+                form(role="form" method="POST" id="form-cadastro" autocomplete="off")
+                    div.box-body
+
+                        
+                        div.col-xs-12.col-md-12
+                            div.form-group
+                                +radioButtonInline('Tipo Pessoa', [
+                                    {value:'fabrica', checked: true, name:'tipoCadastro',text:'Fábrica'},
+                                    {value:'cliente', name:'tipoCadastro',text:'Cliente'},
+                                    {value:'cedente', name:'tipoCadastro',text:'Cedente'},
+                                    {value:'vendedor', name:'tipoCadastro',text:'Vendedor'},
+                                    ], {id: 'tipo-pessoa'})
+                        
+
+                        div.col-xs-12.col-md-12
+                            #inner-pessoa-autocomplete
+                            
+
+                        
+
+                        div.col-xs-12.col-md-6
+                            div#inner-dados-conta
+
+
+                        div.col-xs-12.col-md-6
+                            div#inner-cabecalho-receita
+
+
+                        div.col-xs-12.col-md-12
+                            div.form-group
+                                div#inner-lancamento-historico-pagamento
+
+
+                        div.col-xs-12.col-md-12
+                            div.form-group
+                                div#inner-historico-pagamentos
+
+                        
+                    div.box-footer
+
+                        div.col-xs-12.col-md-2(style={"margin-top":"10px"})
+                            button(type="button" class="btn btn-success btn-lg input-lg btn-block" id="btn-lancar-pedido" style={'display' : 'none'}) Lançar
+
+                        div.col-xs-12.col-md-2(style={"margin-top":"10px"})
+                            button(type="button" class="btn btn-danger btn-lg input-lg btn-block" id="btn-cancelar-pedido" style={'display':'none'}) Cancelar

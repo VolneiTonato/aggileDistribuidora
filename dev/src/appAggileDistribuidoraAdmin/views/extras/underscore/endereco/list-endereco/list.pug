@@ -1,0 +1,73 @@
+#block-list-endereco
+
+    div.row
+        div.col-xs-12
+            div.box.box-primary.box-solid
+                div.box-header.with-border
+                    h3.box-title Outros Endereços
+
+                div.box-body
+
+                    div.row
+                        div.col-xs-12
+
+                            button.btn.btn-app#btn-novo-cadastro(type="button")
+                                i.fa.fa-plus
+                                |Novo Endereço
+
+
+    div.row
+        div.col-xs-12
+
+            div.box#overlay-painel-list-cadastro
+
+                div.box-header.with-border
+                    h3.col-md-6.col-xs-12.box-title Lista de Endereços
+
+                div.box-body
+
+                    div.hidden-xs.hidden-sm
+
+                        table.table.table-striped
+                            tbody
+                                tr
+                                    th Bairro
+                                    th Endereço
+                                    th CEP
+                                    th Lat. Long.
+                                    th Municipio
+                                    th UF
+                                    th Opções
+                            tbody#inner-enderecos-cadastrados-desktop
+
+                            tfooter
+                                tr
+                                    td(colspan="8")
+                                        div.btn-toolbar
+                                            button.btn.btn-lg.input-lg.bg-purple.btn-block.carregar-mais(disabled="disabled") Carregar Mais
+
+
+
+                    div.visible-xs.visible-sm
+
+                        div.list-group
+                            div#inner-enderecos-cadastrados-mobile
+
+                        div.btn-toolbar
+                            button.btn.btn-lg.input-lg.bg-purple.btn-block.carregar-mais(disabled="disabled") Carregar Mais
+                
+                +overlay()
+
+
+<script></script>
+script(type="template" id="template-list-table-enderecos-cadastrados-desktop")
+    include ./table-list-desktop.pug
+
+<script></script>
+script(type="template" id="template-list-table-enderecos-cadastrados-mobile")
+    include ./table-list-mobile.pug
+
+
+<script></script>
+script(type="template" id="template-cadastro-endereco")
+    include ./form.pug

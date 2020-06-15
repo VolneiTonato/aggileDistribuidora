@@ -1,0 +1,24 @@
+div#block-form-tipo-unidade
+    div.row
+        div.col-xs-12
+            div.box.box-primary
+
+                div.box-header.with-border
+                    h3.box-title Cadastro de Tipos de Unidades
+
+                form(role="form" method="POST" id="form-cadastro" autocomplete="off")
+                    div.box-body
+
+                        div.col-xs-12.col-md-6
+
+                            div.form-group
+                                label(for="descricao") Descrição
+                                input(type="text" required value!="<%= _.get(form,'descricao') %>" class="form-control input-lg" name="descricao" id="descricao" placeholder="Descrição")
+
+                        div.col-xs-12
+                            input(type="hidden" value!="<%= _.get(form,'id') %>" class="form-control input-sm hidden" name="id" id="id")
+
+                    div.box-footer
+
+                        div.col-xs-12.col-md-12
+                            button(type="button" class="btn btn-primary btn-lg input-lg" id="save") Salvar

@@ -1,0 +1,27 @@
+div.box.box-primary.box-solid
+    div.box-header.with-border
+        h3.box-title Informação da Conta
+        div.box-tools.pull-right
+            button.btn.btn-box-tool(type="button" data-widget="collapse"): i.fa.fa-minus
+
+    div.box-body.bg-gray-active.color-palette
+        div.col-xs-12.col-md-6
+            div.form-group
+                label.text-left Pedido Ref:
+                input(type="text" required value!="<%= _.get(conta,'pedidoCliente.id') %>" class="form-control input-lg text-uppercase" readonly="readonly")
+
+        div.col-xs-12.col-md-6
+            div.form-group
+                label.text-left Data
+                input(type="text" required value!="<%= _.get(conta,'created') %>" class="form-control input-lg text-uppercase" readonly="readonly")
+
+
+        div.col-xs-12.col-md-6
+            div.form-group
+                label.text-left Valor
+                input(type="text" required value!="<%= _.get(conta,'valor') %>" class="form-control input-lg text-uppercase" readonly="readonly")
+
+        div.col-xs-12.col-md-6
+            div.form-group
+                label.text-left Saldo
+                input(type="text" required value!="<%= _.get(conta,'saldo') %>" class="form-control input-lg text-uppercase" readonly="readonly")

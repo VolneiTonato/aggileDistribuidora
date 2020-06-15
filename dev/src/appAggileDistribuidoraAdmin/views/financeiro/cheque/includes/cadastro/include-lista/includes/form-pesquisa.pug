@@ -1,0 +1,47 @@
+div#form-pesquisa
+
+    div.col-xs-12.col-md-12
+        div.form-group
+            +radioButtonInline('Tipo Emissor', [
+                {value:'', checked: true, name:'pesquisa_tipoEmissor',text:'Sem Relação'},
+                {value:'fabrica', name:'pesquisa_tipoEmissor',text:'Fábrica'},
+                {value:'cliente', name:'pesquisa_tipoEmissor',text:'Cliente'},
+                {value:'cedente', name:'pesquisa_tipoEmissor',text:'Cedente'},
+                {value:'vendedor', name:'pesquisa_tipoEmissor',text:'Vendedor'},
+                ], {class: 'pesquisa-tipo-emissor'})
+
+    div#inner-pessoa-autocomplete-pesquisa
+
+                
+    +autoComplete('conta-bancaria')
+
+    +autoComplete('banco')
+
+    div.col-xs-12.col-md-3
+        div.form-group
+            label.text-left Número Cheque
+            input(type="text" required value!="<%= _.get(form,'numero') %>" class="form-control input-lg text-uppercase" name="pesquisa_numero" id="pesquisa-numero")
+
+    div.col-xs-12.col-md-6
+        div.form-group.form-group-lg
+            label(for="") Ativo
+            select#pesquisa-status.form-control.input-lg(name="pesquisa_status")
+            +overlay()
+
+
+    div.col-xs-12
+        input(type="hidden" name="pesquisa_bancoId" value!="<%= _.get(form, 'bancoId') %>")
+        input(type="hidden" name="pesquisa_contaBancariaId" value!="<%= _.get(form, 'contaBancariaId') %>")
+        input(type="hidden" name="pesquisa_emissorId" value!="<%= _.get(form, 'emissorId') %>")
+
+
+    div.clear-fix
+
+    div.col-xs-12
+        div.hidden-xs.hidden-sm
+            div.btn-toolbar
+                button.btn.btn-lg.input-lg.btn-warning.pesquisar Pesquisar
+                button.btn.btn-lg.input-lg.btn-danger.limpar-pesquisa Limpar Pesquisa
+        div.visible-xs.visible-sm
+            button.btn.btn-danger.btn-block.input-lg.pesquisar Pesquisar
+            button.btn.btn-warning.btn-block.input-lg.limpar-pesquisa Limpar Pesquisa

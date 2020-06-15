@@ -1,0 +1,119 @@
+extends ../../layout-report.pug
+
+block content
+
+
+
+    div.block-report
+
+        .row
+            .d-inline.p-3
+
+        each row in result
+           
+            .row
+                .col-12
+                    each rowBairro in row.data
+
+                        .row
+                            .col-12
+                                hr.line-2
+
+                        .row
+                            .col-12
+                                table.table.table-sm.table-borderless
+                                    thead
+                                        tr
+                                            th(scope="col")
+                                                span.text-success= `-> ${FN.StringUtil.toUpperCase(row.municipio.descricao)}`
+                                                br
+                                                span.text-warning= `--> ${FN.StringUtil.toUpperCase(rowBairro.bairro)}`
+
+                                
+                        each item in rowBairro.data
+
+                            .row
+                                .col-12
+                                     
+                                    table.table.table-sm
+                                        thead.row-blue
+                                            tr
+                                                th(style="background-color:#e0e0d1 !important" scope="col"): span Cliente
+                                                th(style="background-color:#e0e0d1 !important" scope="col"): span Fones
+                                                th(style="background-color:#e0e0d1 !important" scope="col"): span Endereço
+                                        tbody
+                                            tr
+                                                td(scope="row" width="50%")
+
+                                                    .row
+                                                        .col
+                                                            span: strong Código
+                                                            span.text-info.ml-2= `${FN._.get(item, 'id')}`
+
+                                                    .row
+                                                        .col
+                                                            span: strong Razão Social
+                                                            span.text-info.ml-2= `${FN._.get(item, 'cliente.razaoSocial')}`
+                                                    .row
+                                                        .col
+                                                            span: strong Nome Fantasia
+                                                            span.text-info.ml-2= `${FN._.get(item, 'cliente.nomeFantasia')}`
+
+                                                    .row
+                                                        .col
+                                                            span: strong Contato
+                                                            span.text-info.ml-2= `${FN._.get(item, 'cliente.contato')}`
+
+                                                    .row
+                                                        .col
+                                                            span: strong Tipo Pessoa
+                                                            span.text-info.ml-2= `${FN._.get(item, 'cliente.tipoPessoaText')}`
+
+                                                    .row
+                                                        .col
+                                                            span: strong Tipo Estabelecimento
+                                                            span.text-info.ml-2= `${FN._.get(item, 'cliente.tipoEstabelecimento')}`
+
+                                                    .row
+                                                        .col
+                                                            span: strong CPF/CNPJ
+                                                            span.text-info.ml-2= `${FN._.get(item, 'cliente.cnpjCpf')}`
+
+                                                    .row
+                                                        .col
+                                                            span: strong Ativo
+                                                            span.text-info.ml-2= `${FN.StringUtil.boolToString(FN._.get(item, 'cliente.status'))}`
+
+                                                    .row
+                                                        .col
+                                                            span: strong Observação
+                                                            span.text-info.ml-2= `${FN._.get(item, 'cliente.observacao')}`
+
+                                                td(scope="row" width="20%").text-left
+                                                    each fone in item.telefones
+                                                        .row
+                                                            .col
+                                                                span.text-info= fone.numero
+
+                                                td(scope="row" width="30%").text-left
+                                                    .row
+                                                        .col
+                                                            span: strong Bairro
+                                                            span.text-info.ml-2= `${FN.StringUtil.toUpperCase(FN._.get(item, 'endereco.bairro'))}`
+
+                                                    .row
+                                                        .col
+                                                            span: strong Logradouro
+                                                            span.text-info.ml-2= `${FN.StringUtil.toUpperCase(FN._.get(item, 'endereco.logradouro'))}`
+
+                                                    .row
+                                                        .col
+                                                            span: strong CEP
+                                                            span.text-info.ml-2= `${FN.StringUtil.toUpperCase(FN._.get(item, 'endereco.cep'))}`
+
+                                                    .row
+                                                        .col
+                                                            span: strong Latitude/Longitude
+                                                            span.text-info.ml-2= `${FN.StringUtil.toUpperCase(FN._.get(item, 'endereco.latitudeLongitude'))}`
+
+                    div(style="page-break-before:always;")

@@ -1,0 +1,111 @@
+div#block-form-cedente
+    div.row
+        div.col-xs-12
+            div.box.box-primary
+            
+                div.box-header.with-border
+                    h3.box-title Cedentes
+
+                div.box-body
+
+                    div.row
+                        div.col-xs-12
+                            a.btn.btn-app(href="#home")
+                                i.fa.fa-home
+                                |Início
+
+                            a.btn.btn-app(href="#cadastro-de-cedentes/pesquisa")
+                                i.fa.fa-arrow-left
+                                |Cedentes Cadastrados
+
+                            a.btn.btn-app#btn-novo-cadastro(href="#cadastro-de-cedentes/novo-cadastro")
+                                    i.fa.fa-plus
+                                    |Novo Cedente
+
+
+    div.row
+        div.col-xs-12
+            div.box.box-primary
+
+                div.box-header.with-border
+                    h3.box-title Cadastro de Cedentes
+
+                form(role="form" method="POST" id="form-cadastro" autocomplete="off")
+                    div.box-body
+
+                        div#row-item(data-item!="<%- JSON.stringify(form) %>" style={'display':'none'})
+
+                        div.col-xs-12.col-md-6
+
+                            div.form-group
+                                label(for="razaoSocial") Razão Social
+                                input(type="text" required value!="<%= _.get(form,'cedente.razaoSocial') %>" class="form-control input-lg" name="cedente_razaoSocial" id="cedente_razao_social" placeholder="Razão Social")
+
+                        div.col-xs-12.col-md-6
+                            div.form-group
+                                label(for="nomeFantasia") Nome Fantasia
+                                input(type="text" required value!="<%= _.get(form,'cedente.nomeFantasia') %>" class="form-control input-lg" name="cedente_nomeFantasia" id="cedente_nome_fantasia" placeholder="Nome Fantasia")
+                        
+                        div.col-xs-12.col-md-6
+                            div.form-group
+                                label(for="tipoPessoa") Tipo Pessoa
+                                select.form-control.input-lg(name="cedente_tipoPessoa" id="tipo-pessoa")
+                                    option(value="J" id="tipoPessoaJuridica") Jurídica
+                                    option(value="F" id="tipoPessoaFisica") Física
+                                
+                        div.col-xs-12.col-md-6#bloco-pessoa-juridica
+                            div.form-group
+                                label(for="cnpj") CNPJ
+                                input(type="text" required value!="<%= _.get(form, 'cedente.cnpjCpf') %>" class="form-control input-lg cnpj-mask" name="cnpj" id="cnpj" placeholder="CNPJ")
+
+                        div.col-xs-12.col-md-6#bloco-pessoa-fisica(style={display:'none'})
+                            div.form-group
+                                label(for="cpf") CPF
+                                input(type="text" required value!="<%= _.get(form, 'cedente.cnpjCpf') %>" class="form-control input-lg cpf-mask" name="cpf" id="cpf" placeholder="CPF")
+
+
+                        div.col-xs-12.col-md-3
+                            div.form-group.form-group-lg
+                                label(for="status") Ativo
+                                select#status.form-control.input-lg(name="cedente_status")
+                                +overlay()
+
+                        div.col-xs-12.col-md-6
+                            div.form-group
+                                label(for="contato") Contato
+                                input(type="text" required value!="<%= _.get(form, 'cedente.contato') %>" class="form-control input-lg" name="cedente_contato" id="cedente_contato" placeholder="Contato")
+
+                        div.col-xs-12.col-md-6
+                            div.form-group
+                                label(for="observacao") Observações
+                                textarea(rows="5" class="form-control input-lg" name="cedente_observacao" id="observacao") <%= _.get(form, 'cedente.observacao') %>
+            
+                        div.col-xs-12.col-md-6
+                            #inner-telefone-cedente
+
+                        div.clearfix
+
+                        .col-xs-12
+                            .box.box-solid.box-warning
+                                .box-header.with-border
+                                    h3.box-title Endereço Principal
+
+                        include ../../../../extras/endereco-form.pug
+
+                        div.clearfix
+
+                        .col-xs-12
+                            div#inner-content-children-endereco
+
+
+
+                        div.col-xs-12
+                            input(type="hidden" value!="<%= _.get(form,'id') %>" class="form-control input-sm hidden" name="id" id="id")
+                            input(type="hidden" value!="<%= _.get(form,'uuid') %>" class="form-control input-sm hidden" name="uuid" id="uuid")
+                            input(type="hidden" value!="<%= _.get(form,'endereco.id') %>" class="form-control input-sm hidden" name="endereco_id" id="endereco_id")
+                            input(type="hidden" value!="<%= _.get(form,'cedente.id') %>" class="form-control input-sm hidden" name="cedente_id" id="cedente_id")
+
+                    div.box-footer
+
+                        div.col-xs-12.col-md-12
+                            button(type="button" class="btn btn-primary btn-lg input-lg" id="save") Salvar

@@ -1,0 +1,63 @@
+div#form-pesquisa
+    form(autocomplete="off")
+
+        +radioButtonInline('Data Lançamento / Data Pagamento', [{checked: true, value : "dataLancamento", text: "Data de Lançamento", name:"pesquisa_dataFiltro"}, { value : "dataPagamento", text: "Data de Pagamento", name:'pesquisa_dataFiltro'}], {id : "pesquisa-data-filtro"})
+
+        div.col-xs-12.col-md-4
+            div.form-group
+                label(for="data") Data Inicial
+                input(type="text" required value!="<%= _.get(form, 'dataInicial') %>" class="datapicker form-control input-lg text-uppercase" name="pesquisa_dataInicial" id="pesquisa-dataInicial" placeholder="Data de Inicial")
+
+        div.col-xs-12.col-md-4
+            div.form-group
+                label(for="data") Data Final
+                input(type="text" value!="<%= _.get(form, 'dataFinal') %>" required class="datapicker form-control input-lg text-uppercase" name="pesquisa_dataFinal" id="pesquisa-dataFinal" placeholder="Data de Final")
+
+
+        div.col-xs-12.col-md-12
+            div.form-group
+                +radioButtonInline('Tipo Pessoa', [
+                    {value:'', checked: true, name:'pesquisa_tipoPessoa',text:'Sem Relação'},
+                    {value:'fabrica', name:'pesquisa_tipoPessoa',text:'Fábrica'},
+                    {value:'cliente', name:'pesquisa_tipoPessoa',text:'Cliente'},
+                    {value:'cedente', name:'pesquisa_tipoPessoa',text:'Cedente'},
+                    {value:'vendedor', name:'pesquisa_tipoPessoa',text:'Vendedor'},
+                    ], {class: 'pesquisa-tipo-pessoa'})
+
+        div#inner-pessoa-autocomplete-pesquisa
+
+
+        div.col-xs-12.col-md-6
+            div.form-group.form-group-lg
+                label(for="municipio") Município
+                select#pesquisa-municipio.form-control.input-lg.select2.select2-container(name="pesquisa_municipio")
+                +overlay()
+
+        div.col-xs-12.col-md-6
+            div.form-group.form-group-lg
+                label(for="status") Status Conta
+                select#pesquisa-status.form-control.input-lg(name="pesquisa_status")
+                +overlay()
+
+        div.col-xs-12.col-md-6
+            div.form-group
+                label.text-left Número Nota Entrada
+                input(type="text" required value!="<%= _.get(form,'numeroNotaFiscal') %>" class="form-control input-lg text-uppercase" name="pesquisa_numeroNotaFiscal" id="pesquisa-numero-nota-fiscal")
+
+        div.col-xs-12
+            input(type="hidden" name="pesquisa_pessoaId" value!="<%= _.get(form, 'pessoaId') %>")
+            input(type="hidden" name="pesquisa_pessoaNome" value!="<%= _.get(form, 'pessoaNome') %>")
+
+        
+
+
+        div.clear-fix
+
+        div.col-xs-12
+            div.hidden-xs.hidden-sm
+                div.btn-toolbar
+                    button.btn.btn-lg.input-lg.btn-warning.pesquisar Pesquisar
+                    button.btn.btn-lg.input-lg.btn-danger.limpar-pesquisa Limpar Pesquisa
+            div.visible-xs.visible-sm
+                button.btn.btn-danger.btn-block.input-lg.pesquisar Pesquisar
+                button.btn.btn-warning.btn-block.input-lg.limpar-pesquisa Limpar Pesquisa

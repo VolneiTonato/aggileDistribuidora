@@ -1,0 +1,49 @@
+<script></script>
+
+script(type="template" id="template-report-pedido-romaneio")
+    +dataInicialFinal()
+    .clearfix
+    +fabrica()
+    .clearfix
+    +statusPedido()
+    .clearfix
+    +boolSimNao({label:'Consignado', placeholder:'Consignado', id:'consignado', name:'consignado'})
+    +municipioListAdd()
+    .clearfix
+    +filtroObrigatorioReport()
+    .clearfix
+    +submit()
+
+
+<script></script>
+
+script(type="template" id="template-report-pedido-cliente-geral")
+    +radioButtonInline('Data Entrega / Data Pedido', 
+        [
+            {checked: true, value : "dataEntrega", text: "Data de Entrega", name:"report_dataFiltro"}, 
+            { value : "dataPedido", text: "Data do Pedido", name:'report_dataFiltro'}
+        ])
+    +dataInicialFinal()
+    .clearfix
+    +tipoPessoaRadioButtom(['cliente'])
+    +autoCompletePessoa()
+    .clearfix
+    +id()
+    +boolSimNao({label:'Consignado', placeholder:'Consignado', id:'consignado', name:'consignado'})
+    .clearfix
+    +statusPedido()
+    +municipio()
+    .clearfix    
+    +boolSimNao({label:'Mostrar Contas à Receber', placeholder:'Contas à Receber', id:'mostrar-recebimento', name:'mostrarReceitas'})
+    +statusReceitas()
+    .clearfix
+    +fabrica()
+    .clearfix
+    +autoCompleteProduto()
+    .clearfix
+    +radioButtonResumidoDetalhado()
+    +radioButtonInline('Visualização para Relatório Resumido', [{value : "detalharPedido", text: "Detalhar Por Cliente", name:"report_visualizacaoPedidoReport"}, { value : "resumirPedido", text: "Resumir por Cliente", name:'report_visualizacaoPedidoReport'}])
+    .clearfix
+    +filtroObrigatorioReport()
+    .clearfix
+    +submit()

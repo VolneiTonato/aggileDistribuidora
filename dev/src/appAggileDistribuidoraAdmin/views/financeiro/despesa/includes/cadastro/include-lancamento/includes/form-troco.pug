@@ -1,0 +1,18 @@
+div#form-troco-despesas
+
+    div.col-xs-12
+        h6.alert.alert-info Informação de Troco
+
+    div.col-xs-12.col-md-6
+        div.form-group
+            label(for="valor") Valor
+            input(type="text" disabled="disabled" required class="form-control input-lg text-uppercase currency" value!="<%= troco %>" name="despesa_troco" id="despesa-troco" placeholder="Valor de Troco")
+
+    div.col-xs-12
+        div.form-group
+            div.hidden-xs.hidden-sm
+                div.btn-toolbar
+                    button.btn.btn-lg.input-lg.btn-success.btn-lancar-troco-historico(type="button") Lançar
+
+            div.visible-xs.visible-sm
+                button.btn.btn-success.btn-lancar-troco-historico.btn-block.input-lg(type="button") Lançar
